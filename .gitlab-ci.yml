@@ -24,6 +24,7 @@ vm-deploy-prod:
 heroku-deploy:
   stage: deploy-heroku
   script:
-   - sudo apt install ruby
-   - gem install --user-install dpl-heroku
+   - apt-get update -yq
+   - apt-get install -y ruby-dev       
+   - gem install dpl
    - dpl --provider=heroku --app=drp-inaglobe-platform --api-key=2f23823e-beb1-4f1c-84ba-b4ca43eef21
