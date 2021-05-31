@@ -8,12 +8,16 @@ stages:
 
 compile-job:
   stage: compile
+  script:
 
 test-job:
   stage: test
+  script:
 
 vm-deploy-prod:
   stage: deploy-vm
+  script:
 
 heroku-deploy:
   stage: deploy-heroku
+  script:
