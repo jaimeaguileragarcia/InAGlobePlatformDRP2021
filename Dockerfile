@@ -3,6 +3,10 @@ FROM openjdk:11
 # Install maven
 RUN apt-get update -y && apt-get install maven -y
 
+# Install pandoc
+RUN apt-get install pandoc -y
+RUN apt-get install texlive -y
+
 # Copy the needed files to build the application 
 COPY . /
 
