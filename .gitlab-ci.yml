@@ -3,23 +3,18 @@ image: maven:3-jdk-11
 stages:
   - compile
   - test
-  - deploy-vm
   - deploy-heroku
 
 compile-job:
   stage: compile
   script:
-   - echo hello
+    - mvn install -B
+    - mvn compile
 
 test-job:
   stage: test
   script:
-   - echo hello
-
-vm-deploy-prod:
-  stage: deploy-vm
-  script:
-   - echo hello
+    - mvn test
 
 heroku-deploy:
   stage: deploy-heroku
