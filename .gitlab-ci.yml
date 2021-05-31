@@ -8,12 +8,21 @@ stages:
 
 compile-job:
   stage: compile
+  script:
+    - echo hello
 
 test-job:
   stage: test
+  script:
+    - echo hello
 
 vm-deploy-prod:
   stage: deploy-vm
+  script:
+    - echo hello
 
 heroku-deploy:
   stage: deploy-heroku
+  script:
+    - gem install --user-install dpl-heroku
+    - dpl --provider=heroku --app=drp-inaglobe-platform --api-key=2f23823e-beb1-4f1c-84ba-b4ca43eef210
