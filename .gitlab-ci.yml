@@ -1,0 +1,19 @@
+image: maven:3-jdk-11
+
+stages:
+  - compile
+  - test
+  - deploy-vm
+  - deploy-heroku
+
+compile-job:
+  stage: compile
+
+test-job:
+  stage: test
+
+vm-deploy-prod:
+  stage: deploy-vm
+
+heroku-deploy:
+  stage: deploy-heroku
