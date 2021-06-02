@@ -1,20 +1,21 @@
 FROM node:14.16.0
 
-# Cd into the React App dir
-RUN cd inaglobe-dashboard/
+# set working directory
+WORKDIR /inaglobe-dashboard
 
-# Install React
-RUN apt install nodejs 
-RUN apt install npm
+# add `/app/node_modules/.bin` to $PATH
+ENV PATH /inaglode-dashboard/node_modules/.bin:$PATH
+
+# install app dependencies
+COPY package.json ./
+COPY package-lock.json ./
+RUN npm install --silent
+RUN npm install react-scripts@3.4.1 -g --silent
 RUN npm install react-router-dom
 
-# Copy the needed files to build the application 
-COPY . /
+# add app
+COPY . ./
 
-# Run mvn package from the correct container’s directory
-RUN npm run start
-
-# Start the app on container execution
+# start app
 RUN export PORT=5000
-CMD ["sh", "target/bin/drp-inaglobe-platform"]
-
+CMD ["npm", "start"]
