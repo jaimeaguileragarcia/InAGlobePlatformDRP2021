@@ -1,8 +1,4 @@
-FROM openjdk:11
 FROM node:14.16.0
-
-# Install maven
-RUN apt-get update -y && apt-get install maven -y
 
 # Install React
 RUN apt install nodejs 
@@ -13,7 +9,7 @@ RUN npm install react-router-dom
 COPY . /
 
 # Run mvn package from the correct container’s directory
-RUN mvn package
+RUN npm run start
 
 # Start the app on container execution
 RUN export PORT=5000
