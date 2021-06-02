@@ -11,6 +11,13 @@ const Home = () => {
         setCount(count + 1)
         // open a new page where one can add a new project
     }
+    
+    const [currentTime, setCurrentTime] = useState(0);
+    useEffect(() => {
+        fetch('/time').then(res => res.json()).then(data => {
+          setCurrentTime(data.time);
+        });
+      }, []);    
 
     return (
         <div className="home">
