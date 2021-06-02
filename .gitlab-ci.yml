@@ -8,7 +8,7 @@ stages:
 compile-job:
   stage: compile
   script:
-    - apt-get install nodejs npm -y
+    - npm install -f
     - npm run start
     - npx json-server --watch data/db.json --port 8000 
 
