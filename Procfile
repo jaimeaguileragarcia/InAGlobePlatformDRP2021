@@ -1,1 +1,1 @@
-web: sh target/bin/drp-inaglobe-platform/inaglobe-dashboard
+web: sh target/bin/drp-inaglobe-platform
