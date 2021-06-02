@@ -1,5 +1,8 @@
 FROM node:14.16.0
 
+# Cd into the React App dir
+RUN cd inaglobe-dashboard/
+
 # Install React
 RUN apt install nodejs 
 RUN apt install npm
