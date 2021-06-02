@@ -1,4 +1,4 @@
-image: maven:3-jdk-11
+-image: maven:3-jdk-11
 
 stages:
   - compile
@@ -8,13 +8,13 @@ stages:
 compile-job:
   stage: compile
   script:
-    - mvn install -B
-    - mvn compile
+    - npm run start
+    - npx json-server --watch data/db.json --port 8000 
 
 test-job:
   stage: test
   script:
-    - mvn test
+    - echo hello
 
 heroku-deploy:
   stage: deploy-heroku

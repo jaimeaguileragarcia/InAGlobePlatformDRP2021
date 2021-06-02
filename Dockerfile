@@ -7,6 +7,10 @@ RUN apt-get update -y && apt-get install maven -y
 RUN apt-get install pandoc -y
 RUN apt-get install texlive -y
 
+# Install React
+RUN apt-get install nodejs 
+RUN npm install react-router-dom
+
 # Copy the needed files to build the application 
 COPY . /
 

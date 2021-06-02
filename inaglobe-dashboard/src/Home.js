@@ -1,11 +1,10 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
+import ProjectList from './ProjectList'
+import useFetch from './useFetch'
 
 const Home = () => {
-    const [count, setCount] = useState(0)
-    const [projects, setProjects] = useState([
-        { name: "Braille Machine", status: "Completed", id: 1},
-        { name: "Eco Warrior", status: "In Progress", id: 2}
-    ])
+    const [count, setCount] = useState(0);
+    const {data: projects, error} = useFetch("http://localhost:8000/projects")
 
     const handleAddNewProject = () => {
         setCount(count + 1)
@@ -15,13 +14,10 @@ const Home = () => {
     return (
         <div className="home">
             <h1>Dashboard</h1>
-            {projects.map((project) => (
-                <div className="project-preview" key={projects.id}>
-                    <h2>{project.name}</h2>
-                    <h3>{project.status}</h3>
-                </div>
-            ))}
+                { error && <div>{error}</div>}
 
+                { projects && <ProjectList projects={projects} title="All Projects"/> }
+                { projects && <ProjectList projects={projects.filter(project => project.status === "Completed")} title="Completed Projects"/> }
             <h2>There are {count} projects</h2>
             <button onClick={handleAddNewProject}>   
                 <a href="/create-project">Add a new project</a>
