@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react'
+import { Link } from "react-router-dom"
 import ProjectList from './ProjectList'
 import useFetch from './useFetch'
 
@@ -18,10 +19,6 @@ const Home = () => {
 
                 { projects && <ProjectList projects={projects} title="All Projects"/> }
                 { projects && <ProjectList projects={projects.filter(project => project.status === "Completed")} title="Completed Projects"/> }
-            <h2>There are {count} projects</h2>
-            <button onClick={handleAddNewProject}>   
-                <a href="/create-project">Add a new project</a>
-            </button>
         </div>
     );
 }

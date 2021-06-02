@@ -3,6 +3,7 @@ import Home from './Home'
 import CreateProject from './CreateProject'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import ProjectDetails from './ProjectDetails'
+import PageNotFound from './PageNotFound'
 
 
 function App() {
@@ -21,6 +22,9 @@ function App() {
             </Route>
             <Route path="/projects/:id">
               <ProjectDetails />
+            </Route>
+            <Route path="*">
+              <PageNotFound />
             </Route>
           </Switch>
         </div>

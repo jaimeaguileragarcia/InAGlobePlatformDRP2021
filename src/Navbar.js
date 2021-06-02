@@ -9,7 +9,7 @@ const Navbar = () => {
                 borderRadius: '8px' 
             }}>InAGlobe Platform</a>
             <div className="links"> 
-                <a href="/">Notifications</a>
+                <a href="/create-project">New Project</a>
                 <a href="/">My Profile</a>
             </div>
         </nav>
