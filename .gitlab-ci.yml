@@ -9,6 +9,7 @@ compile-job:
   stage: compile
   script:
     - npm install -f
+    - cd inaglobe-dashboard/
     - npm run start
     - npx json-server --watch data/db.json --port 8000 
 
