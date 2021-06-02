@@ -1,14 +1,12 @@
 FROM openjdk:11
+FROM node:14.16.0
 
 # Install maven
 RUN apt-get update -y && apt-get install maven -y
 
-# Install pandoc
-RUN apt-get install pandoc -y
-RUN apt-get install texlive -y
-
 # Install React
-RUN apt-get install nodejs 
+RUN apt install nodejs 
+RUN apt install npm
 RUN npm install react-router-dom
 
 # Copy the needed files to build the application 
