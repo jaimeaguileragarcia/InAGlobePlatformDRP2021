@@ -1,0 +1,14 @@
+{
+    "projects": [
+      {
+        "name": "Braille Machine",
+        "status": "Completed",
+        "id": 1
+      },
+      {
+        "name": "Eco Warriors",
+        "status": "In Progress",
+        "id": 2
+      }
+    ]
+}
