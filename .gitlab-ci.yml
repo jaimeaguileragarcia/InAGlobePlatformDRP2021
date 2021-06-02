@@ -19,9 +19,8 @@ test-job:
     - echo hello
 
 heroku-deploy:
+  image: ruby:3.0.0
   stage: deploy-heroku
   script:
-   - apt-get update -yq
-   - apt-get install -y ruby-dev       
    - gem install dpl
    - dpl --provider=heroku --app=drp-inaglobe-platform --api-key=2f23823e-beb1-4f1c-84ba-b4ca43eef210
