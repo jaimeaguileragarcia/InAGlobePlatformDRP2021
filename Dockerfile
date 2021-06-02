@@ -11,4 +11,4 @@ COPY . ./
 
 # start app
 RUN export PORT=5000
-CMD ["npm", "start"]
+CMD ["npm", "run", "start"]
