@@ -11,11 +11,11 @@ heroku-deploy:
   image: ruby:latest
   stage: deploy-heroku
   script:
-   - export DATABASE_URL=$DOC_POSTGRES_DATABASE
    - apt-get update -qy
    - apt-get install -y python3 python3-pip
    - pip3 install -r requirements.txt
    - pip3 install python-dotenv
+   - export DATABASE_URL='postgres://g205001034_u:CierkbZMND@db.doc.ic.ac.uk:5432/g205001034_u'
    - cd backend
    - python3 -m flask db upgrade
    - cd ..
