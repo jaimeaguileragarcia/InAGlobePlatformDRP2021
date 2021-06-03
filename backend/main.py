@@ -5,9 +5,21 @@ from backend.database_config.database import DB
 from backend.blueprints.project import project
 import os
 
+class ReverseProxied(object):
+    def __init__(self, app):
+        self.app = app
+
+    def __call__(self, environ, start_response):
+        scheme = environ.get('HTTP_X_FORWARDED_PROTO')
+        if scheme:
+            environ['wsgi.url_scheme'] = scheme
+        return self.app(environ, start_response)
+
+
 app = Flask(__name__)
 
 app.register_blueprint(project)
+app.wsgi_app = ReverseProxied(app.wsgi_app)
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
