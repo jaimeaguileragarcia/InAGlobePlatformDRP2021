@@ -2,7 +2,7 @@ stages:
   - test
   - deploy-heroku
 
-  test-job:
+test-job:
   stage: test
   script:
     - echo hello
