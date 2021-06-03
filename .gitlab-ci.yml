@@ -1,6 +1,13 @@
 stages:
+  - compile
   - test
   - deploy-heroku
+
+compile-job:
+  stage: compile
+  script:
+    - cd frontend
+    - npm run build
 
 test-job:
   stage: test
