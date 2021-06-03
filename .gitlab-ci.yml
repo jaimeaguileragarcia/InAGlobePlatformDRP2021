@@ -14,7 +14,6 @@ heroku-deploy:
    - export DATABASE_URL=$DOC_POSTGRES_DATABASE
    - apt-get update -qy
    - apt-get install -y python3 python3-pip
-   - pip install python-dotenv
    - pip3 install -r requirements.txt
    - python3 -m flask db upgrade
    - gem install dpl
