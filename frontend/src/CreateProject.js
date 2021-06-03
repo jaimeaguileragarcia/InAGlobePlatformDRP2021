@@ -22,7 +22,7 @@ const CreateProject = () => {
     }
 
     return (
-        <div className="create">
+        <div className="create-project">
             <h2>Add a new project</h2>
             <form onSubmit={handleSubmit}>
                 <label>Project name</label>

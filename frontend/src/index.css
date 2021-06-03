@@ -128,21 +128,21 @@
 
 /* Create new project form */
 
-.create {
+.create-project {
   max-width: 400px;
   margin: 0 auto;
   text-align: center;
 }
-.create label {
+.create-project label {
   text-align: left;
   display: block;
 }
-.create h2 {
+.create-project h2 {
   font-size: 20px;
   color: #f1356d;
   margin-bottom: 30px;
 }
-.create input, .create textarea, .create select {
+.create-project input, .create textarea, .create select {
   width: 100%;
   padding: 6px 10px;
   margin: 10px 0;
@@ -150,7 +150,7 @@
   box-sizing: border-box;
   display: block;
 }
-.create button {
+.create-project button {
   background: #f1356d;
   color: #fff;
   border: 0;
@@ -159,7 +159,7 @@
   cursor: pointer;
 }
 
-.create button:hover {
+.create-project button:hover {
   background: #8f0830;
 }
 
