@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from backend.config import Config
 from backend.database_config.database import DB
 from backend.blueprints.project import project
 import os
@@ -19,6 +20,8 @@ db = DB.the_database
 
 db.app = app
 db.init_app(app)
+
+app.config.from_object(Config)
 
 migrate = Migrate(app, db)
   
