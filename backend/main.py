@@ -1,9 +1,9 @@
-import flask
+from flask import Flask, render_template, request
 
-app = flask.Flask("__main__")
+app = Flask(__name__)
 
-@app_rounte("/")
+@app_route("/")
 def my_index():
     return flask.render_template("index.html", token="DRP_token")
 
-    app_run(debug=True)
+app_run(debug=True)
