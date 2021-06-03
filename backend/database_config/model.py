@@ -1,4 +1,4 @@
-from database_config.database import DB
+from backend.database_config.database import DB
 from flask import jsonify
 
 db = DB.the_database

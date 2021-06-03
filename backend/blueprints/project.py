@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify, Response
-from database_config.database import DB
-from database_config.model import Project
+from backend.database_config.database import DB
+from backend.database_config.model import Project
 import json
 
 project = Blueprint('project', __name__)
