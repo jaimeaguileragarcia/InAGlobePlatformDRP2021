@@ -11,7 +11,7 @@ app.register_blueprint(project)
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://g205001034_u:CierkbZMND@db.doc.ic.ac.uk:5432/g205001034_u'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://g205001034_u:CierkbZMND@db.doc.ic.ac.uk:5432/g205001034_u'
 
 db = DB.the_database
 
