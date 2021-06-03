@@ -1,14 +1,6 @@
 stages:
-  - compile
   - test
   - deploy-heroku
-
-compile-job:
-  stage: compile
-  script:
-    - cd frontend
-    - npm install
-    - npm run build
 
 test-job:
   stage: test
