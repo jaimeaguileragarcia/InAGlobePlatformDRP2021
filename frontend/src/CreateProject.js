@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom"
 
 const CreateProject = () => {
@@ -8,11 +8,38 @@ const CreateProject = () => {
 
     const history = useHistory();
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        const newProject = {name, desc, status}
+    // const handleSubmit = (e) => {
+    //     e.preventDefault()
+    //     const newProject = {name, desc, status}
 
-        fetch("http://localhost:8000/projects", {
+    //     fetch("http://localhost:8000/projects", {
+    //         method: 'POST',
+    //         headers: { "Content-Type": "application/json"},
+    //         body: JSON.stringify(newProject)
+    //     }).then(() => {
+    //         history.push('/');
+    //     })
+    // }
+
+    // const [project, setProject] = useState(null)
+
+    // useEffect(() => {
+    //     const newProject = {name, desc, status};
+    //     fetch("/projects", {
+    //                 method: 'POST',
+    //                 headers: { "Content-Type": "application/json"},
+    //                 body: JSON.stringify(newProject)
+    //             }).then(() => {
+    //                 history.push('/');
+    //             })
+    // }, []);
+
+    const handleSubmit = e => {
+        e.preventDefault()
+
+        const newProject = {name, desc, status};
+
+        fetch("/projects", {
             method: 'POST',
             headers: { "Content-Type": "application/json"},
             body: JSON.stringify(newProject)
