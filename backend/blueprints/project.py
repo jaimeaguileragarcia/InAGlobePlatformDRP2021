@@ -7,16 +7,10 @@ project = Blueprint('project', __name__)
 
 @project.route('/projects', methods=['GET'])
 def get_all_projects():
-  #return jsonify(json_list = Project.query.all())
-  entry = Project(name='name', status='status', description='desc')
-  DB.add(entry)
-  entry = Project.query.first()
-  return jsonify(
-        id=entry.id,
-        name=entry.name,
-        status=entry.status,
-        description=entry.description
-    )
+  project_query = Project.query.all()
+
+  projects_list = [{"name" : x.name, "status" : x.status, "desc" : x.description, "id" : x.id} for x in project_query]
+  return jsonify(projects_list)
  
 
 @project.route('/projects/<project_id>', methods=['GET'])
@@ -36,9 +30,11 @@ def upload_project():
                         request.json['status'])
   entry = Project(name=name, status=status, description=desc)
   DB.add(entry)
+  return ''
  
 
 @project.route('/projects/<project_id>', methods=['DELETE'])
 def delete_project(project_id):
   entry = Project.query.get(project_id)
   DB.delete(entry)
+  return ''

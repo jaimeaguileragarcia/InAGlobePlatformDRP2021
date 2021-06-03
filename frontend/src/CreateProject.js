@@ -8,32 +8,6 @@ const CreateProject = () => {
 
     const history = useHistory();
 
-    // const handleSubmit = (e) => {
-    //     e.preventDefault()
-    //     const newProject = {name, desc, status}
-
-    //     fetch("http://localhost:8000/projects", {
-    //         method: 'POST',
-    //         headers: { "Content-Type": "application/json"},
-    //         body: JSON.stringify(newProject)
-    //     }).then(() => {
-    //         history.push('/');
-    //     })
-    // }
-
-    // const [project, setProject] = useState(null)
-
-    // useEffect(() => {
-    //     const newProject = {name, desc, status};
-    //     fetch("/projects", {
-    //                 method: 'POST',
-    //                 headers: { "Content-Type": "application/json"},
-    //                 body: JSON.stringify(newProject)
-    //             }).then(() => {
-    //                 history.push('/');
-    //             })
-    // }, []);
-
     const handleSubmit = e => {
         e.preventDefault()
 
@@ -63,7 +37,7 @@ const CreateProject = () => {
                 <textarea required value={desc} onChange={(e) => setDesc(e.target.value)}></textarea>
                 <label>Status</label>
                 <select value={status} onChange={(e) => setStatus(e.target.value)}>
-                    <option value="In Progress">In Progress</option>
+                    <option value="Progress">Progress</option>
                     <option value="Available">Available</option>
                     <option value="Completed">Completed</option>
                 </select>

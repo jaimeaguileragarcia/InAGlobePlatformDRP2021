@@ -1,21 +1,15 @@
 import { useState, useEffect } from 'react';
 
-const useFetch = (url) => {
-  const [data, setData] = useState([]);
+const useDelete = (url) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch(url)
+    fetch(url, {method: 'DELETE'})
         .then(res => {
             if (!res.ok) { // error coming back from server
                 throw Error('could not fetch the data for that resource');
             } 
             return res.json();
-        })
-        .then(data => {
-            setData(data);
-            setError(null);
-            console.log({data})
         })
         .catch(err => {
             // auto catches network / connection error
@@ -23,7 +17,7 @@ const useFetch = (url) => {
         })
   }, [url])
 
-  return { data, error };
+  return { error };
 }
  
-export default useFetch;
+export default useDelete;

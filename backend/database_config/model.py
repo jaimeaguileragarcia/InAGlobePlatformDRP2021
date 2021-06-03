@@ -5,8 +5,8 @@ db = DB.the_database
 
 
 class Project(db.Model):
-    name = db.Column(db.String(20))
-    status = db.Column(db.String(10))
+    name = db.Column(db.String)
+    status = db.Column(db.String)
     description = db.Column(db.String)
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)  
 
