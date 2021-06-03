@@ -4,6 +4,7 @@ import CreateProject from './CreateProject'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import ProjectDetails from './ProjectDetails'
 import PageNotFound from './PageNotFound'
+import MyProfile from './MyProfile'
 
 
 function App() {
@@ -19,6 +20,9 @@ function App() {
             </Route>
             <Route path="/create-project">
               <CreateProject />
+            </Route>
+            <Route path="/my-profile">
+              <MyProfile />
             </Route>
             <Route path="/projects/:id">
               <ProjectDetails />

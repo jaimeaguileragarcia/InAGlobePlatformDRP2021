@@ -136,11 +136,12 @@
 .create-project label {
   text-align: left;
   display: block;
+  font-size: 20px;
 }
 .create-project h2 {
-  font-size: 20px;
+  font-size: 35px;
   color: #f1356d;
-  margin-bottom: 30px;
+  margin-bottom: 35px;
 }
 .create-project input, .create textarea, .create select {
   width: 100%;
@@ -163,6 +164,19 @@
   background: #8f0830;
 }
 
+/* My Profile */
+
+.my-profile h2 {
+  font-size: 35px;
+  color: #f1356d;
+  margin-bottom: 10px;
+}
+
+.my-profile p {
+  font-size: 20px;
+  color: rgb(8, 8, 8);
+  margin-bottom: 30px;
+}
 
 /* Page not found */
 
