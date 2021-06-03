@@ -18,8 +18,11 @@ test-job:
     - echo hello
 
 heroku-deploy:
-  image: ruby:3.0.0
+  image: ruby:latest
   stage: deploy-heroku
   script:
+   - apt-get update -qy
+   - apt-get install -y python3 python3-pip
+   - pip3 install -r requirements.txt
    - gem install dpl
    - dpl --provider=heroku --app=drp-inaglobe-platform --api-key=$HEROKU_API
