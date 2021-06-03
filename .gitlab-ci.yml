@@ -11,8 +11,11 @@ heroku-deploy:
   image: ruby:latest
   stage: deploy-heroku
   script:
+   - export DATABASE_URL=$DOC_POSTGRES_DATABASE
    - apt-get update -qy
    - apt-get install -y python3 python3-pip
+   - pip install python-dotenv
    - pip3 install -r requirements.txt
+   - python3 -m flask db upgrade
    - gem install dpl
    - dpl --provider=heroku --app=drp-inaglobe-platform --api-key=$HEROKU_API

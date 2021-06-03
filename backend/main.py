@@ -1,6 +1,13 @@
 from flask import Flask, render_template, request
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 
 app = Flask(__name__)
+
+db = SQLAlchemy(app)
+db.app = app
+db.init_app(app)
+migrate = Migrate(app, db)
 
 @app.route("/")
 def my_index():
