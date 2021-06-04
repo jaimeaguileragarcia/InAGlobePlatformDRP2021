@@ -41,7 +41,6 @@
     "fs-extra": "^9.0.1",
     "html-webpack-plugin": "4.5.0",
     "identity-obj-proxy": "3.0.0",
-    "jest": "26.6.0",
     "jest-circus": "26.6.0",
     "jest-resolve": "26.6.0",
     "jest-watch-typeahead": "0.6.1",
@@ -78,7 +77,8 @@
     "start": "node scripts/start.js",
     "start-api": "cd api && venv/bin/flask run --no-debugger",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "unit_tests": "jest"
   },
   "eslintConfig": {
     "extends": [
@@ -117,7 +117,7 @@
       "<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"
     ],
     "testEnvironment": "jsdom",
-    "testRunner": "/Users/iza/Documents/Imperial/Programming_IC/second_year/DRP/drp-inaglobe-platform/frontend/node_modules/jest-circus/runner.js",
+    "testRunner": "/home/rahilshah/Documents/Year2/DRP/drp-inaglobe-platform/frontend/node_modules/jest-circus/runner.js",
     "transform": {
       "^.+\\.(js|jsx|mjs|cjs|ts|tsx)$": "<rootDir>/config/jest/babelTransform.js",
       "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
@@ -155,5 +155,8 @@
       "react-app"
     ]
   },
-  "proxy": "http://127.0.0.1:5000"
+  "proxy": "http://127.0.0.1:5000",
+  "devDependencies": {
+    "jest": "^27.0.4"
+  }
 }
