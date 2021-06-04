@@ -23,5 +23,3 @@ heroku-deploy:
    - cd ..
    - gem install dpl
    - dpl --provider=heroku --app=drp-inaglobe-platform --api-key=$HEROKU_API
-  only:
-   - master
