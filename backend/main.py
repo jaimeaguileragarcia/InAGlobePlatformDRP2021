@@ -1,9 +1,8 @@
-from flask import Flask, render_template, request
-from flask_sqlalchemy import SQLAlchemy
+import os
+from flask import Flask, render_template
 from flask_migrate import Migrate
 from backend.database_config.database import DB
 from backend.blueprints.project import project
-import os
 
 app = Flask(__name__)
 

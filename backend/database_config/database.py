@@ -35,4 +35,7 @@ class Database:
     def create_all(self):
         self.the_database.create_all()
 
+    def drop_all(self):
+        self.the_database.drop_all()
+
 DB = Database()
