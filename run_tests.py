@@ -2,7 +2,7 @@ import pytest
 from flask_script import Manager
 
 from backend.main import app
-from backend.database_config.model import DB
+from backend.database_config.database import DB
 
 manager = Manager(app)
 

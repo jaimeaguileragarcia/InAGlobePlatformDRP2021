@@ -1,7 +1,7 @@
 # test_with_pytest.py
 import pytest
 
-from backend.database_config.model import Project
+from backend.models.project_model import Project
 from backend.database_config.database import DB
 
 def test_add_project(client):

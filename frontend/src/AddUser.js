@@ -23,8 +23,8 @@ const AddUser = () => {
         e.preventDefault()
 
         const newUser = {firstname,
-            surname, 
-            password, 
+            surname,
+            password,
             email, 
             bio, 
             joined, 

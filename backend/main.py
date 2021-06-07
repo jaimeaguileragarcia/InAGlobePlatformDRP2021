@@ -3,22 +3,22 @@ from flask import Flask, render_template
 from flask_migrate import Migrate
 from backend.database_config.database import DB
 from backend.blueprints.project import project
+from backend.blueprints.user import user
 
 app = Flask(__name__)
 
 app.register_blueprint(project)
+app.register_blueprint(user)
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://g205001034_u:CierkbZMND@db.doc.ic.ac.uk:5432/g205001034_u'
-
 db = DB.the_database
 
 db.app = app
 db.init_app(app)
 
 migrate = Migrate(app, db)
-  
 
 @app.route("/")
 def my_index():
