@@ -10,7 +10,10 @@ class Project(db.Model):
     status = db.Column(db.String)
     description = db.Column(db.String)
     tag = db.Column(db.String)
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)  
+    location = db.Column(db.String)
+    files = db.Column(db.String)
+    # list of ngos and academics and users need to be separate tables
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 
     def save(self):
         db.add(self)
@@ -29,7 +32,9 @@ class Project(db.Model):
             name=self.name,
             status=self.status,
             description=self.description,
-            tag = self.tag
+            tag = self.tag,
+            location = self.location,
+            files = self.files
             )
 
 class User(db.Model):

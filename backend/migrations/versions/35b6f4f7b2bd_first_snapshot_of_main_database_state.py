@@ -32,6 +32,8 @@ def upgrade_():
         sa.Column("status", sa.String(), nullable=False),
         sa.Column("description", sa.String(), nullable=False),
         sa.Column("tag", sa.String(), nullable=False),
+        sa.Column("location", sa.String(), nullable=False),
+        sa.Column("files", sa.String(), nullable=False),
         sa.Column("id", sa.Integer(), nullable=False),
         sa.PrimaryKeyConstraint("id"),
     )
@@ -73,6 +75,33 @@ def upgrade_():
         sa.Column("todo_id", sa.Integer(), nullable=False),
         sa.Column("id", sa.Integer(), nullable=False),
         sa.ForeignKeyConstraint(["todo_id"], ["todo.id"]),
+        sa.ForeignKeyConstraint(["username"], ["user.username"]),
+        sa.PrimaryKeyConstraint("id"),
+    )
+    op.create_table(
+        "task",
+        sa.Column("id", sa.Integer(), nullable=False),
+        sa.Column("description", sa.String(), nullable=False),
+        # think about priority type
+        sa.Column("priority", sa.Integer(), nullable=False),
+        sa.Column("completed", sa.Boolean(), nullable=False),
+        sa.Column("due_date", sa.Date(), nullable=False),
+        sa.PrimaryKeyConstraint("id"),
+    )
+    op.create_table(
+        "project_tasks",
+        sa.Column("project_id", sa.Integer(), nullable=False),
+        sa.Column("task_id", sa.Integer(), nullable=False),
+        sa.ForeignKeyConstraint(["task_id"], ["task.id"]),
+        sa.ForeignKeyConstraint(["project_id"], ["project.id"]),
+        sa.PrimaryKeyConstraint("task_id"),
+    )
+    op.create_table(
+        "assigned_tasks",
+        sa.Column("id", sa.Integer(), nullable=False),
+        sa.Column("task_id", sa.Integer(), nullable=False),
+        sa.Column("username", sa.String(), nullable=False),
+        sa.ForeignKeyConstraint(["task_id"], ["task.id"]),
         sa.ForeignKeyConstraint(["username"], ["user.username"]),
         sa.PrimaryKeyConstraint("id"),
     )
