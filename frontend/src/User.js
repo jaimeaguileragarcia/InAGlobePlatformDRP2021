@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useHistory, useParams } from 'react-router';
 import useFetch from './useFetch'
 
-const MyProfile = () => {
+const User = () => {
     const {username} = useParams();
     const history = useHistory();
     
@@ -10,7 +10,7 @@ const MyProfile = () => {
     
 
     return (
-        <div className="my-profile">
+        <div className="user">
         {user && <h2>{user.firstname + " " + user.surname}</h2>}
         {user && <h1>{"Username: " + user.username}</h1>}
         {user && <h1>{"Title: " + user.title}</h1>}
@@ -22,13 +22,11 @@ const MyProfile = () => {
         {user && <h1>{"Partnership Opportunities: " + user.partnership_opportunities}</h1>}
         {user && <h1>{"Interests: " + user.interests}</h1>}
     
+    
 
      
     </div>
     );
 }
  
-export default MyProfile;
-
-
-
+export default User;

@@ -5,6 +5,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import ProjectDetails from './ProjectDetails'
 import PageNotFound from './PageNotFound'
 import MyProfile from './MyProfile'
+import User from './User'
 
 
 function App() {
@@ -23,6 +24,9 @@ function App() {
             </Route>
             <Route path="/my-profile">
               <MyProfile />
+            </Route>
+            <Route path="/users/:username">
+              <User />
             </Route>
             <Route path="/projects/:id">
               <ProjectDetails />
