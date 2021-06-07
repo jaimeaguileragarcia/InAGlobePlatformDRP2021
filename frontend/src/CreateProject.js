@@ -14,7 +14,7 @@ const CreateProject = () => {
     const handleSubmit = e => {
         e.preventDefault()
 
-        const newProject = {name, desc, status};
+        const newProject = {name, desc, status, tag, location, drive_link};
 
         fetch("/projects", {
             method: 'POST',

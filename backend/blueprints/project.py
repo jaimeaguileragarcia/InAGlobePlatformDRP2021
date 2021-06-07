@@ -38,7 +38,7 @@ def get_project(project_id):
 def upload_project():
   name, desc, status, tag, location, files = (request.json['name'], request.json['desc'], 
                         request.json['status'], request.json['tag'],
-                        request.json['location'], request.json['files'])
+                        request.json['location'], request.json['drive_link'])
   entry = Project(name=name, status=status, description=desc, tag=tag, location=location, files=files)
   DB.add(entry)
   return ''

@@ -11,11 +11,14 @@ app.register_blueprint(project)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://g205001034_u:CierkbZMND@db.doc.ic.ac.uk:5432/g205001034_u'
-
 db = DB.the_database
 
 db.app = app
 db.init_app(app)
+
+with app.app_context():
+    db.drop_all()
+    db.create_all()
 
 migrate = Migrate(app, db)
 
