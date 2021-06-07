@@ -67,17 +67,18 @@ def upgrade_():
         sa.Column("id", sa.Integer(), nullable=False),
         sa.Column("todo_desc", sa.String(), nullable=False),
         sa.Column("priority", sa.Integer(), nullable=False),
-        sa.PrimaryKeyConstraint("id"),
-    )
-    op.create_table(
-        "user_todo",
         sa.Column("username", sa.String(), nullable=False),
-        sa.Column("todo_id", sa.Integer(), nullable=False),
-        sa.Column("id", sa.Integer(), nullable=False),
-        sa.ForeignKeyConstraint(["todo_id"], ["todo.id"]),
-        sa.ForeignKeyConstraint(["username"], ["user.username"]),
         sa.PrimaryKeyConstraint("id"),
     )
+    # op.create_table(
+    #     "user_todo",
+    #     sa.Column("username", sa.String(), nullable=False),
+    #     sa.Column("todo_id", sa.Integer(), nullable=False),
+    #     sa.Column("id", sa.Integer(), nullable=False),
+    #     sa.ForeignKeyConstraint(["todo_id"], ["todo.id"]),
+    #     sa.ForeignKeyConstraint(["username"], ["user.username"]),
+    #     sa.PrimaryKeyConstraint("id"),
+    # )
     op.create_table(
         "task",
         sa.Column("id", sa.Integer(), nullable=False),
