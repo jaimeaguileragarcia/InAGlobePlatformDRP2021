@@ -7,13 +7,13 @@ const AddUser = () => {
     const [firstname, setFirstname] = useState("Input project name");
     const [surname, setSurname] = useState("Input surname");
     const [password, setPassword] = useState("Input password");
-    const [mail, setMail] = useState("Input email");
+    const [email, setEmail] = useState("Input email");
     const [bio, setBio] = useState("Input short bio");
     const [joined, setJoined] = useState("Input joined date");
     const [location, setLocation] = useState("Input location");
     const [availability, setAvailability] = useState("Input availibility");
     const [partnership_opportunities, setPartnership_opportunities] = useState("Input partners");
-    const [interests, setInterets] = useState("Input interests");
+    const [interests, setInterests] = useState("Input interests");
     const [username, setUsername] = useState("Input username");
 
 
@@ -25,11 +25,11 @@ const AddUser = () => {
         const newUser = {firstname,
             surname, 
             password, 
-            mail, 
+            email, 
             bio, 
             joined, 
             location, 
-            availibility, 
+            availability, 
             partnership_opportunities, 
             interests,
             username
@@ -48,11 +48,20 @@ const AddUser = () => {
         <div className="add-user">
             <h2>Add a new user</h2>
             <form onSubmit={handleSubmit}>
+            <label>Username</label>
+                <input
+                    type="text"
+                    required
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                />
+
+
                 <label>Firstname</label>
                 <input
                     type="text"
                     required
-                    value={name}
+                    value={firstname}
                     onChange={(e) => setFirstname(e.target.value)}
                 />
 
@@ -60,7 +69,7 @@ const AddUser = () => {
                 <input
                     type="text"
                     required
-                    value={name}
+                    value={surname}
                     onChange={(e) => setSurname(e.target.value)}
                 />
 
@@ -68,16 +77,16 @@ const AddUser = () => {
                 <input
                     type="text"
                     required
-                    value={name}
+                    value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
 
-                <label>Mail</label>
+                <label>Email</label>
                 <input
                     type="text"
                     required
-                    value={name}
-                    onChange={(e) => setMail(e.target.value)}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                 />
 
 
@@ -85,7 +94,7 @@ const AddUser = () => {
                 <input
                     type="text"
                     required
-                    value={name}
+                    value={bio}
                     onChange={(e) => setBio(e.target.value)}
                 />
 
@@ -93,8 +102,8 @@ const AddUser = () => {
                 <input
                     type="text"
                     required
-                    value={name}
-                    onChange={(e) => setPassword(e.target.value)}
+                    value={joined}
+                    onChange={(e) => setJoined(e.target.value)}
                 />
 
 
@@ -102,40 +111,32 @@ const AddUser = () => {
                 <input
                     type="text"
                     required
-                    value={name}
-                    onChange={(e) => setPassword(e.target.value)}
+                    value={location}
+                    onChange={(e) => setLocation(e.target.value)}
                 />
 
                 <label>Availibility</label>
                 <input
                     type="text"
                     required
-                    value={name}
-                    onChange={(e) => setPassword(e.target.value)}
+                    value={availability}
+                    onChange={(e) => setAvailability(e.target.value)}
                 />
 
                 <label>Parntership Opportunities</label>
                 <input
                     type="text"
                     required
-                    value={name}
-                    onChange={(e) => setPassword(e.target.value)}
+                    value={partnership_opportunities}
+                    onChange={(e) => setPartnership_opportunities(e.target.value)}
                 />
 
                 <label>interests</label>
                 <input
                     type="text"
                     required
-                    value={name}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-
-<               label>Usernam</label>
-                <input
-                    type="text"
-                    required
-                    value={name}
-                    onChange={(e) => setPassword(e.target.value)}
+                    value={interests}
+                    onChange={(e) => setInterests(e.target.value)}
                 />
 
 

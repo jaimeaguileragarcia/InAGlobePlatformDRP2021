@@ -138,6 +138,8 @@
   display: block;
   font-size: 20px;
 }
+
+
 .create-project h2 {
   font-size: 35px;
   color: #f1356d;
@@ -183,3 +185,12 @@
 .page-not-found h2, .page-not-found p{
   margin-bottom: 10px;
 }
+
+
+/* Add New User */
+.add-user label {
+  text-align: left;
+  display: block;
+  font-size: 20px;
+}
+

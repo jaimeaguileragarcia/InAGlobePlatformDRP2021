@@ -6,6 +6,7 @@ import ProjectDetails from './ProjectDetails'
 import PageNotFound from './PageNotFound'
 import MyProfile from './MyProfile'
 import User from './User'
+import AddUser from './AddUser'
 
 
 function App() {
@@ -21,6 +22,9 @@ function App() {
             </Route>
             <Route path="/create-project">
               <CreateProject />
+            </Route>
+            <Route path="/add-user">
+              <AddUser />  
             </Route>
             <Route path="/my-profile">
               <MyProfile />
