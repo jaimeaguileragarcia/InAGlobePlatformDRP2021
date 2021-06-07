@@ -1,7 +1,9 @@
+import logging
 from logging.config import fileConfig
 
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
+from flask import current_app
 
 from alembic import context
 
@@ -11,13 +13,24 @@ config = context.config
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
-# fileConfig(config.config_file_name)
+fileConfig(config.config_file_name)
+logger = logging.getLogger("alembic.env")
 
 # add your model's MetaData object here
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-target_metadata = None
+config.set_main_option(
+    "sqlalchemy.url",
+    current_app.config.get("SQLALCHEMY_DATABASE_URI").replace("%", "%%"),
+)
+bind_names = []
+# for name, url in current_app.config.get("SQLALCHEMY_BINDS").items():
+#     context.config.set_section_option(name, "sqlalchemy.url", url.replace(
+#         '%', '%%'))
+#     bind_names.append(name)
+target_metadata = current_app.extensions["migrate"].db.metadata
+
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
