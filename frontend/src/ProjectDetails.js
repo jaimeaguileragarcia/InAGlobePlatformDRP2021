@@ -1,7 +1,6 @@
-import { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router';
 import useFetch from './useFetch'
-import useRemove from './useRemove'
+import { Link } from "react-router-dom"
 
 const ProjectDetails = () => {
     const {id} = useParams();
@@ -22,6 +21,7 @@ const ProjectDetails = () => {
             {project && <p>Descsription: {project.description}</p>}
 
             <button onClick={handleRemove}>Delete project</button>
+            <Link to={`/edit-project/${project.id}`} className="edit-project-button">Edit project</Link>
         </div>
         
      );

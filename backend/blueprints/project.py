@@ -12,7 +12,7 @@ def get_all_projects():
 
   projects_list = [{"name" : x.name, 
                     "status" : x.status, 
-                    "desc" : x.description,
+                    "description" : x.description,
                     "tag" : x.tag,
                     "location" : x.location,
                     "files" : x.files, 
@@ -36,10 +36,24 @@ def get_project(project_id):
 
 @project.route('/projects', methods=['POST'])
 def upload_project():
-  name, desc, status, tag, location, files = (request.json['name'], request.json['desc'], 
+  name, description, status, tag, location, files = (request.json['name'], request.json['description'], 
                         request.json['status'], request.json['tag'],
-                        request.json['location'], request.json['drive_link'])
-  entry = Project(name=name, status=status, description=desc, tag=tag, location=location, files=files)
+                        request.json['location'], request.json['files'])
+  entry = Project(name=name, status=status, description=description, tag=tag, location=location, files=files)
+  DB.add(entry)
+  return ''
+
+@project.route('/projects/<project_id>', methods=['POST'])
+def update_project(project_id):
+  entry = Project.query.get(project_id)
+  name, description, status, tag, location, files = (request.json['name'], request.json['description'], request.json['status'],
+    request.json['tag'], request.json['location'], request.json['files'])
+  entry.name = name
+  entry.description = description
+  entry.status = status
+  entry.tag = tag
+  entry.location = location
+  entry.files = files
   DB.add(entry)
   return ''
  

@@ -1,22 +1,25 @@
-import { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom"
+import { useState } from "react";
+import { useHistory, useParams } from "react-router-dom"
+import useFetch from './useFetch'
 
-const CreateProject = () => {
-    const [name, setName] = useState("Input project name");
-    const [description, setDescription] = useState("Add some awesome description!");
-    const [status, setStatus] = useState("Available");
-    const [tag, setTag] = useState("Other");
-    const [location, setLocation] = useState("");
-    const [files, setFiles] = useState("Copy the link to the Google Drive folder for this project");
+const EditProject = () => {
+    const {id} = useParams();
+    const {data: project, error} = useFetch("/projects/" + id)
+    const [name, setName] = useState([project.name]);
+    const [description, setDescription] = useState([project.description]);
+    const [status, setStatus] = useState(project.status);
+    const [tag, setTag] = useState(project.tag);
+    const [location, setLocation] = useState(project.location);
+    const [files, setFiles] = useState(project.files);
+
+    const newProject = {name, description, status, tag, location, files};
 
     const history = useHistory();
 
     const handleSubmit = e => {
         e.preventDefault()
 
-        const newProject = {name, description, status, tag, location, files};
-
-        fetch("/projects", {
+        fetch("/projects/" + id, {
             method: 'POST',
             headers: { "Content-Type": "application/json"},
             body: JSON.stringify(newProject)
@@ -26,18 +29,17 @@ const CreateProject = () => {
     }
 
     return (
-        <div className="create-project">
-            <h2>Add a new project</h2>
+        <div className="edit-project">
+            <h2>Edit project</h2>
             <form onSubmit={handleSubmit}>
                 <label>Project name</label>
                 <input
                     type="text"
-                    required
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                 />
                 <label>Description</label>
-                <textarea required value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+                <textarea value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
                 <label>Status</label>
                 <select value={status} onChange={(e) => setStatus(e.target.value)}>
                     <option value="Progress">Progress</option>
@@ -47,7 +49,6 @@ const CreateProject = () => {
                 <label>Location</label>
                 <input
                     type="text"
-                    required
                     value={location}
                     onChange={(e) => setLocation(e.target.value)}
                 />
@@ -61,11 +62,11 @@ const CreateProject = () => {
                     <option value="Other">Other</option>
                 </select>
                 <label>Google Drive folder</label>
-                <textarea required value={files} onChange={(e) => setFiles(e.target.value)}></textarea>
-                <button>Add project</button>
+                <textarea value={files} onChange={(e) => setFiles(e.target.value)}></textarea>
+                <button>Save</button>
             </form>
         </div>
     );
 }
  
-export default CreateProject;
+export default EditProject;

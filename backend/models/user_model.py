@@ -17,7 +17,7 @@ class User(db.Model):
     availability = db.Column(db.String)
     partnership_opportunities = db.Column(db.String)
     interests = db.Column(db.String)
-    username = db.Column(db.String, primary_key=True, autoincrement=True)  
+    username = db.Column(db.String, primary_key=True)  
 
     def save(self):
         db.add(self)

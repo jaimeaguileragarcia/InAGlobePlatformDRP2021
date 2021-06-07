@@ -113,39 +113,42 @@
   margin-bottom: 30px;
 }
 
-.project-details button {
+.project-details button, .edit-project-button {
   background: #f1356d;
   color: #fff;
   border: 0;
   padding: 8px;
   border-radius: 8px;
   cursor: pointer;
+  font-size: 20;
+  text-decoration: none;
 }
 
-.project-details button:hover {
+.project-details button:hover, .edit-project-button:hover {
   background: #8f0830;
 }
 
-/* Create new project form */
+/* Create new project form and edit project */
 
-.create-project {
+.create-project .edit-project{
   max-width: 400px;
   margin: 0 auto;
   text-align: center;
 }
-.create-project label {
+.create-project label, .edit-project label{
   text-align: left;
   display: block;
   font-size: 20px;
 }
 
 
-.create-project h2 {
+.create-project h2, .edit-project h2{
   font-size: 35px;
   color: #f1356d;
   margin-bottom: 35px;
 }
-.create-project input, .create textarea, .create select {
+.create-project input, .create-project textarea, .create-project select,
+.edit-project input, .edit-project textarea, .edit-project select{
   width: 100%;
   padding: 6px 10px;
   margin: 10px 0;
@@ -153,18 +156,20 @@
   box-sizing: border-box;
   display: block;
 }
-.create-project button {
+.create-project button, .edit-project button {
   background: #f1356d;
   color: #fff;
   border: 0;
   padding: 8px;
   border-radius: 8px;
   cursor: pointer;
+  text-decoration: none;
 }
 
-.create-project button:hover {
+.create-project button:hover, .edit-project button:hover {
   background: #8f0830;
 }
+
 
 /* My Profile */
 

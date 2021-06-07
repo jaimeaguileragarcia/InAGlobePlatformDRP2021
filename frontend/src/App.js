@@ -7,6 +7,7 @@ import PageNotFound from './PageNotFound'
 import MyProfile from './MyProfile'
 import User from './User'
 import AddUser from './AddUser'
+import EditProject from './EditProject'
 
 
 function App() {
@@ -34,6 +35,9 @@ function App() {
             </Route>
             <Route path="/projects/:id">
               <ProjectDetails />
+            </Route>
+            <Route path="/edit-project/:id">
+              <EditProject />
             </Route>
             <Route path="*">
               <PageNotFound />
