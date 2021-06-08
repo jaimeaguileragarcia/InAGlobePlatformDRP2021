@@ -5,17 +5,18 @@ import useFetch from './useFetch'
 
 const EditProject = () => {
     const { id } = useParams();
-    const { data: project, error } = useFetch("/projects/" + id)
+    const { data: {name, description, status, location, tag, files}, error } = useFetch("/projects/" + id)
 
     const history = useHistory();
     const oldProjectDetails = {
-        project_name: project.name,
-        description: project.description,
-        status: project.status,
-        location: project.location,
-        tag: project.tag,
-        files: project.files
+        project_name: name,
+        description: description,
+        status: status,
+        location: location,
+        tag: tag,
+        files: files
     }
+    
     const { register, handleSubmit } = useForm({
         defaultValues: oldProjectDetails
     });
