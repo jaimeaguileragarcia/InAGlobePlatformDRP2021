@@ -42,7 +42,8 @@ class User(db.Model):
             location = self.location,
             availability = self.availability,
             partnership_opportunities = self.partnership_opportunities,
-            interests = self.interests
+            interests = self.interests,
+            username=self.username
             )
 
 class User_project(db.Model):

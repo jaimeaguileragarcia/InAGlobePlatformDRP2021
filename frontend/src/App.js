@@ -6,15 +6,21 @@ import ProjectDetails from './ProjectDetails'
 import PageNotFound from './PageNotFound'
 import MyProfile from './MyProfile'
 import User from './User'
+import Users from './Users'
 import AddUser from './AddUser'
 import EditProject from './EditProject'
+import Sidebar from './Sidebar'
 
+    
+ 
 
 function App() {
   const title =  "Dashboard"
   return (
     <Router>
-      <div className="App">
+      <div className="App">  
+      <Sidebar />
+
         <Navbar />
         <div className="content">
           <Switch>
@@ -29,6 +35,9 @@ function App() {
             </Route>
             <Route path="/my-profile">
               <MyProfile />
+            </Route>
+            <Route path="/users">
+              <Users />  
             </Route>
             <Route path="/users/:username">
               <User />

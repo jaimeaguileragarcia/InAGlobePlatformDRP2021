@@ -18,7 +18,6 @@ db = DB.the_database
 db.app = app
 db.init_app(app)
 
-
 migrate = Migrate(app, db)
 
 @app.route("/")
