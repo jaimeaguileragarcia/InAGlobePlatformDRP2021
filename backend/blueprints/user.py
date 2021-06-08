@@ -19,7 +19,7 @@ def get_all_users():
 
 @user.route('/users/<username>', methods=['GET'])
 def get_id(username):
-  entry = User.query.get(username)
+  user = User.query.get(username)
   return jsonify(
       username = user.username,
       firstname = user.firstname,

@@ -18,7 +18,7 @@ const ProjectDetails = () => {
         <div className="project-details">
             {project && <h2>{project.name}</h2>}
             {project && <h3>Status: {project.status}</h3>}
-            {project && <p>Descsription: {project.description}</p>}
+            {project && <p>Description: {project.description}</p>}
 
             <button onClick={handleRemove}>Delete project</button>
             <Link to={`/edit-project/${project.id}`} className="edit-project-button">Edit project</Link>

@@ -7,6 +7,7 @@ const AddUser = () => {
     const [firstname, setFirstname] = useState("Input project name");
     const [surname, setSurname] = useState("Input surname");
     const [password, setPassword] = useState("Input password");
+    const [title, setTitle] = useState("Input title")
     const [email, setEmail] = useState("Input email");
     const [bio, setBio] = useState("Input short bio");
     const [joined, setJoined] = useState("Input joined date");
@@ -22,22 +23,24 @@ const AddUser = () => {
     const handleSubmit = e => {
         e.preventDefault()
 
-        const newUser = {firstname,
+        const newUser = {
+            firstname,
             surname,
             password,
-            email, 
-            bio, 
-            joined, 
-            location, 
-            availability, 
-            partnership_opportunities, 
+            title,
+            email,
+            bio,
+            joined,
+            location,
+            availability,
+            partnership_opportunities,
             interests,
             username
         }
 
         fetch("/users", {
             method: 'POST',
-            headers: { "Content-Type": "application/json"},
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify(newUser)
         }).then(() => {
             history.push('/');
@@ -48,7 +51,7 @@ const AddUser = () => {
         <div className="add-user">
             <h2>Add a new user</h2>
             <form onSubmit={handleSubmit}>
-            <label>Username</label>
+                <label>Username</label>
                 <input
                     type="text"
                     required
@@ -71,6 +74,14 @@ const AddUser = () => {
                     required
                     value={surname}
                     onChange={(e) => setSurname(e.target.value)}
+                />
+
+                <label>Title</label>
+                <input
+                    type="text"
+                    required
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
                 />
 
                 <label>Password</label>
@@ -123,7 +134,7 @@ const AddUser = () => {
                     onChange={(e) => setAvailability(e.target.value)}
                 />
 
-                <label>Parntership Opportunities</label>
+                <label>Partnership Opportunities</label>
                 <input
                     type="text"
                     required
@@ -140,11 +151,11 @@ const AddUser = () => {
                 />
 
 
-             
+
                 <button>Add user</button>
             </form>
         </div>
     );
 }
- 
+
 export default AddUser;
