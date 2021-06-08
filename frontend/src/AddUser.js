@@ -110,7 +110,6 @@ const AddUser = () => {
                 <label>Bio</label>
                 <input
                     type="text"
-                    required
                     value={bio}
                     onChange={(e) => setBio(e.target.value)}
                     placeholder="Tell your colleagues a bit about yourself"
@@ -120,7 +119,6 @@ const AddUser = () => {
                 <label>Joined</label>
                 <input
                     type="text"
-                    required
                     value={joined}
                     onChange={(e) => setJoined(e.target.value)}
                     placeholder="Eg: 20th April 2020"
@@ -130,7 +128,6 @@ const AddUser = () => {
                 <label>Location</label>
                 <input
                     type="text"
-                    required
                     value={location}
                     onChange={(e) => setLocation(e.target.value)}
                     placeholder="Where are you currently based?"
@@ -139,7 +136,6 @@ const AddUser = () => {
                 <label>Availibility</label>
                 <input
                     type="text"
-                    required
                     value={availability}
                     onChange={(e) => setAvailability(e.target.value)}
                     placeholder="How available are you approximately per week?"
@@ -148,7 +144,6 @@ const AddUser = () => {
                 <label>Partnership Opportunities</label>
                 <input
                     type="text"
-                    required
                     value={partnership_opportunities}
                     onChange={(e) => setPartnership_opportunities(e.target.value)}
                     placeholder="Eg: Department of Computing at Imperial College London"
@@ -157,7 +152,6 @@ const AddUser = () => {
                 <label>Interests</label>
                 <input
                     type="text"
-                    required
                     value={interests}
                     onChange={(e) => setInterests(e.target.value)}
                     placeholder="What are your hobbies?"

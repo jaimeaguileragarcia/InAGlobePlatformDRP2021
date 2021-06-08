@@ -1,5 +1,6 @@
 import { useHistory, useParams } from 'react-router';
 import useFetch from './useFetch'
+import { Link } from "react-router-dom"
 
 const User = () => {
     const {username} = useParams();
@@ -7,6 +8,11 @@ const User = () => {
     
     const {data: user, error} = useFetch("/users/" + username)
     
+    const handleRemove = e => {
+        e.preventDefault()
+        fetch("/users/" + username, {method: 'DELETE'})
+            .then(()=> {history.push('/');})
+      };
 
     return (
         <div className="user">
@@ -39,6 +45,10 @@ const User = () => {
                 {user && <label><strong>Interests</strong></label>}
                 {user && <p>{user.interests}</p>} 
             </div>
+
+            {user && <button onClick={handleRemove}>Delete user</button>}
+            
+            {user && <Link to={`/edit-user/${username}`} className="edit-user-button">Edit details</Link>}
     </div>
     );
 }

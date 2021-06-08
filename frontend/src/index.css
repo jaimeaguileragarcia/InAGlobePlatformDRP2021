@@ -156,7 +156,7 @@
   margin-bottom: 30px;
 }
 
-.project-details button, .edit-project-button {
+.project-details button, .edit-project-button, .edit-user-button, .user button {
   background: #f1356d;
   color: #fff;
   border: 0;
@@ -169,30 +169,31 @@
   margin-right: 10px;
 }
 
-.project-details button:hover, .edit-project-button:hover {
+.project-details button:hover, .edit-project-button:hover, .edit-user-button:hover, .user button:hover {
   background: #8f0830;
 }
 
 /* Create new project form and edit project */
 
-.create-project .edit-project{
+.create-project .edit-project, .edit-user{
   max-width: 400px;
   margin: 0 auto;
   text-align: center;
 }
-.create-project label, .edit-project label, .add-user label{
+.create-project label, .edit-project label, .add-user label, .edit-user label{
   text-align: left;
   display: block;
   font-size: 20px;
 }
 
-.create-project h2, .edit-project h2, .add-user h2{
+.create-project h2, .edit-project h2, .add-user h2, .edit-user h2{
   font-size: 35px;
   color: #f1356d;
   margin-bottom: 30px;
 }
 .create-project input, .create-project textarea, .create-project select,
-.edit-project input, .edit-project textarea, .edit-project select, .add-user input{
+.edit-project input, .edit-project textarea, .edit-project select, .add-user input,
+.edit-user input{
   width: 100%;
   padding: 6px 10px;
   margin: 10px 0;
@@ -200,7 +201,7 @@
   box-sizing: border-box;
   display: block;
 }
-.create-project button, .edit-project button, .add-user button{
+.create-project button, .edit-project button, .add-user button, .edit-user button{
   background: #f1356d;
   color: #fff;
   border: 0;
@@ -213,7 +214,7 @@
   margin-right: 10px;
 }
 
-.create-project button:hover, .edit-project button:hover, .add-user button:hover {
+.create-project button:hover, .edit-project button:hover, .add-user button:hover, .edit-user button:hover {
   background: #8f0830;
 }
 

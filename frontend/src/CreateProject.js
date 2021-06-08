@@ -48,7 +48,6 @@ const CreateProject = () => {
                 <label>Location</label>
                 <input
                     type="text"
-                    required
                     value={location}
                     onChange={(e) => setLocation(e.target.value)}
                     placeholder="Eg: United Kingdom"
@@ -63,7 +62,7 @@ const CreateProject = () => {
                     <option value="Other">Other</option>
                 </select>
                 <label>Google Drive folder</label>
-                <textarea placeholder="Copy the link to the Google Drive folder for this project" required value={files} onChange={(e) => setFiles(e.target.value)}></textarea>
+                <textarea placeholder="Copy the link to the Google Drive folder for this project" value={files} onChange={(e) => setFiles(e.target.value)}></textarea>
                 <button>Add project</button>
             </form>
         </div>

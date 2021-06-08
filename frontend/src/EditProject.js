@@ -9,7 +9,7 @@ const EditProject = () => {
 
     const history = useHistory();
     const oldProjectDetails = {
-        project_name: name,
+        name: name,
         description: description,
         status: status,
         location: location,
@@ -22,8 +22,6 @@ const EditProject = () => {
     });
 
     const onSubmit = e => {
-        e.preventDefault()
-      
         fetch("/projects/" + id, {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
@@ -37,28 +35,29 @@ const EditProject = () => {
         <div className="edit-project">
             <h2>Edit project</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <label htmlFor="project_name">Project name</label>
-                <input {...register("project_name")}
+                <label htmlFor="name">Project name</label>
+                <input {...register("name")}
                     // type="text"
                     placeholder="Insert project name here"
-                    // name="project_name"
+                    // name="name"
                 />
                 <label>Description</label>
-                <textarea name="description" placeholder="Insert description of the project here"></textarea>
+                <textarea {...register("description")} name="description" placeholder="Insert description of the project here"></textarea>
                 <label>Status</label>
-                <select name="status">
+                <select {...register("status")} name="status">
                     <option value="Progress">Progress</option>
                     <option value="Available">Available</option>
                     <option value="Completed">Completed</option>
                 </select>
                 <label>Location</label>
                 <input
+                    {...register("location")}
                     type="text"
                     placeholder="Insert location of project here"
                     name="location"
                 />
                 <label>Type of project</label>
-                <select name="tag">
+                <select {...register("tag")} name="tag">
                     <option value="Social">Social</option>
                     <option value="Education">Education</option>
                     <option value="Wash">Wash</option>
@@ -67,7 +66,7 @@ const EditProject = () => {
                     <option value="Other">Other</option>
                 </select>
                 <label>Google Drive folder</label>
-                <textarea name="files" placeholder="Insert Google Drive Folder link here"></textarea>
+                <textarea {...register("files")} name="files" placeholder="Insert Google Drive Folder link here"></textarea>
                 <button type="submit">Save project details</button>
             </form>
         </div>

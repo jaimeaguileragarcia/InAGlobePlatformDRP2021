@@ -21,7 +21,9 @@ def test_add_project(client):
 
 def test_delete_project(client):
     project = Project.query.filter(Project.name == "Eco Warriors").first()
+    size_before = len(Project.query.all())
     DB.delete(project)
 
-    assert len(Project.query.all()) == 0
+    size_after = len(Project.query.all())
+    assert size_before == (size_after + 1)
 

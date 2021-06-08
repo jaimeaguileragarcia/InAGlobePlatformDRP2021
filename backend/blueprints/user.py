@@ -24,7 +24,7 @@ def get_id(username):
       username = user.username,
       firstname = user.firstname,
       surname = user.surname,
-      #password = user.password,
+      password = user.password,
       title = user.title, 
       email = user.email,
       bio = user.bio, 
@@ -50,6 +50,32 @@ def add_user():
               title = title, email = email, bio = bio, joined = joined, location = location, 
               availability = availability, partnership_opportunities = partnership_opportunities, 
               interests = interests)
+  DB.add(entry)
+  return ''
+
+
+@user.route('/users/<username>', methods=['POST'])
+def update_user(username):
+  entry = User.query.get(username)
+  firstname, surname, password, title, email, bio, joined, location, availability, partnership_opportunities, interests = (
+   request.json['firstname'], 
+   request.json['surname'],
+   request.json['password'],
+   request.json['title'], 
+   request.json['email'], request.json['bio'], request.json['joined'], 
+   request.json['location'],request.json['availability'], 
+   request.json['partnership_opportunities'], request.json['interests'])
+  entry.firstname = firstname
+  entry.surname = surname
+  entry.password = password
+  entry.title = title
+  entry.email = email
+  entry.bio = bio
+  entry.joined = joined
+  entry.location = location
+  entry.availability = availability
+  entry.partnership_opportunities = partnership_opportunities
+  entry.interests = interests
   DB.add(entry)
   return ''
  

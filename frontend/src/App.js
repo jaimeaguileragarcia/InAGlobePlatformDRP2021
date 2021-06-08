@@ -9,10 +9,8 @@ import User from './User'
 import Users from './Users'
 import AddUser from './AddUser'
 import EditProject from './EditProject'
-import Sidebar from './Sidebar'
-
-    
- 
+import Sidebar from './Sidebar'  
+import EditUser from './EditUser'
 
 function App() {
   const title =  "Dashboard"
@@ -40,6 +38,9 @@ function App() {
             </Route>
             <Route path="/users/:username">
               <User />
+            </Route>
+            <Route path="/edit-user/:username">
+              <EditUser />
             </Route>
             <Route path="/projects/:id">
               <ProjectDetails />
