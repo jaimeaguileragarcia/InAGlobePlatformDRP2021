@@ -142,7 +142,7 @@ const AddUser = () => {
                     onChange={(e) => setPartnership_opportunities(e.target.value)}
                 />
 
-                <label>interests</label>
+                <label>Interests</label>
                 <input
                     type="text"
                     required

@@ -101,9 +101,9 @@
   margin-bottom: 10px;
 }
 
-.project-details h3 {
-  font-size: 25px;
-  color: rgb(102, 94, 94);
+.project-details h4 {
+  font-size: 20px;
+  color: rgb(39, 36, 36);
   margin-bottom: 30px;
 }
 
@@ -120,8 +120,10 @@
   padding: 8px;
   border-radius: 8px;
   cursor: pointer;
-  font-size: 20;
+  font-size: 25px;
   text-decoration: none;
+  margin-bottom: 30px;
+  margin-right: 10px;
 }
 
 .project-details button:hover, .edit-project-button:hover {
@@ -135,20 +137,19 @@
   margin: 0 auto;
   text-align: center;
 }
-.create-project label, .edit-project label{
+.create-project label, .edit-project label, .add-user label{
   text-align: left;
   display: block;
   font-size: 20px;
 }
 
-
-.create-project h2, .edit-project h2{
+.create-project h2, .edit-project h2, .add-user h2{
   font-size: 35px;
   color: #f1356d;
-  margin-bottom: 35px;
+  margin-bottom: 30px;
 }
 .create-project input, .create-project textarea, .create-project select,
-.edit-project input, .edit-project textarea, .edit-project select{
+.edit-project input, .edit-project textarea, .edit-project select, .add-user input{
   width: 100%;
   padding: 6px 10px;
   margin: 10px 0;
@@ -156,17 +157,20 @@
   box-sizing: border-box;
   display: block;
 }
-.create-project button, .edit-project button {
+.create-project button, .edit-project button, .add-user button{
   background: #f1356d;
   color: #fff;
   border: 0;
   padding: 8px;
   border-radius: 8px;
   cursor: pointer;
+  font-size: 25px;
   text-decoration: none;
+  margin-bottom: 30px;
+  margin-right: 10px;
 }
 
-.create-project button:hover, .edit-project button:hover {
+.create-project button:hover, .edit-project button:hover, .add-user button:hover {
   background: #8f0830;
 }
 
@@ -190,12 +194,3 @@
 .page-not-found h2, .page-not-found p{
   margin-bottom: 10px;
 }
-
-
-/* Add New User */
-.add-user label {
-  text-align: left;
-  display: block;
-  font-size: 20px;
-}
-
