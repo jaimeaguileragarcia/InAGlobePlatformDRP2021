@@ -1,28 +1,33 @@
 import { useState } from "react";
 import { useHistory, useParams } from "react-router-dom"
+import { useForm } from "react-hook-form"
 import useFetch from './useFetch'
 
 const EditProject = () => {
-    const {id} = useParams();
-    const {data: project, error} = useFetch("/projects/" + id)
-    const [name, setName] = useState([project.name]);
-    const [description, setDescription] = useState([project.description]);
-    const [status, setStatus] = useState(project.status);
-    const [tag, setTag] = useState(project.tag);
-    const [location, setLocation] = useState(project.location);
-    const [files, setFiles] = useState(project.files);
-
-    const newProject = {name, description, status, tag, location, files};
+    const { id } = useParams();
+    const { data: {name, description, status, location, tag, files}, error } = useFetch("/projects/" + id)
 
     const history = useHistory();
+    const oldProjectDetails = {
+        project_name: name,
+        description: description,
+        status: status,
+        location: location,
+        tag: tag,
+        files: files
+    }
+    
+    const { register, handleSubmit } = useForm({
+        defaultValues: oldProjectDetails
+    });
 
-    const handleSubmit = e => {
+    const onSubmit = e => {
         e.preventDefault()
-
+      
         fetch("/projects/" + id, {
             method: 'POST',
-            headers: { "Content-Type": "application/json"},
-            body: JSON.stringify(newProject)
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(e)
         }).then(() => {
             history.push('/');
         })
@@ -31,17 +36,17 @@ const EditProject = () => {
     return (
         <div className="edit-project">
             <h2>Edit project</h2>
-            <form onSubmit={handleSubmit}>
-                <label>Project name</label>
-                <input
-                    type="text"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <label htmlFor="project_name">Project name</label>
+                <input {...register("project_name")}
+                    // type="text"
+                    placeholder="Insert project name here"
+                    // name="project_name"
                 />
                 <label>Description</label>
-                <textarea value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+                <textarea name="description" placeholder="Insert description of the project here"></textarea>
                 <label>Status</label>
-                <select value={status} onChange={(e) => setStatus(e.target.value)}>
+                <select name="status">
                     <option value="Progress">Progress</option>
                     <option value="Available">Available</option>
                     <option value="Completed">Completed</option>
@@ -49,11 +54,11 @@ const EditProject = () => {
                 <label>Location</label>
                 <input
                     type="text"
-                    value={location}
-                    onChange={(e) => setLocation(e.target.value)}
+                    placeholder="Insert location of project here"
+                    name="location"
                 />
                 <label>Type of project</label>
-                <select value={tag} onChange={(e) => setTag(e.target.value)}>
+                <select name="tag">
                     <option value="Social">Social</option>
                     <option value="Education">Education</option>
                     <option value="Wash">Wash</option>
@@ -62,11 +67,11 @@ const EditProject = () => {
                     <option value="Other">Other</option>
                 </select>
                 <label>Google Drive folder</label>
-                <textarea value={files} onChange={(e) => setFiles(e.target.value)}></textarea>
-                <button>Save</button>
+                <textarea name="files" placeholder="Insert Google Drive Folder link here"></textarea>
+                <button type="submit">Save project details</button>
             </form>
         </div>
     );
 }
- 
+
 export default EditProject;
