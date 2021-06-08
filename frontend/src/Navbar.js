@@ -11,7 +11,6 @@ const Navbar = () => {
             <div className="links"> 
                 <Link to={`/create-project`}>New Project</Link>
                 <Link to={`/my-profile`}>My Profile</Link>
-                <Link to={`/add-user`}>Add User</Link>
             </div>
         </nav>
     );
