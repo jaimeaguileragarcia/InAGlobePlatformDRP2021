@@ -4,18 +4,18 @@ import { useHistory } from "react-router-dom"
 
 
 const AddUser = () => {
-    const [firstname, setFirstname] = useState("Input project name");
-    const [surname, setSurname] = useState("Input surname");
-    const [password, setPassword] = useState("Input password");
-    const [title, setTitle] = useState("Input title")
-    const [email, setEmail] = useState("Input email");
-    const [bio, setBio] = useState("Input short bio");
-    const [joined, setJoined] = useState("Input joined date");
-    const [location, setLocation] = useState("Input location");
-    const [availability, setAvailability] = useState("Input availibility");
-    const [partnership_opportunities, setPartnership_opportunities] = useState("Input partners");
-    const [interests, setInterests] = useState("Input interests");
-    const [username, setUsername] = useState("Input username");
+    const [firstname, setFirstname] = useState("");
+    const [surname, setSurname] = useState("");
+    const [password, setPassword] = useState("");
+    const [title, setTitle] = useState("")
+    const [email, setEmail] = useState("");
+    const [bio, setBio] = useState("");
+    const [joined, setJoined] = useState("");
+    const [location, setLocation] = useState("");
+    const [availability, setAvailability] = useState("");
+    const [partnership_opportunities, setPartnership_opportunities] = useState("");
+    const [interests, setInterests] = useState("");
+    const [username, setUsername] = useState("");
 
 
     const history = useHistory();
@@ -57,6 +57,7 @@ const AddUser = () => {
                     required
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
+                    placeholder="Input username here"
                 />
 
 
@@ -66,6 +67,7 @@ const AddUser = () => {
                     required
                     value={firstname}
                     onChange={(e) => setFirstname(e.target.value)}
+                    placeholder="Input your first name here"
                 />
 
                 <label>Surname</label>
@@ -74,6 +76,7 @@ const AddUser = () => {
                     required
                     value={surname}
                     onChange={(e) => setSurname(e.target.value)}
+                    placeholder="Input surname here"
                 />
 
                 <label>Title</label>
@@ -82,6 +85,7 @@ const AddUser = () => {
                     required
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
+                    placeholder="State your role at InAGlobe (eg: volunteer)"
                 />
 
                 <label>Password</label>
@@ -90,6 +94,7 @@ const AddUser = () => {
                     required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Input the default password (to be changed by the user)"
                 />
 
                 <label>Email</label>
@@ -98,6 +103,7 @@ const AddUser = () => {
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Input InAGlobe email here"
                 />
 
 
@@ -107,14 +113,17 @@ const AddUser = () => {
                     required
                     value={bio}
                     onChange={(e) => setBio(e.target.value)}
+                    placeholder="Tell your colleagues a bit about yourself"
                 />
 
+                {/* Think about changing type to force date */}
                 <label>Joined</label>
                 <input
                     type="text"
                     required
                     value={joined}
                     onChange={(e) => setJoined(e.target.value)}
+                    placeholder="Eg: 20th April 2020"
                 />
 
 
@@ -124,6 +133,7 @@ const AddUser = () => {
                     required
                     value={location}
                     onChange={(e) => setLocation(e.target.value)}
+                    placeholder="Where are you currently based?"
                 />
 
                 <label>Availibility</label>
@@ -132,6 +142,7 @@ const AddUser = () => {
                     required
                     value={availability}
                     onChange={(e) => setAvailability(e.target.value)}
+                    placeholder="How available are you approximately per week?"
                 />
 
                 <label>Partnership Opportunities</label>
@@ -140,6 +151,7 @@ const AddUser = () => {
                     required
                     value={partnership_opportunities}
                     onChange={(e) => setPartnership_opportunities(e.target.value)}
+                    placeholder="Eg: Department of Computing at Imperial College London"
                 />
 
                 <label>Interests</label>
@@ -148,9 +160,8 @@ const AddUser = () => {
                     required
                     value={interests}
                     onChange={(e) => setInterests(e.target.value)}
+                    placeholder="What are your hobbies?"
                 />
-
-
 
                 <button>Add user</button>
             </form>

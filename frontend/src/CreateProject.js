@@ -2,23 +2,23 @@ import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom"
 
 const CreateProject = () => {
-    const [name, setName] = useState("Input project name");
-    const [description, setDescription] = useState("Add some awesome description!");
+    const [name, setName] = useState("");
+    const [description, setDescription] = useState("");
     const [status, setStatus] = useState("Available");
     const [tag, setTag] = useState("Other");
     const [location, setLocation] = useState("");
-    const [files, setFiles] = useState("Copy the link to the Google Drive folder for this project");
+    const [files, setFiles] = useState("");
 
     const history = useHistory();
 
     const handleSubmit = e => {
         e.preventDefault()
 
-        const newProject = {name, description, status, tag, location, files};
+        const newProject = { name, description, status, tag, location, files };
 
         fetch("/projects", {
             method: 'POST',
-            headers: { "Content-Type": "application/json"},
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify(newProject)
         }).then(() => {
             history.push('/');
@@ -35,9 +35,10 @@ const CreateProject = () => {
                     required
                     value={name}
                     onChange={(e) => setName(e.target.value)}
+                    placeholder="Input project name"
                 />
                 <label>Description</label>
-                <textarea required value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+                <textarea required placeholder="Add some awesome description!" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
                 <label>Status</label>
                 <select value={status} onChange={(e) => setStatus(e.target.value)}>
                     <option value="Progress">Progress</option>
@@ -50,6 +51,7 @@ const CreateProject = () => {
                     required
                     value={location}
                     onChange={(e) => setLocation(e.target.value)}
+                    placeholder="Eg: United Kingdom"
                 />
                 <label>Type of project</label>
                 <select value={tag} onChange={(e) => setTag(e.target.value)}>
@@ -61,11 +63,11 @@ const CreateProject = () => {
                     <option value="Other">Other</option>
                 </select>
                 <label>Google Drive folder</label>
-                <textarea required value={files} onChange={(e) => setFiles(e.target.value)}></textarea>
+                <textarea placeholder="Copy the link to the Google Drive folder for this project" required value={files} onChange={(e) => setFiles(e.target.value)}></textarea>
                 <button>Add project</button>
             </form>
         </div>
     );
 }
- 
+
 export default CreateProject;
