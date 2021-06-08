@@ -14,7 +14,7 @@ export default props => {
       <Link to={`/add-user`}>Add User</Link>
       </div>
       <div className="menu-item" > 
-      <Link to={`/my-profile`}>Profile</Link>
+      <Link to={`/users/john34`}>Profile</Link>
       </div>
     </Menu>
   );

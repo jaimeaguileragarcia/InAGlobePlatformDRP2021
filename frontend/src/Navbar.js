@@ -10,7 +10,7 @@ const Navbar = () => {
             }}>InAGlobe Platform</a>
             <div className="links"> 
                 <Link to={`/create-project`}>New Project</Link>
-                <Link to={`/my-profile`}>My Profile</Link>
+                <Link to={`/users/john34`}>My Profile</Link>
             </div>
         </nav>
     );

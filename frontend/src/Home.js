@@ -15,19 +15,9 @@ const Home = () => {
             <h1>Dashboard</h1>
             <ProjectList projects={projects} title="All Projects"/>
             <ProjectList projects={projects.filter(project => project.status === "Completed")} title="Completed Projects"/>
-            <h2>Users</h2>
-            <UserList users={users} title="All Users"/>
-         
-
         </div>
         
     );
 }
  
 export default Home;
-
-
-//    <Menu>
-//             <a id="users" className="menu-item" href="/users">Users</a>
-//             <a id="add-user" className="menu-item" href="/add-user">AddUser</a>
-//             </Menu>

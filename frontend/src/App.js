@@ -20,7 +20,6 @@ function App() {
     <Router>
       <div className="App">  
       <Sidebar />
-
         <Navbar />
         <div className="content">
           <Switch>
@@ -36,7 +35,7 @@ function App() {
             <Route path="/my-profile">
               <MyProfile />
             </Route>
-            <Route path="/users">
+            <Route exact path="/users">
               <Users />  
             </Route>
             <Route path="/users/:username">

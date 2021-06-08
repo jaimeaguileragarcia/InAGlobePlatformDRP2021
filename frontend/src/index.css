@@ -58,14 +58,14 @@
   color: #f1356d;
 }
 .content {
-  max-width: 800px;
-  margin: 40px auto;
+  max-width: 1000px;
   padding: 20px;
+  margin: 20px auto;
 }
 
 /* Project list */
 
-.project-preview {
+.project-preview, .user-preview {
   padding: 6px;
   margin: 2px;
   border-bottom: 1px;
@@ -74,11 +74,11 @@
   box-shadow: 1px 3px 5px rgb(194, 194, 194);
 }
 
-.project-preview:hover {
+.project-preview:hover, .user-preview:hover{
   box-shadow: 1px 3px 5px gray;
 }
 
-.project-preview h2 {
+.project-preview h2, .user-preview h2{
   font-size: 20;
   color: #f1356d;
 }
@@ -89,16 +89,59 @@
   padding-bottom: 20px;
 }
 
-.project-preview a {
+.project-preview a, .user-preview a{
   text-decoration: none;
+}
+
+/* User page */
+
+.user {
+  width: 1000px;
+  margin-bottom: 30px;
+  background-color: #fff;
+}
+
+.user h2 {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.user h3 {
+  font-size: 15px;
+  color: #222729;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+}
+
+.user h4 {
+  font-size: 10px;
+  color: #00baff;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.user p {
+  font-size: 16px;
+  line-height: 26px;
+  margin-bottom: 20px;
+  color: #666;
 }
 
 /* Project details */
 
-.project-details h2 {
+.project-details h2, .user h2{
   font-size: 35px;
   color: #f1356d;
   margin-bottom: 10px;
+}
+
+.user h4 {
+  font-size: 20px;
+  color: rgb(39, 36, 36);
+  margin-bottom: 30px;
 }
 
 .project-details h4 {
