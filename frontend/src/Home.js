@@ -35,7 +35,7 @@ const Home = () => {
             <h1>Dashboard</h1>
             <ProjectList projects={projects} title="All Projects"/>
             <ProjectList projects={projects.filter(project => project.status === "Completed")} title="Completed Projects"/>
-            <PersonalToDo todos={todos.filter(todo => todo.username === "john34")} title="Personal tasks"/>
+            <PersonalToDo todos={todos.filter(todo => todo.username === "john34")} title="Personal ToDo items"/>
         </div>
         
     );
