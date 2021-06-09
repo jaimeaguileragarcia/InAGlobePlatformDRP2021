@@ -16,18 +16,21 @@ const Home = () => {
             id: 1,
             todo_desc: "Call Jaime about the DRP project with the Department of Computing",
             priority: 4,
+            due_date: "11th June 2021",
             username: "john34"
         },
         {
             id: 2,
             todo_desc: "Read over final brief for Nicholas Wu regarding EcoWarriors",
             priority: 3,
+            due_date: "13th June 2021",
             username: "john34"
         },
         {
             id: 3,
             todo_desc: "Send the notes for the meeting on Monday to rest of the team",
             priority: 1,
+            due_date: "16th June 2021",
             username: "ethanw"
         }
     ]
