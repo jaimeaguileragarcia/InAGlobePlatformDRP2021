@@ -5,7 +5,7 @@ import useFetch from './useFetch'
 const Home = () => {
 
     const {data: projects, error1} = useFetch("/projects")
-    const {data: todos, error3} = useFetch("/todos")
+    const {data: todos, error2} = useFetch("/todos")
     // const todos = [
     //     {
     //         id: 1,

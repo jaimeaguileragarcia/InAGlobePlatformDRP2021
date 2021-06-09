@@ -401,7 +401,6 @@ Note: Beware of modifying this element as it can break the animations - you shou
   font-size: 35px;
   text-decoration: none;
   margin: 15px;
-  display: block;
 }
 
 .add-todo-label:hover {

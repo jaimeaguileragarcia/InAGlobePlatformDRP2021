@@ -23,3 +23,9 @@ def upload_project():
   entry = Todo(todo_desc=todo_desc, priority=priority, username=username)
   DB.add(entry)
   return ''
+
+@todo.route('/todos/<todo_id>', methods=['DELETE'])
+def delete_project(todo_id):
+  entry = Todo.query.get(todo_id)
+  DB.delete(entry)
+  return ''

@@ -4,15 +4,13 @@ import { useHistory } from "react-router-dom"
 
 const PersonalToDo = ({ todos, title }) => {
 
-    const handleRemove = () => {
-        console.log("This task is completed and hence needs to be removed from both the database and the user's dashboard")
-        // e.preventDefault()
-        // fetch("/todos/" + id, {method: 'DELETE'})
-        //     .then(()=> {history.push('/');})
+    const handleRemove = (id) => {
+        fetch("/todos/" + id, {method: 'DELETE'})
+            .then(()=> {history.push('/');})
     };
 
     const openTaskForm = () => {
-        document.getElementsByClassName("add-todo-form")[0].style.display = "inline";
+        document.getElementsByClassName("add-todo-form")[0].style.display = "block";
     }
 
     const {data: users, error} = useFetch("/users")
@@ -46,7 +44,7 @@ const PersonalToDo = ({ todos, title }) => {
                     <h2>{todo.todo_desc}</h2>
                     <h3><strong>Priority level:</strong> {todo.priority}</h3>
                     <h3><strong>To be done by:</strong> {todo.due_date}</h3>
-                    <button onClick={handleRemove}>Completed</button>
+                    <button onClick={handleRemove(todo.id)}>Complete</button>
                 </div>
             ))}
 
@@ -73,6 +71,7 @@ const PersonalToDo = ({ todos, title }) => {
                     <button>Save task</button>
                 </form>
             </div>
+            
             <button onClick={openTaskForm}>Add a personal task</button>
 
         </div>
