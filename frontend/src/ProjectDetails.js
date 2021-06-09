@@ -39,7 +39,7 @@ const ProjectDetails = () => {
             
             {project && <Link to={`/edit-project/${project.id}`} className="edit-project-button">Edit project</Link>}
 
-            {project && <Link to={`/projects/${project.id}/tasks`} className="project-tasks-button">See Tasks</Link>}
+            {project && <Link to={`/projects/${project.id}/tasks`} className="project-tasks-button">View Tasks</Link>}
 
             {project && <Link to={`/projects/${project.id}/add-task`} className="add-task-button">Add Task</Link>}
         </div>

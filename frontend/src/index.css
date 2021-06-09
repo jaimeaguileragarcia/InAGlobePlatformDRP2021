@@ -177,25 +177,27 @@
 
 /* Create new project form and edit project */
 
-.create-project .edit-project, .edit-user{
+.create-project .edit-project, .edit-user, .add-project-task{
   max-width: 400px;
   margin: 0 auto;
   text-align: center;
 }
-.create-project label, .edit-project label, .add-user label, .edit-user label, .add-todo-form label{
+.create-project label, .edit-project label, .add-user label, .edit-user label, .add-todo-form label, 
+.add-project-task label{
   text-align: left;
   display: block;
   font-size: 20px;
 }
 
-.create-project h2, .edit-project h2, .add-user h2, .edit-user h2, .add-todo-form h2{
+.create-project h2, .edit-project h2, .add-user h2, .edit-user h2, .add-todo-form h2, .add-project-task h2{
   font-size: 35px;
   color: #f1356d;
   margin-bottom: 30px;
 }
 .create-project input, .create-project textarea, .create-project select,
 .edit-project input, .edit-project textarea, .edit-project select, .add-user input,
-.edit-user input, .add-todo-form input, .add-todo-form textarea, .add-todo-form select{
+.edit-user input, .add-todo-form input, .add-todo-form textarea, .add-todo-form select,
+.add-project-task input, .add-project-task textarea, .add-project-task select{
   width: 100%;
   padding: 6px 10px;
   margin: 10px 0;
@@ -203,7 +205,8 @@
   box-sizing: border-box;
   display: block;
 }
-.create-project button, .edit-project button, .add-user button, .edit-user button .add-todo-form button {
+.create-project button, .edit-project button, .add-user button, .edit-user button, .add-todo-form button, 
+.add-project-task button{
   background: #f1356d;
   color: #fff;
   border: 0;
@@ -216,7 +219,8 @@
   margin-right: 10px;
 }
 
-.create-project button:hover, .edit-project button:hover, .add-user button:hover, .edit-user button:hover, .todo-list button:hover {
+.create-project button:hover, .edit-project button:hover, .add-user button:hover, .edit-user button:hover, .todo-list button:hover,
+.add-project-task button:hover {
   background: #8f0830;
 }
 
@@ -244,11 +248,13 @@
 
 
 /* Add New User */
-.add-user label {
+.add-user label, .add-project-task label {
   text-align: left;
   display: block;
   font-size: 20px;
 }
+
+
 
 .users h1 {
   font-style: bold;
@@ -414,7 +420,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
   display: none;
 }
 
-.add-task-button button{
+.add-task-button, .project-tasks-button{
   background: #f1356d;
   color: #fff;
   border: 0;
