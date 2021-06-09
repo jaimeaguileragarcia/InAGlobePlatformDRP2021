@@ -65,8 +65,8 @@ const PersonalToDo = ({ todos, title }) => {
                     />
                     <label>Assigned user</label>
                     <select value={username} onChange={(e) => setUsername(e.target.value)} >
-                        <option value="none"></option>
-                        {users.map(user => <option value={user.username}></option>)}
+                        <option value="none">None</option>
+                        {users.map(user => <option value={user.username}>{user.username}</option>)}
                     </select>
                     <button>Save task</button>
                 </form>
