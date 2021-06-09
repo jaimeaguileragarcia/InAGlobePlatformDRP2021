@@ -1,14 +1,15 @@
-import os
 from flask import Flask, render_template
 from flask_migrate import Migrate
 from backend.database_config.database import DB
 from backend.blueprints.project import project
 from backend.blueprints.user import user
+from backend.blueprints.todo import todo
 
 app = Flask(__name__)
 
 app.register_blueprint(project)
 app.register_blueprint(user)
+app.register_blueprint(todo)
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 

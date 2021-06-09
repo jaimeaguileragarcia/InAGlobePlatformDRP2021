@@ -81,12 +81,14 @@
 .project-preview h2, .user-preview h2{
   font-size: 20;
   color: #f1356d;
+  padding-left: 4px;
 }
 
 .project-preview h3 {
   font-size: 10;
   color: rgb(0, 0, 0);
   padding-bottom: 20px;
+  padding-left: 4px;
 }
 
 .project-preview a, .user-preview a{
@@ -180,20 +182,20 @@
   margin: 0 auto;
   text-align: center;
 }
-.create-project label, .edit-project label, .add-user label, .edit-user label{
+.create-project label, .edit-project label, .add-user label, .edit-user label, .add-todo-form label{
   text-align: left;
   display: block;
   font-size: 20px;
 }
 
-.create-project h2, .edit-project h2, .add-user h2, .edit-user h2{
+.create-project h2, .edit-project h2, .add-user h2, .edit-user h2, .add-todo-form h2{
   font-size: 35px;
   color: #f1356d;
   margin-bottom: 30px;
 }
 .create-project input, .create-project textarea, .create-project select,
 .edit-project input, .edit-project textarea, .edit-project select, .add-user input,
-.edit-user input{
+.edit-user input, .add-todo-form input, .add-todo-form textarea, .add-todo-form select{
   width: 100%;
   padding: 6px 10px;
   margin: 10px 0;
@@ -201,7 +203,7 @@
   box-sizing: border-box;
   display: block;
 }
-.create-project button, .edit-project button, .add-user button, .edit-user button{
+.create-project button, .edit-project button, .add-user button, .edit-user button .add-todo-form button, .todo-list button{
   background: #f1356d;
   color: #fff;
   border: 0;
@@ -214,7 +216,7 @@
   margin-right: 10px;
 }
 
-.create-project button:hover, .edit-project button:hover, .add-user button:hover, .edit-user button:hover {
+.create-project button:hover, .edit-project button:hover, .add-user button:hover, .edit-user button:hover, .todo-list button:hover {
   background: #8f0830;
 }
 
@@ -339,4 +341,78 @@ Note: Beware of modifying this element as it can break the animations - you shou
 .bm-item:hover {
   color: #000000;
 }
+
+/* Personal todos */
+.todo-preview {
+  padding: 6px;
+  margin: 2px;
+  border-bottom: 1px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  box-shadow: 1px 3px 5px rgb(194, 194, 194);
+  width: fit-content;
+  float: left;
+}
+
+.todo-preview:hover {
+  box-shadow: 1px 3px 5px gray;
+}
+
+.todo-preview h2 {
+  padding-top: 10px;
+  font-size: 20;
+  color:rgb(230, 106, 18);
+  padding-bottom: 7px;
+}
+
+.todo-preview h3 {
+  font-size: 10;
+  color: rgb(0, 0, 0);
+  padding-bottom: 7px;
+  padding-left: 4px;
+}
+
+.todo-preview button {
+  background: rgb(230, 106, 18);
+  color: black;
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 25px;
+  text-decoration: none;
+  margin-bottom: 10px;
+  margin-left: 4px;
+  margin-top: 5px;
+}
+
+.todo-preview button:hover {
+  background: rgb(165, 91, 39);
+}
+
+.add-todo-label {
+  background: rgb(230, 106, 18);
+  color: #fff;
+  text-align: center;
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 35px;
+  text-decoration: none;
+  margin: 15px;
+  display: block;
+}
+
+.add-todo-label:hover {
+  background: rgb(165, 91, 39);
+}
+
+.add-todo-form {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+  display: none;
+}
+
 
