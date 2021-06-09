@@ -1,4 +1,5 @@
 from sqlalchemy.sql.expression import table
+from sqlalchemy.sql.schema import ForeignKey
 from backend.database_config.database import DB
 from flask import jsonify
 
@@ -7,7 +8,7 @@ db = DB.the_database
 class Todo(db.Model):
     priority = db.Column(db.Integer)
     todo_desc = db.Column(db.String)
-    username = db.Column(db.String)
+    username = db.Column(db.String, ForeignKey('user.username'))
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)  
 
     def save(self):

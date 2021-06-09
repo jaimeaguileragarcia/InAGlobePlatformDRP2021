@@ -1,4 +1,6 @@
-import { Link } from "react-router-dom"
+import useFetch from './useFetch'
+import { useState } from "react";
+import { useHistory } from "react-router-dom"
 
 const PersonalToDo = ({ todos, title }) => {
 
@@ -13,20 +15,27 @@ const PersonalToDo = ({ todos, title }) => {
         document.getElementsByClassName("add-todo-form")[0].style.display = "inline";
     }
 
-    const handleSubmit = () => {
+    const {data: users, error} = useFetch("/users")
+
+    const [todo_desc, setTodoDesc] = useState("");
+    const [priority, setPriority] = useState(1);
+    const [username, setUsername] = useState("none");
+
+    const history = useHistory();
+
+    const handleSubmit = e => {
         document.getElementsByClassName("add-todo-form")[0].style.display = "none";
-        console.log("This task should now be added")
-        // e.preventDefault()
+        e.preventDefault()
 
-        // const newToDo = {Fill in something here};
+        const newTodo = { todo_desc, priority, username };
 
-        // fetch("/todos", {
-        //     method: 'POST',
-        //     headers: { "Content-Type": "application/json" },
-        //     body: JSON.stringify(newTodo)
-        // }).then(() => {
-        //     history.push('/');
-        // })
+        fetch("/todos", {
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(newTodo)
+        }).then(() => {
+            history.push('/');
+        })
     }
 
     return (
@@ -44,9 +53,9 @@ const PersonalToDo = ({ todos, title }) => {
             <div className="add-todo-form">
                 <form onSubmit={handleSubmit}>
                     <label>Task description</label>
-                    <textarea required placeholder="Add some awesome description!" ></textarea>
+                    <textarea value={todo_desc} onChange={(e) => setTodoDesc(e.target.value)} required placeholder="Add some awesome description!" ></textarea>
                     <label>Priority level</label>
-                    <select >
+                    <select value={priority} onChange={(e) => setPriority(e.target.value)} >
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -55,12 +64,15 @@ const PersonalToDo = ({ todos, title }) => {
                     <label>When should this task be done by?</label>
                     <input
                         type="date"
-                        
                     />
+                    <label>Assigned user</label>
+                    <select value={username} onChange={(e) => setUsername(e.target.value)} >
+                        <option value="none"></option>
+                        {users.map(user => <option value={user.username}></option>)}
+                    </select>
                     <button>Save task</button>
                 </form>
             </div>
-
             <button onClick={openTaskForm}>Add a personal task</button>
 
         </div>

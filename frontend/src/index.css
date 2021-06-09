@@ -203,7 +203,7 @@
   box-sizing: border-box;
   display: block;
 }
-.create-project button, .edit-project button, .add-user button, .edit-user button .add-todo-form button{
+.create-project button, .edit-project button, .add-user button, .edit-user button .add-todo-form button, .todo-list button{
   background: #f1356d;
   color: #fff;
   border: 0;
@@ -216,7 +216,7 @@
   margin-right: 10px;
 }
 
-.create-project button:hover, .edit-project button:hover, .add-user button:hover, .edit-user button:hover {
+.create-project button:hover, .edit-project button:hover, .add-user button:hover, .edit-user button:hover, .todo-list button:hover {
   background: #8f0830;
 }
 
@@ -350,6 +350,8 @@ Note: Beware of modifying this element as it can break the animations - you shou
   border-radius: 5px;
   margin-bottom: 10px;
   box-shadow: 1px 3px 5px rgb(194, 194, 194);
+  width: fit-content;
+  float: left;
 }
 
 .todo-preview:hover {
@@ -399,6 +401,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
   font-size: 35px;
   text-decoration: none;
   margin: 15px;
+  display: block;
 }
 
 .add-todo-label:hover {
@@ -411,4 +414,5 @@ Note: Beware of modifying this element as it can break the animations - you shou
   text-align: center;
   display: none;
 }
+
 
