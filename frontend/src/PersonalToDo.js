@@ -2,12 +2,32 @@ import { Link } from "react-router-dom"
 
 const PersonalToDo = ({ todos, title }) => {
 
-    const handleRemove = e => {
+    const handleRemove = () => {
         console.log("This task is completed and hence needs to be removed from both the database and the user's dashboard")
         // e.preventDefault()
         // fetch("/todos/" + id, {method: 'DELETE'})
         //     .then(()=> {history.push('/');})
     };
+
+    const openTaskForm = () => {
+        document.getElementsByClassName("add-todo-form")[0].style.display = "inline";
+    }
+
+    const handleSubmit = () => {
+        document.getElementsByClassName("add-todo-form")[0].style.display = "none";
+        console.log("This task should now be added")
+        // e.preventDefault()
+
+        // const newToDo = {Fill in something here};
+
+        // fetch("/todos", {
+        //     method: 'POST',
+        //     headers: { "Content-Type": "application/json" },
+        //     body: JSON.stringify(newTodo)
+        // }).then(() => {
+        //     history.push('/');
+        // })
+    }
 
     return (
         <div className="todo-list">
@@ -20,11 +40,29 @@ const PersonalToDo = ({ todos, title }) => {
                     <button onClick={handleRemove}>Completed</button>
                 </div>
             ))}
-            {/* <div className="add-todo-button"> */}
-                <Link className="add-todo-label" to={`/add-todo`}>
-                    Add a personal task
-                </Link>
-            {/* </div> */}
+
+            <div className="add-todo-form">
+                <form onSubmit={handleSubmit}>
+                    <label>Task description</label>
+                    <textarea required placeholder="Add some awesome description!" ></textarea>
+                    <label>Priority level</label>
+                    <select >
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                    <label>When should this task be done by?</label>
+                    <input
+                        type="date"
+                        
+                    />
+                    <button>Save task</button>
+                </form>
+            </div>
+
+            <button onClick={openTaskForm}>Add a personal task</button>
+
         </div>
     );
 
