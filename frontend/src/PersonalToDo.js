@@ -4,11 +4,6 @@ import { useHistory } from "react-router-dom"
 
 const PersonalToDo = ({ todos, title }) => {
 
-    // const handleRemove = (id) => {
-    //     fetch("/todos/" + id, {method: 'DELETE'})
-    //         .then(()=> {history.push('/');})
-    // };
-
     const openTaskForm = () => {
         document.getElementsByClassName("add-todo-form")[0].style.display = "block";
     }
@@ -23,8 +18,8 @@ const PersonalToDo = ({ todos, title }) => {
 
     const handleSubmit = e => {
         document.getElementsByClassName("add-todo-form")[0].style.display = "none";
-        e.preventDefault()
-
+        
+        e.preventDefault();
         const newTodo = { todo_desc, priority, username };
 
         fetch("/todos", {
@@ -32,9 +27,16 @@ const PersonalToDo = ({ todos, title }) => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(newTodo)
         }).then(() => {
-            history.push('/');
+            window.location.reload();
         })
     }
+
+    const handleRemove = id => e => {
+        e.preventDefault();
+        fetch("/todos/" + id, {method: 'DELETE'})
+            .then(() => {window.location.reload();
+        })
+    };
 
     return (
         <div className="todo-list">
@@ -44,7 +46,7 @@ const PersonalToDo = ({ todos, title }) => {
                     <h2>{todo.todo_desc}</h2>
                     <h3><strong>Priority level:</strong> {todo.priority}</h3>
                     <h3><strong>To be done by:</strong> {todo.due_date}</h3>
-                    <button>Complete</button>
+                    <button onClick={handleRemove(todo.id)}>Complete</button>
                 </div>
             ))}
 
