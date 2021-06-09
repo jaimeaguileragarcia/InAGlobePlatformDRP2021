@@ -16,4 +16,4 @@ const PersonalToDo = ({ todos, title }) => {
 
 }
 
-export default ProjectList;
+export default PersonalToDo;
