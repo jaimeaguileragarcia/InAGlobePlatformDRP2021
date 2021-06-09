@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 const PersonalToDo = ({ todos, title }) => {
 
     const handleRemove = e => {
@@ -5,7 +7,7 @@ const PersonalToDo = ({ todos, title }) => {
         // e.preventDefault()
         // fetch("/todos/" + id, {method: 'DELETE'})
         //     .then(()=> {history.push('/');})
-      };
+    };
 
     return (
         <div className="todo-list">
@@ -18,6 +20,11 @@ const PersonalToDo = ({ todos, title }) => {
                     <button onClick={handleRemove}>Completed</button>
                 </div>
             ))}
+            {/* <div className="add-todo-button"> */}
+                <Link className="add-todo-label" to={`/add-todo`}>
+                    Add a personal task
+                </Link>
+            {/* </div> */}
         </div>
     );
 

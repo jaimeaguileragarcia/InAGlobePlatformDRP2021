@@ -81,12 +81,14 @@
 .project-preview h2, .user-preview h2{
   font-size: 20;
   color: #f1356d;
+  padding-left: 4px;
 }
 
 .project-preview h3 {
   font-size: 10;
   color: rgb(0, 0, 0);
   padding-bottom: 20px;
+  padding-left: 4px;
 }
 
 .project-preview a, .user-preview a{
@@ -358,6 +360,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
   padding-top: 10px;
   font-size: 20;
   color:rgb(230, 106, 18);
+  padding-bottom: 7px;
 }
 
 .todo-preview h3 {
@@ -382,6 +385,23 @@ Note: Beware of modifying this element as it can break the animations - you shou
 }
 
 .todo-preview button:hover {
+  background: rgb(165, 91, 39);
+}
+
+.add-todo-label {
+  background: rgb(230, 106, 18);
+  color: #fff;
+  text-align: center;
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 35px;
+  text-decoration: none;
+  margin: 15px;
+}
+
+.add-todo-label:hover {
   background: rgb(165, 91, 39);
 }
 
