@@ -38,6 +38,10 @@ const ProjectDetails = () => {
             {project && <button onClick={handleRemove}>Delete project</button>}
             
             {project && <Link to={`/edit-project/${project.id}`} className="edit-project-button">Edit project</Link>}
+
+            {project && <Link to={`/projects/${project.id}/tasks`} className="project-tasks-button">See Tasks</Link>}
+
+            {project && <Link to={`/projects/${project.id}/add-task`} className="add-task-button">Add Task</Link>}
         </div>
         
      );

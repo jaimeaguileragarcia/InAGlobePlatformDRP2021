@@ -4,12 +4,14 @@ from backend.database_config.database import DB
 from backend.blueprints.project import project
 from backend.blueprints.user import user
 from backend.blueprints.todo import todo
+from backend.blueprints.task import task
 
 app = Flask(__name__)
 
 app.register_blueprint(project)
 app.register_blueprint(user)
 app.register_blueprint(todo)
+app.register_blueprint(task)
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 

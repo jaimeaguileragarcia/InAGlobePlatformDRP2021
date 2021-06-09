@@ -2,7 +2,7 @@
 from sqlalchemy.sql.expression import table
 from backend.database_config.database import DB
 from flask import jsonify
-
+from sqlalchemy.sql.schema import ForeignKey
 db = DB.the_database
 
 class Task(db.Model):
@@ -10,6 +10,7 @@ class Task(db.Model):
     priority = db.Column(db.Integer)
     completed = db.Column(db.Boolean)
     due_date = db.Column(db.Date)
+    project_id = db.Column(db.Integer, ForeignKey('project.id'))
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)  
 
     def save(self):
@@ -29,6 +30,7 @@ class Task(db.Model):
             priority = self.priority,
             completed = self.completed,
             due_date = self.due_date,
+            project_id = self.project_id,
             id = self.id
             )
 

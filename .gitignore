@@ -4,3 +4,4 @@ node_modules
 *~
 venv/
 update_frontend.sh
+upgrade_database.txt
