@@ -1,6 +1,5 @@
 import useFetch from './useFetch'
 import { useState } from "react";
-import { useHistory } from "react-router-dom"
 
 const PersonalToDo = ({ todos, title }) => {
 
@@ -12,15 +11,14 @@ const PersonalToDo = ({ todos, title }) => {
 
     const [todo_desc, setTodoDesc] = useState("");
     const [priority, setPriority] = useState(1);
+    const [due_date, setDueDate] = useState(Date.now)
     const [username, setUsername] = useState("none");
-
-    const history = useHistory();
 
     const handleSubmit = e => {
         document.getElementsByClassName("add-todo-form")[0].style.display = "none";
 
         e.preventDefault();
-        const newTodo = { todo_desc, priority, username };
+        const newTodo = { todo_desc, priority, due_date, username };
 
         fetch("/todos", {
             method: 'POST',
@@ -67,6 +65,8 @@ const PersonalToDo = ({ todos, title }) => {
                     <label>When should this task be done by?</label>
                     <input
                         type="date"
+                        value={due_date}
+                        onChange={(e) => setDueDate(e.target.value)}
                     />
                     <label>Assigned user</label>
                     <select value={username} onChange={(e) => setUsername(e.target.value)} >

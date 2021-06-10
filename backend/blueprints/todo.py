@@ -1,5 +1,5 @@
 from re import T
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, json, request, jsonify
 from backend.database_config.database import DB
 from backend.models.todo_model import Todo
 
@@ -12,15 +12,16 @@ def get_all_todos():
   todos_list = [{"id" : x.id, 
                  "todo_desc" : x.todo_desc,
                  "priority" : x.priority,
+                 "due_date" : x.due_date,
                  "username" : x.username} for x in todos_query]
   return jsonify(todos_list)
   
 
 @todo.route('/todos', methods=['POST'])
 def add_todo():
-  todo_desc, priority, username = (request.json['todo_desc'], request.json['priority'], 
-                        request.json['username'])
-  entry = Todo(todo_desc=todo_desc, priority=priority, username=username)
+  todo_desc, priority, due_date, username = (request.json['todo_desc'], request.json['priority'], 
+                                   request.json['due_date'], request.json['username'])
+  entry = Todo(todo_desc=todo_desc, priority=priority, due_date=due_date, username=username)
   DB.add(entry)
   return ''
 

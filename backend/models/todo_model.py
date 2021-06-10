@@ -8,7 +8,7 @@ db = DB.the_database
 class Todo(db.Model):
     priority = db.Column(db.Integer)
     todo_desc = db.Column(db.String)
-    # due_date = db.Column(db.Date)
+    due_date = db.Column(db.Date)
     username = db.Column(db.String, ForeignKey('user.username'))
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)  
 
