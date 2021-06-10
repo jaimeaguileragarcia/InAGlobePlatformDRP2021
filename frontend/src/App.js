@@ -26,34 +26,34 @@ function App() {
             <Route exact path="/">
               <Home />
             </Route>
-            <Route path="/create-project">
+            <Route exact path="/create-project">
               <CreateProject />
             </Route>
-            <Route path="/add-user">
+            <Route exact path="/add-user">
               <AddUser />  
             </Route>
-            <Route path="/my-profile">
+            <Route exact path="/my-profile">
               <MyProfile />
             </Route>
             <Route exact path="/users">
               <Users />  
             </Route>
-            <Route path="/users/:username">
+            <Route exact path="/users/:username">
               <User />
             </Route>
-            <Route path="/edit-user/:username">
+            <Route exact path="/edit-user/:username">
               <EditUser />
             </Route>            
-            <Route path="/projects/:id/add-task">
+            <Route exact path="/projects/:id/add-task">
               <AddProjectTask />  
             </Route>       
-            <Route path="/projects/:id/tasks">
+            <Route exact path="/projects/:id/tasks">
               <ProjectTasks />          
             </Route>
-            <Route path="/projects/:id">
+            <Route exact path="/projects/:id">
               <ProjectDetails />
             </Route>
-            <Route path="/edit-project/:id">
+            <Route exact path="/edit-project/:id">
               <EditProject />
             </Route>
             <Route path="*">

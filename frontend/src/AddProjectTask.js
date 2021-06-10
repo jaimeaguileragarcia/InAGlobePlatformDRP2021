@@ -24,15 +24,7 @@ const AddProjectTask = () => {
             completed
         }
 
-        fetch(`/projects/${project.id}/tasks`, {
-            method: 'POST',
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(newProjectTask)
-        }).then(() => {
-            history.push('/projects/' + id);
-        })
-
-        fetch(`/projects/${project.id}`, {
+        fetch("/projects/" + project.id + "/tasks", {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(newProjectTask)

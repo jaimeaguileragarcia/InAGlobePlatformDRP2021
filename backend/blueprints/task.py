@@ -21,7 +21,6 @@ def get_project_tasks(project_id):
 
   
 @task.route('/projects/<project_id>/tasks', methods=['POST'])
-@task.route('/projects/<project_id>', methods=['POST'])
 def add_project_task(project_id):
   description, due_date, completed, priority = (request.json['description'], 
                         request.json['due_date'],
@@ -35,4 +34,22 @@ def add_project_task(project_id):
   return ''              
 
 
+@task.route('/projects/<project_id>/tasks/<task_id>', methods=['POST'])
+def update_task(project_id, task_id):
+  entry = Task.query.get(task_id)
+  # description, priority, due_date, completed, project_id = (request.json['description'], request.json['priority'],
+  # request.json['due_date'], request.json['completed'], request.json['project_id'])
+  # entry.description = description
+  # entry.priority = priority
+  # entry.due_date = due_date
+  entry.completed = True
 
+  # entry.project_id = project_id
+  DB.add(entry)
+  return ''
+
+@task.route('/projects/<project_id>/tasks/<task_id>', methods=['DELETE'])
+def delete_task(project_id, task_id):
+  entry = Task.query.get(task_id)
+  DB.delete(entry)
+  return ''
