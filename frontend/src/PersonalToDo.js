@@ -77,7 +77,7 @@ const PersonalToDo = ({ todos, title }) => {
                 </form>
             </div>
 
-            <div className="add-task-button">
+            <div className="add-todo-button">
                 <button onClick={openTaskForm}>Add a personal task</button>
             </div>
 

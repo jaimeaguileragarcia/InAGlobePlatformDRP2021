@@ -380,7 +380,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 .todo-preview button {
   background: rgb(230, 106, 18);
-  color: black;
+  color: white;
   border: 0;
   padding: 8px;
   border-radius: 8px;
@@ -418,6 +418,23 @@ Note: Beware of modifying this element as it can break the animations - you shou
   margin: 0 auto;
   text-align: center;
   display: none;
+}
+
+.add-todo-button button{
+  background: rgb(230, 106, 18);
+  color: #fff;
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 25px;
+  text-decoration: none;
+  margin-bottom: 30px;
+  margin-right: 10px;
+}
+
+.add-todo-button button:hover {
+  background: rgb(165, 91, 39);
 }
 
 .add-task-button, .project-tasks-button{
