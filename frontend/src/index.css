@@ -65,7 +65,7 @@
 
 /* Project list */
 
-.project-preview, .user-preview {
+.project-preview, .user-preview, .project-task-preview {
   padding: 6px;
   margin: 2px;
   border-bottom: 1px;
@@ -74,11 +74,11 @@
   box-shadow: 1px 3px 5px rgb(194, 194, 194);
 }
 
-.project-preview:hover, .user-preview:hover{
+.project-preview:hover, .user-preview:hover, .project-task-preview {
   box-shadow: 1px 3px 5px gray;
 }
 
-.project-preview h2, .user-preview h2{
+.project-preview h2, .user-preview h2, .project-task-preview h2{
   font-size: 20;
   color: #f1356d;
   padding-left: 4px;
@@ -91,7 +91,7 @@
   padding-left: 4px;
 }
 
-.project-preview a, .user-preview a{
+.project-preview a, .user-preview a, .project-task-preview a{
   text-decoration: none;
 }
 
