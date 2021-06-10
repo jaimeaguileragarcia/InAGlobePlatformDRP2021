@@ -14,8 +14,9 @@ const ProjectTasks = () => {
         <div className="project-tasks">
             {project_tasks && <h1>{project.name}: tasks</h1>}
             <h2>Ongoing Project Tasks</h2>
-            {project_tasks && <ProjectTaskList project_tasks={project_tasks.filter(task => !task.completed)} title="Ongoing Project Tasks"/>}
-            {project_tasks && <ProjectTaskList project_tasks={project_tasks.filter(task => task.completed)} title="Ongoing Project Tasks"/>}
+            {project_tasks && <ProjectTaskList project_tasks={project_tasks.filter(task => !task.completed)} />}
+            <h2>Completed Project Tasks</h2>
+            {project_tasks && <ProjectTaskList project_tasks={project_tasks.filter(task => task.completed)} />}
 
             <div className="add-task-button-wrapper">
                 {project_tasks && <Link to={`/projects/${project.id}/add-task`} className="add-task-button">Add Task</Link>}

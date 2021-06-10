@@ -29,7 +29,7 @@ const AddProjectTask = () => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(newProjectTask)
         }).then(() => {
-            history.push('/projects/' + id);
+            history.push('/projects/' + id + '/tasks');
         })
     }
 

@@ -1,8 +1,8 @@
 import { useState } from "react";
-
+import { useHistory } from 'react-router';
 const ProjectTaskList = ({ project_tasks }) => {
     /* pass in filtered dataset containing tasks for a specific project*/
-
+    const history = useHistory();
     const [description, setDescription] = useState("");
     const [priority, setPriority] = useState(1);
     const [due_date, setDueDate] = useState(Date.now);
@@ -22,18 +22,25 @@ const ProjectTaskList = ({ project_tasks }) => {
 
         console.log(newTask)
 
-        fetch(("/projects/" + task.project_id + "/tasks/" + task.id, {
+        fetch("/projects/" + task.project_id + "/tasks/" + task.id, {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(task)
-        }))
+        }).then(() => {
+            window.location.reload();
+        })
+    
     };
 
     const handleDelete = task => e => {
         e.preventDefault();
-        fetch(("/projects/" + task.project_id + "/tasks/" + task.id, {
-            method: 'DELETE'
-        }))
+
+        fetch("/projects/" + task.project_id + "/tasks/" + task.id, {
+            method: 'DELETE',
+        }).then(() => {
+            window.location.reload();
+        })
+    
     };
 
     return (
@@ -42,10 +49,10 @@ const ProjectTaskList = ({ project_tasks }) => {
                 <div className="preview" key={task.id}>
                         <div>
                             <h2>{task.description}</h2>
-                            <h3>{task.due_date}</h3>
+                            <h3>Due date: {task.due_date}</h3>
                         </div>
                         
-                        <h3>{task.priority}</h3>
+                        <h3>Priority: {task.priority}</h3>
                         <button onClick={handleComplete(task)}>Complete</button>
                         <button onClick={handleDelete(task)}>Delete</button>
                 </div>

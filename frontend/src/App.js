@@ -1,7 +1,7 @@
 import Navbar from './Navbar'
 import Home from './Home'
 import CreateProject from './CreateProject'
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import {HashRouter as Router, Route, Switch} from 'react-router-dom'
 import ProjectDetails from './ProjectDetails'
 import PageNotFound from './PageNotFound'
 import MyProfile from './MyProfile'
