@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useHistory, useParams } from "react-router-dom"
 import { useForm } from "react-hook-form"
 import useFetch from './useFetch'

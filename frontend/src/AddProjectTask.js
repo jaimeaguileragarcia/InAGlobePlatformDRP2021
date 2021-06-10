@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useHistory } from "react-router-dom"
 import { useParams } from "react-router"
 import useFetch from "./useFetch";
