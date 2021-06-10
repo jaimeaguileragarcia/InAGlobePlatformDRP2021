@@ -6,7 +6,7 @@ const ProjectTaskList = ({ project_tasks }) => {
         <div className="project-tasks-list">
 
             {project_tasks.map((task) => (
-                <div className="project-task-preview" key={task.id}>
+                <div className="preview" key={task.id}>
                     <Link to={`/projects/${task.project_id}/tasks/${task.id}`}>
                         <h2>{task.description}</h2>
                     </Link>

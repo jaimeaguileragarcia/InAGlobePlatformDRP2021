@@ -6,7 +6,7 @@ const UserList = ({ users }) => {
         <div className="user-list">
 
             {users.map((user) => (
-                <div className="user-preview" key={user.username}>
+                <div className="preview" key={user.username}>
                     <Link to={`/users/${user.username}`}>
                         <h2>{user.username}</h2>
                     </Link>
