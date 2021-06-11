@@ -9,7 +9,7 @@ const AddProjectTask = () => {
     const [priority, setPriority] = useState(1);
     const [completed, setCompleted] = useState(false);
     const { id } = useParams();
-    const { data: project, error } = useFetch("/projects/" + id)
+    const { data: project, error, isPending } = useFetch("/projects/" + id)
 
 
     const history = useHistory();
@@ -36,7 +36,8 @@ const AddProjectTask = () => {
     return (
         <div className="add-project-task">
             <h2>Add a new task</h2>
-            <form onSubmit={handleSubmit}>
+            { isPending && <h2>Loading...</h2> }
+            { project && <form onSubmit={handleSubmit}>
                 <label>Description</label>
                 <input
                     type="text"
@@ -71,7 +72,7 @@ const AddProjectTask = () => {
                     <option value="Completed">Completed</option>
                 </select>
                 <button>Add task</button>
-            </form>
+            </form> }
         </div>
     );
 }

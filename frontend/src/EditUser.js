@@ -5,7 +5,7 @@ import useFetch from './useFetch'
 const EditUser = () => {
     const { username } = useParams();
     const { data: {firstname, surname, password, title, email, bio, joined, 
-        location, availability, partnership_opportunities, interests}, error } = useFetch("/users/" + username)
+        location, availability, partnership_opportunities, interests}, error, isPending } = useFetch("/users/" + username)
 
     const history = useHistory();
     const oldUserDetails = {
@@ -39,7 +39,8 @@ const EditUser = () => {
     return (
         <div className="edit-user">
             <h2>Edit user</h2>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            { isPending && <h2>Loading...</h2> }
+            { firstname && <form onSubmit={handleSubmit(onSubmit)}>
                 <label htmlFor="firstname">Firstname</label>
                 <input {...register("firstname")}
                     placeholder="Input your first name here"
@@ -98,7 +99,7 @@ const EditUser = () => {
                     placeholder="What are your hobbies?"
                 />
                 <button type="submit">Save user details</button>
-            </form>
+            </form> }
         </div>
     );
 }

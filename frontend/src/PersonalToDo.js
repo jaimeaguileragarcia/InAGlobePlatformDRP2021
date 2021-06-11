@@ -7,7 +7,7 @@ const PersonalToDo = ({ todos, title }) => {
         document.getElementsByClassName("add-todo-form")[0].style.display = "block";
     }
 
-    const { data: users, error } = useFetch("/users")
+    const { data: users, error, isPending } = useFetch("/users")
 
     const [todo_desc, setTodoDesc] = useState("");
     const [priority, setPriority] = useState(1);
@@ -45,8 +45,10 @@ const PersonalToDo = ({ todos, title }) => {
                 <button onClick={openTaskForm}>Add a personal task</button>
             </div>
 
+            { isPending && <h2>Loading...</h2> }
+
             <div className="add-todo-form">
-                <form onSubmit={handleSubmit}>
+                { users && <form onSubmit={handleSubmit}>
                     <label>Task description</label>
                     <textarea value={todo_desc} onChange={(e) => setTodoDesc(e.target.value)} required placeholder="Add some awesome description!" ></textarea>
                     <label>Priority level</label>
@@ -68,7 +70,7 @@ const PersonalToDo = ({ todos, title }) => {
                         {users.map(user => <option value={user.username}>{user.username}</option>)}
                     </select>
                     <button>Save task</button>
-                </form>
+                </form> }
             </div>
 
             <div className="personal-todos">

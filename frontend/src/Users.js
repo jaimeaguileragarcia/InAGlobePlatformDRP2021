@@ -3,12 +3,13 @@ import useFetch from './useFetch'
 
 const Users = () => {
 
-    const {data: users, error2} = useFetch("/users")
+    const {data: users, error, isPending} = useFetch("/users")
 
     return (
         <div className="users">
             <h1>Users</h1>
-            <UserList users={users} title="All Users"/>
+            { isPending && <h2>Loading...</h2> }
+            { users && <UserList users={users} title="All Users"/> }
         </div>
     );
 }

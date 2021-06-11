@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 const useFetch = (url) => {
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
+  const [isPending, setIsPending] = useState(true);
 
   useEffect(() => {
     fetch(url)
@@ -14,8 +15,8 @@ const useFetch = (url) => {
         })
         .then(data => {
             setData(data);
+            setIsPending(false);
             setError(null);
-            console.log({data})
         })
         .catch(err => {
             // auto catches network / connection error
@@ -23,7 +24,7 @@ const useFetch = (url) => {
         })
   }, [url])
 
-  return { data, error };
+  return { data, error, isPending };
 }
  
 export default useFetch;

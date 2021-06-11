@@ -4,7 +4,7 @@ import useFetch from './useFetch'
 
 const EditProject = () => {
     const { id } = useParams();
-    const { data: {name, description, status, location, tag, files}, error } = useFetch("/projects/" + id)
+    const { data: {name, description, status, location, tag, files}, error, isPending } = useFetch("/projects/" + id)
 
     const history = useHistory();
     const oldProjectDetails = {
@@ -33,7 +33,8 @@ const EditProject = () => {
     return (
         <div className="edit-project">
             <h2>Edit project</h2>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            { isPending && <h2>Loading...</h2> }
+            { name && <form onSubmit={handleSubmit(onSubmit)}>
                 <label htmlFor="name">Project name</label>
                 <input {...register("name")}
                     // type="text"
@@ -67,7 +68,7 @@ const EditProject = () => {
                 <label>Google Drive folder</label>
                 <textarea {...register("files")} name="files" placeholder="Insert Google Drive Folder link here"></textarea>
                 <button type="submit">Save project details</button>
-            </form>
+            </form> }
         </div>
     );
 }
