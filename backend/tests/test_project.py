@@ -6,7 +6,7 @@ from backend.database_config.database import DB
 
 def test_add_project(client):
     project = Project()
-    project.name = "Eco Warriors"
+    project.name = "Test project"
     project.description = "This is a cool project"
     project.status = "Available"
 
@@ -20,7 +20,7 @@ def test_add_project(client):
 
 
 def test_delete_project(client):
-    project = Project.query.filter(Project.name == "Eco Warriors").first()
+    project = Project.query.filter(Project.name == "Test project").first()
     size_before = len(Project.query.all())
     DB.delete(project)
 
