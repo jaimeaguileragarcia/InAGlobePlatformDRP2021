@@ -10,9 +10,13 @@ const Home = () => {
     return (
         <div className="home">
             <h1>Dashboard</h1>
-            <ProjectList projects={projects} title="All Projects"/>
-            <ProjectList projects={projects.filter(project => project.status === "Completed")} title="Completed Projects"/>
-            <PersonalToDo todos={todos.filter(todo => todo.username === "john34")} title="Personal ToDo items"/>
+            <div className="home-projects" style={{float: "left", width: "600px"}}>
+                <ProjectList projects={projects} title="All Projects"/>
+                <ProjectList projects={projects.filter(project => project.status === "Completed")} title="Completed Projects"/>
+            </div>
+            <div className="homeTodos">
+                <PersonalToDo todos={todos.filter(todo => todo.username === "john34")} title="Personal ToDo items"/>
+            </div>
         </div>
         
     );

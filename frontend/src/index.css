@@ -350,6 +350,9 @@ Note: Beware of modifying this element as it can break the animations - you shou
 /* Personal todos */
 .personal-todos {
   display: block;
+  max-height: 1000px;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .todo-preview {
@@ -359,8 +362,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
   border-radius: 5px;
   margin-bottom: 10px;
   box-shadow: 1px 3px 5px rgb(194, 194, 194);
-  width:fit-content;
-  float: left;
+  max-width: 300px;
 }
 
 .todo-preview:hover {

@@ -38,18 +38,11 @@ const PersonalToDo = ({ todos, title }) => {
     };
 
     return (
-        <div className="todo-list">
+        <div className="todo-list" style={{float: "right"}}>
             <h2>{title}</h2>
 
-            <div className="personal-todos">
-                {todos.map((todo) => (
-                    <div className="todo-preview" key={todo.id}>
-                        <h2>{todo.todo_desc}</h2>
-                        <h3><strong>Priority level:</strong> {todo.priority}</h3>
-                        <h3><strong>To be done by:</strong> {todo.due_date}</h3>
-                        <button onClick={handleRemove(todo.id)}>Complete</button>
-                    </div>
-                ))}
+            <div className="add-todo-button">
+                <button onClick={openTaskForm}>Add a personal task</button>
             </div>
 
             <div className="add-todo-form">
@@ -78,8 +71,15 @@ const PersonalToDo = ({ todos, title }) => {
                 </form>
             </div>
 
-            <div className="add-todo-button">
-                <button onClick={openTaskForm}>Add a personal task</button>
+            <div className="personal-todos">
+                {todos.map((todo) => (
+                    <div className="todo-preview" key={todo.id}>
+                        <h2>{todo.todo_desc}</h2>
+                        <h3><strong>Priority level:</strong> {todo.priority}</h3>
+                        <h3><strong>To be done by:</strong> {todo.due_date}</h3>
+                        <button onClick={handleRemove(todo.id)}>Complete</button>
+                    </div>
+                ))}
             </div>
 
         </div>
