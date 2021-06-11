@@ -445,8 +445,69 @@ Note: Beware of modifying this element as it can break the animations - you shou
   margin-bottom: 30px;
 }
 
+.project-tasks h2 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.project-task-preview {
+  padding: 6px;
+  margin: 2px;
+  border-bottom: 1px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  box-shadow: 1px 3px 5px rgb(194, 194, 194);
+}
+
+.project-task-preview:hover {
+  box-shadow: 1px 3px 5px gray;
+}
+
+.project-task-preview h2 {
+  font-size: 20;
+  color: #f1356d;
+  padding-left: 4px;
+}
+
+.project-task-preview h3 {
+  font-size: 10;
+  color: rgb(0, 0, 0);
+  padding-bottom: 7px;
+  padding-left: 4px;
+}
+
+.project-task-preview a {
+  text-decoration: none;
+}
+
 .add-task-button-wrapper {
   margin-top: 30px;
+}
+
+.task-complete-button {
+  background: blue;
+  color: #fff;
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 20px;
+  text-decoration: none;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+.task-delete-button {
+  background: green;
+  color: #fff;
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 20px;
+  text-decoration: none;
+  margin-bottom: 10px;
+  margin-right: 10px;
 }
 
 

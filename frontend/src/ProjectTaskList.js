@@ -46,15 +46,15 @@ const ProjectTaskList = ({ project_tasks }) => {
     return (
         <div className="project-tasks-list">
             {project_tasks.map((task) => (
-                <div className="preview" key={task.id}>
+                <div className="project-task-preview" key={task.id}>
                         <div>
                             <h2>{task.description}</h2>
                             <h3>Due date: {task.due_date}</h3>
                         </div>
                         
                         <h3>Priority: {task.priority}</h3>
-                        <button onClick={handleComplete(task)}>Complete</button>
-                        <button onClick={handleDelete(task)}>Delete</button>
+                        <button className="task-complete-button" onClick={handleComplete(task)}>Complete</button>
+                        <button className="task-delete-button"onClick={handleDelete(task)}>Delete</button>
                 </div>
             ))}
         </div>
