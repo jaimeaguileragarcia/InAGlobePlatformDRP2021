@@ -47,8 +47,16 @@ const AddUser = () => {
         })
     }
 
+    const handleReturn = e => {
+        history.push('/');
+    }
+
     return (
         <div className="add-user">
+            <div className="ret-prev-page">
+                <button onClick={handleReturn}>Back to Dashboard</button>
+            </div>
+            <br />
             <h2>Add a new user</h2>
             <form onSubmit={handleSubmit}>
                 <label>Username</label>

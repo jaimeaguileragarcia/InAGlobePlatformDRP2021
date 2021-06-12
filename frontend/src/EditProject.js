@@ -30,8 +30,16 @@ const EditProject = () => {
         })
     }
 
+    const handleReturn = e => {
+        history.push('/projects/' + id);
+    }
+
     return (
         <div className="edit-project">
+            <div className="ret-prev-page">
+                <button onClick={handleReturn}>Back to Project Page</button>
+            </div>
+            <br />
             <h2>Edit project</h2>
             { isPending && <h2>Loading...</h2> }
             { name && <form onSubmit={handleSubmit(onSubmit)}>

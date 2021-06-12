@@ -36,8 +36,16 @@ const EditUser = () => {
         })
     }
 
+    const handleReturn = e => {
+        history.push('/users/' + username);
+    }
+
     return (
         <div className="edit-user">
+            <div className="ret-prev-page">
+                <button onClick={handleReturn}>Back to User Page</button>
+            </div>
+            <br />
             <h2>Edit user</h2>
             { isPending && <h2>Loading...</h2> }
             { firstname && <form onSubmit={handleSubmit(onSubmit)}>

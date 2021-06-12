@@ -179,7 +179,7 @@
 .create-project .edit-project, .edit-user, .add-project-task{
   max-width: 400px;
   margin: 0 auto;
-  text-align: center;
+  /* text-align: center; */
 }
 .create-project label, .edit-project label, .add-user label, .edit-user label, .add-todo-form label, 
 .add-project-task label{
@@ -512,6 +512,22 @@ Note: Beware of modifying this element as it can break the animations - you shou
   margin-right: 10px;
 }
 
+/* Return to previous page button */
 
+.ret-prev-page button {
+  text-align: left;
+  background: #33282b00;
+  color: rgb(75, 71, 71);
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  text-decoration: underline;
+  margin-bottom: 30px;
+  margin-right: 10px;
+}
 
-
+.ret-prev-page button:hover {
+  background: #33282b00;
+}

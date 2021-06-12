@@ -25,8 +25,16 @@ const CreateProject = () => {
         })
     }
 
+    const handleReturn = e => {
+        history.push('/');
+    }
+
     return (
         <div className="create-project">
+            <div className="ret-prev-page">
+                <button onClick={handleReturn}>Back to Dashboard</button>
+            </div>
+            <br />
             <h2>Add a new project</h2>
             <form onSubmit={handleSubmit}>
                 <label>Project name</label>

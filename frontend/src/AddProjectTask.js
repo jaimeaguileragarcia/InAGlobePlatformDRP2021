@@ -33,8 +33,16 @@ const AddProjectTask = () => {
         })
     }
 
+    const handleReturn = e => {
+        history.push('/projects/' + id + '/tasks');
+    }
+
     return (
         <div className="add-project-task">
+            <div className="ret-prev-page">
+                <button onClick={handleReturn}>Back to Project Tasks</button>
+            </div>
+            <br />
             <h2>Add a new task</h2>
             { isPending && <h2>Loading...</h2> }
             { project && <form onSubmit={handleSubmit}>

@@ -14,8 +14,16 @@ const User = () => {
             .then(()=> {history.push('/');})
       };
 
+    const handleReturn = e => {
+        history.push('/users');
+    }
+
     return (
         <div className="user">
+            <div className="ret-prev-page">
+                <button onClick={handleReturn}>Back All Users</button>
+            </div>
+            <br />
             { isPending && <h2>Loading...</h2> }
             { user && <div>
                 <h2>{user.firstname + " " + user.surname}</h2>
