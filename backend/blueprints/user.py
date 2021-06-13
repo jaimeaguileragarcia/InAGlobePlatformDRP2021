@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify, Response
 from backend.database_config.database import DB
 from backend.models.user_model import User
-import json
+
 
 user = Blueprint('user', __name__)
 
@@ -15,6 +15,18 @@ def get_all_users():
   "partnership_opportunities" : x.partnership_opportunities,
   "interests" : x.interests, "username" : x.username } for x in user_query]
   return jsonify(users_list)
+
+
+# @user.route('/users/login', methods=['POST'])
+# def login_user():
+#   username, password = (request.json['username'], request.json['password'])
+#   user = User.query.get(username)
+
+#   if bcrypt.checkpw(password, user.password):
+#     return True
+#   else:
+#     return False
+
 
 
 @user.route('/users/<username>', methods=['GET'])
@@ -46,7 +58,11 @@ def add_user():
    request.json['email'], request.json['bio'], request.json['joined'], 
    request.json['location'],request.json['availability'], 
    request.json['partnership_opportunities'], request.json['interests'])
-  entry = User(username = username, firstname = firstname, surname = surname, password = password,
+
+  salt = bcrypt.gensalt()
+  hashed = bcrypt.hashpw(password, salt)
+
+  entry = User(username = username, firstname = firstname, surname = surname, password = hashed,
               title = title, email = email, bio = bio, joined = joined, location = location, 
               availability = availability, partnership_opportunities = partnership_opportunities, 
               interests = interests)

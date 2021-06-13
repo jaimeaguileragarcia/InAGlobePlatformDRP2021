@@ -512,6 +512,24 @@ Note: Beware of modifying this element as it can break the animations - you shou
   margin-right: 10px;
 }
 
+/* Login page */
 
+.login {
+  display: flex;
+  align-items: center;
+  flex-direction: column; 
+  justify-content: center;
+  width: 100%;
+  min-height: 100%;
+  padding: 20px;
+}
 
+.login h2.inactive {
+  color: #cccccc;
+}
+
+.login h2.active {
+  color: #0d0d0d;
+  border-bottom: 2px solid #5fbae9;
+}
 

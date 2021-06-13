@@ -21,7 +21,7 @@ const CreateProject = () => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(newProject)
         }).then(() => {
-            history.push('/');
+            history.push('/home');
         })
     }
 
