@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom"
+import useFetch from './useFetch'
 
 const CreateProject = () => {
     const [name, setName] = useState("");
@@ -8,8 +9,11 @@ const CreateProject = () => {
     const [tag, setTag] = useState("Other");
     const [location, setLocation] = useState("");
     const [files, setFiles] = useState("");
+    const [username, setUsername] = useState("");
 
     const history = useHistory();
+
+    const { data: users, error, isPending } = useFetch("/users")
 
     const handleSubmit = e => {
         e.preventDefault()
@@ -56,10 +60,14 @@ const CreateProject = () => {
                 <select value={tag} onChange={(e) => setTag(e.target.value)}>
                     <option value="Social">Social</option>
                     <option value="Education">Education</option>
-                    <option value="Wash">Wash</option>
+                    <option value="Wasimport useFetch from './useFetch'h">Wash</option>
                     <option value="Environment">Environment</option>
                     <option value="Health">Health</option>
                     <option value="Other">Other</option>
+                </select>
+                <label>Volunteers assigned to this project</label>
+                <select value={username} onChange={(e) => setUsername(e.target.value)}>
+                    {users.map(user => <option value={user.username}>{user.username}</option>)}
                 </select>
                 <label>Google Drive folder</label>
                 <textarea placeholder="Copy the link to the Google Drive folder for this project" value={files} onChange={(e) => setFiles(e.target.value)}></textarea>
