@@ -10,6 +10,7 @@ const CreateProject = () => {
     const [location, setLocation] = useState("");
     const [files, setFiles] = useState("");
     const [username, setUsername] = useState("");
+    const [selectUsers, setSelectUsers] = useState([]);
 
     const history = useHistory();
 
@@ -27,6 +28,21 @@ const CreateProject = () => {
         }).then(() => {
             history.push('/');
         })
+
+
+    }
+
+    const addUser = (e) => {
+        // let target = e.target
+        // let name = target.name
+        // //here
+        // let value = Array.from(target.selectedUsers, user => user.value);
+        // setSelectUsers(value);
+
+        selectUsers.push(e.target.value)
+
+        console.log("A user has been added: " + e.target.value)
+        console.log("The users are now: " + selectUsers.map((user) => user.firstname))
     }
 
     return (
@@ -60,13 +76,13 @@ const CreateProject = () => {
                 <select value={tag} onChange={(e) => setTag(e.target.value)}>
                     <option value="Social">Social</option>
                     <option value="Education">Education</option>
-                    <option value="Wasimport useFetch from './useFetch'h">Wash</option>
+                    <option value="Wash">Wash</option>
                     <option value="Environment">Environment</option>
                     <option value="Health">Health</option>
                     <option value="Other">Other</option>
                 </select>
                 <label>Volunteers assigned to this project</label>
-                <select value={username} onChange={(e) => setUsername(e.target.value)}>
+                <select name="selectUsers" multiple={true} onChange={addUser} value={selectUsers} >
                     {users.map(user => <option value={user.username}>{user.username}</option>)}
                 </select>
                 <label>Google Drive folder</label>
