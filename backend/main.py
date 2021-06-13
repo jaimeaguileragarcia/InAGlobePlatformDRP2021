@@ -7,7 +7,7 @@ from backend.blueprints.user import user
 from backend.blueprints.todo import todo
 from backend.blueprints.task import task
 
-ENV = os.environ.get("ENV", "dev")
+ENV = os.environ.get("ENV")
 
 app = Flask(__name__)
 
@@ -22,7 +22,6 @@ if ENV == 'dev':
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://g205001034_u:CierkbZMND@db.doc.ic.ac.uk:5432/g205001034_u'
 else:
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://icbwsbzlctcxyx:a0d7f73e5b743a35f33d95640b517b6e7e9e5b59cd2ff10673e90372b4b34d44@ec2-34-193-112-164.compute-1.amazonaws.com:5432/deje5qriuvrh39'
-
 
 db = DB.the_database
 

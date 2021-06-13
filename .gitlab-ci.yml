@@ -4,24 +4,22 @@ stages:
 
 test-job:
   stage: test
-  variables:
-    ENV: "dev"
   script:
     - apt-get update -qy
     - apt-get install -y python3 python3-pip
     - pip3 install -r requirements.txt
+    - export ENV="dev"
     - python3 run_tests.py test
 
 heroku-deploy:
   image: ruby:latest
   stage: deploy-heroku
-  variables:
-    ENV: "prod"
   script:
    - apt-get update -qy
    - apt-get install -y python3 python3-pip
    - pip3 install -r requirements.txt
    - pip3 install python-dotenv
+   - export ENV="prod"
    - cd backend
    - python3 -m flask db upgrade
    - cd ..
