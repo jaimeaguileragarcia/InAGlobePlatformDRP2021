@@ -7,8 +7,6 @@ const slackLink = "https://slack.com/intl/en-gb/"
 export default props => {
   return (
     <Menu>
-      { window.location.pathname != "/" && 
-      <div>
       <div className="menu-item" > 
       <Link to={`/`}>Home</Link>
       </div>
@@ -24,7 +22,6 @@ export default props => {
       <div className="menu-item" > 
       <a href={slackLink} target="_blank">Go To Slack</a>
       </div>
-      </div> }
     </Menu>
   );
 };

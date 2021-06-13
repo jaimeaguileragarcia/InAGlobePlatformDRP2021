@@ -43,7 +43,7 @@ const AddUser = () => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(newUser)
         }).then(() => {
-            history.push('/home');
+            history.push('/');
         })
     }
 
