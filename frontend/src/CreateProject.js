@@ -11,6 +11,7 @@ const CreateProject = () => {
     const [files, setFiles] = useState("");
     const [selectUsers, setSelectUsers] = useState([]);
     const [username, setUsername] = useState("");
+    const [pid, setPid] = useState("");
 
     const history = useHistory();
 
@@ -26,24 +27,24 @@ const CreateProject = () => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(newProject)
         }).then(response => {
-            const project_id = response.json().id
-            selectUsers.map(user => {
-                setUsername(user.username)
-                const assign_project = { username, project_id };
-    
-                console.log("The username is " + {username})
-                console.log("The project_id is " + {project_id})
-    
-                fetch("/user_project", {
-                    method: 'POST',
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(assign_project)
-                })
-            })
-        }).then(() => {
-            history.push('/');
+            console.log(response.json())
+        }).then(data => {
+            console.log(data)
         })
 
+            // selectUsers.map(user => {
+            //     setUsername(user.username)
+            //     const assign_project = { username, project_id };
+
+            //     console.log("The username is " + {username})
+            //     console.log("The project_id is " + {project_id})
+
+            //     fetch("/user_project", {
+            //         method: 'POST',
+            //         headers: { "Content-Type": "application/json" },
+            //         body: JSON.stringify(assign_project)
+            //     })
+            // })
     }
 
     return (
