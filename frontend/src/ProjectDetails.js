@@ -44,12 +44,12 @@ const ProjectDetails = () => {
             }}>Documents</button>}
             {project && <p>{project.description}</p>}
 
-            <h2>Volunteers working on this project</h2>
+            <h3>Volunteers working on this project</h3>
             <div>
-                {users.map((username) => (
-                    <div key={username}>
+                {users.map((assignment) => (
+                    <div>
                         <div>
-                            <h2>{username}</h2>
+                            <h4>{assignment.username}</h4>
                         </div>
                     </div>
                 ))}
