@@ -19,11 +19,10 @@ import Login from './Login'
 import useToken from './useToken';
 
 function App() {
+
   const { token, setToken } = useToken();
 
-  const title = "Dashboard"
-
-  if(token != "True") {
+  if(!token) {
     return <Login setToken={setToken} />
   }
 

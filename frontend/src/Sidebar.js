@@ -1,11 +1,23 @@
 import React from 'react';
 import { slide as Menu } from 'react-burger-menu';
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
+
+const Sidebar = () => {
 
 const slackLink = "https://slack.com/intl/en-gb/"
 
-export default props => {
-  return (
+const history = useHistory();
+
+const handleSignOut = e => {
+  e.preventDefault()
+
+  localStorage.clear();
+
+  window.location.reload();
+  history.push("/");
+}
+
+return (
     <Menu>
       <div className="menu-item" > 
       <Link to={`/`}>Home</Link>
@@ -22,7 +34,13 @@ export default props => {
       <div className="menu-item" > 
       <a href={slackLink} target="_blank">Go To Slack</a>
       </div> 
+      <div className="menu-item" >
+      <button style={{textDecoration: "underline", cursor: "pointer"}} onClick={handleSignOut}>Log Out</button>
+      </div> 
     </Menu>
 
-  );
-};
+);
+
+}
+
+export default Sidebar;
