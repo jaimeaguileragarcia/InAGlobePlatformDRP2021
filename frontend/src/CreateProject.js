@@ -17,34 +17,37 @@ const CreateProject = () => {
 
     const { data: users, error, isPending } = useFetch("/users")
 
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
         e.preventDefault()
 
         const newProject = { name, description, status, tag, location, files };
 
-        fetch("/projects", {
+        const response = await fetch("/projects", {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(newProject)
-        }).then(response => {
-            console.log(response.json())
-        }).then(data => {
-            console.log(data)
-        })
+        });
 
-            // selectUsers.map(user => {
-            //     setUsername(user.username)
-            //     const assign_project = { username, project_id };
+        const responseJSON = await response.json();
+        console.log(responseJSON.id);
 
-            //     console.log("The username is " + {username})
-            //     console.log("The project_id is " + {project_id})
+        const project_id = responseJSON.id;
 
-            //     fetch("/user_project", {
-            //         method: 'POST',
-            //         headers: { "Content-Type": "application/json" },
-            //         body: JSON.stringify(assign_project)
-            //     })
-            // })
+        selectUsers.map(user => {
+            setUsername(user.username)
+            const assign_project = { username, project_id };
+
+            // console.log(username)
+            // console.log(int(pid))
+
+            fetch("/user_project", {
+                method: 'POST',
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(assign_project)
+            })
+        });
+
+        history.push("/");
     }
 
     return (
