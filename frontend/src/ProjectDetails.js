@@ -11,7 +11,7 @@ const ProjectDetails = () => {
     const handleRemove = e => {
         e.preventDefault()
         fetch("/projects/" + id, { method: 'DELETE' })
-            .then(() => { history.push('/'); })
+            .then(() => { history.push('/home'); })
     };
 
     return (

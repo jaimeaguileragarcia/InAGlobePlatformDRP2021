@@ -13,17 +13,21 @@ import Sidebar from './Sidebar'
 import EditUser from './EditUser'
 import ProjectTasks from './ProjectTasks'
 import AddProjectTask from './AddProjectTask'
-
+import Login from './Login'
 function App() {
   const title =  "Dashboard"
   return (
     <Router>
-      <div className="App">  
+      <div className="App">    
       <Sidebar />
-        <Navbar />
-        <div className="content">
-          <Switch>
+      <Navbar />
+        <div className="content">  
+      
+          <Switch> 
             <Route exact path="/">
+            <Login />
+            </Route>
+            <Route exact path="/home">
               <Home />
             </Route>
             <Route exact path="/create-project">

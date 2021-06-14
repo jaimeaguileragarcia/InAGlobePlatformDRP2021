@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify, Response
 from backend.database_config.database import DB
 from backend.models.user_model import User
-import json
+import bcrypt 
 
 user = Blueprint('user', __name__)
 
@@ -46,7 +46,10 @@ def add_user():
    request.json['email'], request.json['bio'], request.json['joined'], 
    request.json['location'],request.json['availability'], 
    request.json['partnership_opportunities'], request.json['interests'])
-  entry = User(username = username, firstname = firstname, surname = surname, password = password,
+ 
+  salt = bcrypt.gensalt()
+  hash_pswd = bcrypt.hashpw(password.encode('utf-8'), salt).decode('utf-8')
+  entry = User(username = username, firstname = firstname, surname = surname, password = hash_pswd,
               title = title, email = email, bio = bio, joined = joined, location = location, 
               availability = availability, partnership_opportunities = partnership_opportunities, 
               interests = interests)
@@ -67,7 +70,12 @@ def update_user(username):
    request.json['partnership_opportunities'], request.json['interests'])
   entry.firstname = firstname
   entry.surname = surname
-  entry.password = password
+  
+
+  salt = bcrypt.gensalt()
+  hash_pswd = bcrypt.hashpw(password.encode('utf-8'), salt)
+  entry.password = hash_pswd
+
   entry.title = title
   entry.email = email
   entry.bio = bio
@@ -87,3 +95,14 @@ def delete_user(username):
   return ''
 
 
+@user.route('/users/login', methods = ['POST'])
+def user_login():
+  username, password = (request.json['username'], request.json['password'])
+  user = User.query.get(username)
+  if user == None:
+    return jsonify(status = "False")
+    
+  if bcrypt.checkpw(password.encode('utf-8'), user.password.encode('utf-8')):
+    return jsonify(status = "True")
+  else:
+    return jsonify(status = "False")

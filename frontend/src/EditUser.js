@@ -32,7 +32,7 @@ const EditUser = () => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(e)
         }).then(() => {
-            history.push('/');
+            history.push('/home');
         })
     }
 
