@@ -20,27 +20,25 @@ const CreateProject = () => {
         e.preventDefault()
 
         const newProject = { name, description, status, tag, location, files };
-        const project_id = 0;
 
         fetch("/projects", {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(newProject)
         }).then(response => {
-            project_id = response.json().id
-        })
-
-        selectUsers.map(user => {
-            setUsername(user.username)
-            const assign_project = { username, project_id };
-
-            console.log("The username is " + username)
-            console.log("The project_id is " + project_id)
-
-            fetch("/user_project", {
-                method: 'POST',
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(assign_project)
+            const project_id = response.json().id
+            selectUsers.map(user => {
+                setUsername(user.username)
+                const assign_project = { username, project_id };
+    
+                console.log("The username is " + {username})
+                console.log("The project_id is " + {project_id})
+    
+                fetch("/user_project", {
+                    method: 'POST',
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(assign_project)
+                })
             })
         }).then(() => {
             history.push('/');
