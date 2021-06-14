@@ -9,7 +9,7 @@ const CreateProject = () => {
     const [tag, setTag] = useState("Other");
     const [location, setLocation] = useState("");
     const [files, setFiles] = useState("");
-    
+
     const [selectUsers, setSelectUsers] = useState([]);
     const [username, setUsername] = useState("");
     const [pid, setPid] = useState("");
@@ -35,17 +35,14 @@ const CreateProject = () => {
         const project_id = responseJSON.id;
 
         selectUsers.map(user => {
-            setUsername(user.username)
+            setUsername(user.username);
             const assign_project = { username, project_id };
-
-            // console.log(username)
-            // console.log(int(pid))
 
             fetch("/user_project", {
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(assign_project)
-            })
+            });
         });
 
         history.push("/");

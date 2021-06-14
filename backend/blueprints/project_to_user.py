@@ -16,7 +16,7 @@ def get_all_assignments():
  
 
 @user_project.route('/user_project/<assignment_id>', methods=['GET'])
-def get_project(assignment_id):
+def assign_project(assignment_id):
   entry = User_project.query.get(assignment_id)
   return jsonify(
         username=entry.username,
