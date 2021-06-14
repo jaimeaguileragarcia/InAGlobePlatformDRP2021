@@ -5,7 +5,7 @@ const MyProfile = () => {
     const {username} = useParams();
     const history = useHistory();
     
-    const {data: user, error, isPending} = useFetch("/users/john34")
+    const {data: user, error, isPending} = useFetch("/users/rs0409")
     
 
     return (

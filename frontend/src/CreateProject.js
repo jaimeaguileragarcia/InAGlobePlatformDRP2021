@@ -32,18 +32,13 @@ const CreateProject = () => {
 
     }
 
-    const addUser = (e) => {
-        // let target = e.target
-        // let name = target.name
-        // //here
-        // let value = Array.from(target.selectedUsers, user => user.value);
-        // setSelectUsers(value);
+    // const addUser = (e) => {
+    //     e.preventDefault()
+    //     setSelectUsers(selectUsers.concat(e.target.value))
 
-        selectUsers.push(e.target.value)
-
-        console.log("A user has been added: " + e.target.value)
-        console.log("The users are now: " + selectUsers.map((user) => user.firstname))
-    }
+    //     console.log("A user has been added: " + e.target.value)
+    //     console.log("The users are now: " + selectUsers.map(user => { return user } ))
+    // }
 
     return (
         <div className="create-project">
@@ -82,8 +77,8 @@ const CreateProject = () => {
                     <option value="Other">Other</option>
                 </select>
                 <label>Volunteers assigned to this project</label>
-                <select name="selectUsers" multiple={true} onChange={addUser} value={selectUsers} >
-                    {users.map(user => <option value={user.username}>{user.username}</option>)}
+                <select multiple={true} onChange={(e) => setSelectUsers(selectUsers.concat(e.target.value))} value={selectUsers} >
+                    {users.map(user => <option value={user.username}>{user.firstname} {user.surname}</option>)}
                 </select>
                 <label>Google Drive folder</label>
                 <textarea placeholder="Copy the link to the Google Drive folder for this project" value={files} onChange={(e) => setFiles(e.target.value)}></textarea>
