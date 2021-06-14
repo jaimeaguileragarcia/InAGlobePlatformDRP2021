@@ -10,9 +10,7 @@ const CreateProject = () => {
     const [location, setLocation] = useState("");
     const [files, setFiles] = useState("");
 
-    const [selectUsers, setSelectUsers] = useState([]);
-    const [username, setUsername] = useState("");
-    const [pid, setPid] = useState("");
+    const [selectUsernames, setSelectUsernames] = useState([]);
 
     const history = useHistory();
 
@@ -34,8 +32,7 @@ const CreateProject = () => {
 
         const project_id = responseJSON.id;
 
-        selectUsers.map(user => {
-            setUsername(user.username);
+        selectUsernames.map(username => {
             const assign_project = { username, project_id };
 
             fetch("/user_project", {
@@ -85,7 +82,7 @@ const CreateProject = () => {
                     <option value="Other">Other</option>
                 </select>
                 <label>Volunteers assigned to this project</label>
-                <select multiple={true} onChange={(e) => setSelectUsers(selectUsers.concat(e.target.value))} value={selectUsers} >
+                <select multiple={true} onChange={(e) => setSelectUsernames(selectUsernames.concat(e.target.value))} value={selectUsernames} >
                     {users.map(user => <option value={user.username}>{user.firstname} {user.surname}</option>)}
                 </select>
                 <label>Google Drive folder</label>
