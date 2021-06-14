@@ -9,7 +9,6 @@ const CreateProject = () => {
     const [tag, setTag] = useState("Other");
     const [location, setLocation] = useState("");
     const [files, setFiles] = useState("");
-    const [username, setUsername] = useState("");
     const [selectUsers, setSelectUsers] = useState([]);
 
     const history = useHistory();
@@ -25,20 +24,24 @@ const CreateProject = () => {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(newProject)
-        }).then(() => {
-            history.push('/');
+        }).then(response => {
+            console.log(response)
+            history.push("/")
         })
+
+        // selectUsers.map(user => 
+        //     const {assign_project} = { user.username, newProject }
+        //     fetch("/user_project", {
+        //         method: 'POST',
+        //         headers: { "Content-Type": "application/json" },
+        //         body: JSON.stringify(newProject)
+        //     }).then(() => {
+        //         history.push('/');
+        //     }
+        //     )
 
 
     }
-
-    // const addUser = (e) => {
-    //     e.preventDefault()
-    //     setSelectUsers(selectUsers.concat(e.target.value))
-
-    //     console.log("A user has been added: " + e.target.value)
-    //     console.log("The users are now: " + selectUsers.map(user => { return user } ))
-    // }
 
     return (
         <div className="create-project">
@@ -76,10 +79,10 @@ const CreateProject = () => {
                     <option value="Health">Health</option>
                     <option value="Other">Other</option>
                 </select>
-                <label>Volunteers assigned to this project</label>
+                {/* <label>Volunteers assigned to this project</label>
                 <select multiple={true} onChange={(e) => setSelectUsers(selectUsers.concat(e.target.value))} value={selectUsers} >
                     {users.map(user => <option value={user.username}>{user.firstname} {user.surname}</option>)}
-                </select>
+                </select> */}
                 <label>Google Drive folder</label>
                 <textarea placeholder="Copy the link to the Google Drive folder for this project" value={files} onChange={(e) => setFiles(e.target.value)}></textarea>
                 <button>Add project</button>

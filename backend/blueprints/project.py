@@ -41,7 +41,7 @@ def upload_project():
                         request.json['location'], request.json['files'])
   entry = Project(name=name, status=status, description=description, tag=tag, location=location, files=files)
   DB.add(entry)
-  return ''
+  return entry.id
 
 @project.route('/projects/<project_id>', methods=['POST'])
 def update_project(project_id):

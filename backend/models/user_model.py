@@ -64,7 +64,7 @@ class User_project(db.Model):
 
     def serialize(self):
         return jsonify(
-            surname = self.surname,
+            username = self.username,
             project_id = self.project_id,
             id = self.id
             )
