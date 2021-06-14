@@ -1,7 +1,9 @@
+import React, { useState } from 'react';
+import {HashRouter as Router, Route, Switch} from 'react-router-dom'
+
 import Navbar from './Navbar'
 import Home from './Home'
 import CreateProject from './CreateProject'
-import {HashRouter as Router, Route, Switch} from 'react-router-dom'
 import ProjectDetails from './ProjectDetails'
 import PageNotFound from './PageNotFound'
 import MyProfile from './MyProfile'
@@ -14,20 +16,25 @@ import EditUser from './EditUser'
 import ProjectTasks from './ProjectTasks'
 import AddProjectTask from './AddProjectTask'
 import Login from './Login'
+import useToken from './useToken';
+
 function App() {
-  const title =  "Dashboard"
+  const { token, setToken } = useToken();
+
+  const title = "Dashboard"
+
+  if(token != "True") {
+    return <Login setToken={setToken} />
+  }
+
   return (
     <Router>
       <div className="App">    
       <Sidebar />
-      <Navbar />
-        <div className="content">  
-      
-          <Switch> 
+        <Navbar />
+        <div className="content">   
+          <Switch>
             <Route exact path="/">
-            <Login />
-            </Route>
-            <Route exact path="/home">
               <Home />
             </Route>
             <Route exact path="/create-project">

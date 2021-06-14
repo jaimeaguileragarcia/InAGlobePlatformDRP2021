@@ -11,7 +11,7 @@ const User = () => {
     const handleRemove = e => {
         e.preventDefault()
         fetch("/users/" + username, {method: 'DELETE'})
-            .then(()=> {history.push('/home');})
+            .then(()=> {history.push('/');})
       };
 
     return (

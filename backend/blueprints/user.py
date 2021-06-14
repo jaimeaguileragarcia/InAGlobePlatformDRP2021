@@ -100,9 +100,9 @@ def user_login():
   username, password = (request.json['username'], request.json['password'])
   user = User.query.get(username)
   if user == None:
-    return jsonify(status = "False")
+    return jsonify(token = "False")
     
   if bcrypt.checkpw(password.encode('utf-8'), user.password.encode('utf-8')):
-    return jsonify(status = "True")
+    return jsonify(token = "True")
   else:
-    return jsonify(status = "False")
+    return jsonify(token = "False")

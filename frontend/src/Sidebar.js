@@ -5,9 +5,6 @@ import { Link } from 'react-router-dom'
 const slackLink = "https://slack.com/intl/en-gb/"
 
 export default props => {
-  if (window.location.pathname.match('/')){
-    return null;
-  }
   return (
     <Menu>
       <div className="menu-item" > 
