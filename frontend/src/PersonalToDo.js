@@ -1,5 +1,7 @@
 import useFetch from './useFetch'
 import { useState } from "react";
+import { useTracking } from 'react-tracking'
+import useToken from './useToken';
 
 const PersonalToDo = ({ todos, title }) => {
 
@@ -14,7 +16,18 @@ const PersonalToDo = ({ todos, title }) => {
     const [due_date, setDueDate] = useState(Date.now());
     const [username, setUsername] = useState("none");
 
+    const { trackEvent } = useTracking({}, { dispatch: data => console.log(data) })
+    const {setToken, token} = useToken();
+
     const handleSubmit = e => {
+
+        trackEvent({
+            timestamp: Date.now(),
+            due_date: due_date,
+            user_assigned: username,
+            user_assigning: token
+        })
+
         document.getElementsByClassName("add-todo-form")[0].style.display = "none";
 
         e.preventDefault();

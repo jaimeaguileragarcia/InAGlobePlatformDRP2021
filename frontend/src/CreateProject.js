@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom"
 import useFetch from './useFetch'
+import { useTracking } from 'react-tracking'
 
 const CreateProject = () => {
     const [name, setName] = useState("");
@@ -16,7 +17,16 @@ const CreateProject = () => {
 
     const { data: users, error, isPending } = useFetch("/users")
 
+    const { trackEvent } = useTracking({}, { dispatch: data => console.log(data) })
+
     const handleSubmit = async e => {
+
+        trackEvent({
+            timestamp: Date.now(),
+            users_attacked: selectUsernames.length,
+            status: status
+        })
+
         e.preventDefault()
 
         const newProject = { name, description, status, tag, location, files };

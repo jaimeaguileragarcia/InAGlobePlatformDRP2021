@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom"
 import { useParams } from "react-router"
 import useFetch from "./useFetch";
+import { useTracking } from 'react-tracking'
 
 const AddProjectTask = () => {
     const [description, setDescription] = useState("");
@@ -11,10 +12,20 @@ const AddProjectTask = () => {
     const { id } = useParams();
     const { data: project, error, isPending } = useFetch("/projects/" + id)
 
+    const { trackEvent } = useTracking({}, { dispatch: data => console.log(data) })
+
 
     const history = useHistory();
 
     const handleSubmit = e => {
+
+        trackEvent({
+            project_id: id,
+            timestamp: Date.now(),
+            completed: completed,
+            priority: priority
+        })
+
         e.preventDefault()
 
         const newProjectTask = {

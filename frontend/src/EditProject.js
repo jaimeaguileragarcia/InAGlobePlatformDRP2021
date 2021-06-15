@@ -1,12 +1,16 @@
 import { useHistory, useParams } from "react-router-dom"
 import { useForm } from "react-hook-form"
 import useFetch from './useFetch'
+import { useTracking } from 'react-tracking'
 
 const EditProject = () => {
     const { id } = useParams();
     const { data: {name, description, status, location, tag, files}, error, isPending } = useFetch("/projects/" + id)
 
+    const { trackEvent } = useTracking({}, { dispatch: data => console.log(data) })
+
     const history = useHistory();
+
     const oldProjectDetails = {
         name: name,
         description: description,
@@ -21,6 +25,13 @@ const EditProject = () => {
     });
 
     const onSubmit = e => {
+
+        trackEvent({
+            timestamp: Date.now(),
+            old_details: oldProjectDetails,
+            new_details: e
+        })
+
         fetch("/projects/" + id, {
             method: 'POST',
             headers: { "Content-Type": "application/json" },

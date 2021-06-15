@@ -1,11 +1,14 @@
 import { Link, useHistory, useParams } from "react-router-dom"
 import { useForm } from "react-hook-form"
 import useFetch from './useFetch'
+import { useTracking } from 'react-tracking'
 
 const EditUser = () => {
     const { username } = useParams();
     const { data: {firstname, surname, password, title, email, bio, joined, 
         location, availability, partnership_opportunities, interests}, error, isPending } = useFetch("/users/" + username)
+        
+    const { trackEvent } = useTracking({}, { dispatch: data => console.log(data) })
 
     const history = useHistory();
     const oldUserDetails = {
@@ -27,6 +30,13 @@ const EditUser = () => {
     });
 
     const onSubmit = e => {
+
+        trackEvent({
+            timestamp: Date.now(),
+            old_details: oldUserDetails,
+            new_details: e
+        })
+
         fetch("/users/" + username, {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
