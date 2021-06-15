@@ -1,10 +1,12 @@
 import { useHistory, useParams } from 'react-router';
 import useFetch from './useFetch'
 import { Link } from "react-router-dom"
+import useToken from './useToken';
 
 const User = () => {
     const {username} = useParams();
     const history = useHistory();
+    const {setToken, token} = useToken();
     
     const {data: user, error, isPending} = useFetch("/users/" + username)
     
@@ -47,9 +49,9 @@ const User = () => {
                 <p>{user.interests}</p>
             </div> }
 
-            { user && username != "jaimeaguilera" && <button onClick={handleRemove}>Delete user</button> }
+            { user && (username == "jaimeaguilera" || username == token) && <button onClick={handleRemove}>Delete user</button> }
             
-            { user && <Link to={`/edit-user/${username}`} className="edit-user-button">Edit details</Link> }
+            { user && (username == "jaimeaguilera" || username == token) && <Link to={`/edit-user/${username}`} className="edit-user-button">Edit details</Link> }
     </div>
     );
 }

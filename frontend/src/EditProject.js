@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useHistory, useParams } from "react-router-dom"
 import { useForm } from "react-hook-form"
 import useFetch from './useFetch'
@@ -5,6 +6,8 @@ import useFetch from './useFetch'
 const EditProject = () => {
     const { id } = useParams();
     const { data: {name, description, status, location, tag, files}, error, isPending } = useFetch("/projects/" + id)
+    const { data: users, errorUsers, isPendingUsers } = useFetch("/users")
+    const [selectUsernames, setSelectUsernames] = useState([]);
 
     const history = useHistory();
     const oldProjectDetails = {
@@ -26,7 +29,16 @@ const EditProject = () => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(e)
         }).then(() => {
-            history.push('/');
+            selectUsernames.map(username => {
+                const assign_project = { username: username, project_id: id };
+
+                fetch("/user_project", {
+                    method: 'POST',
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(assign_project)
+                });
+            });}).then(() => {
+                history.push('/');
         })
     }
 
@@ -64,6 +76,10 @@ const EditProject = () => {
                     <option value="Environment">Environment</option>
                     <option value="Health">Health</option>
                     <option value="Other">Other</option>
+                </select>
+                <label>Volunteers assigned to this project</label>
+                <select multiple={true} onChange={(e) => setSelectUsernames(selectUsernames.concat(e.target.value))} value={selectUsernames} >
+                    {users.map(user => <option value={user.username}>{user.firstname} {user.surname}</option>)}
                 </select>
                 <label>Google Drive folder</label>
                 <textarea {...register("files")} name="files" placeholder="Insert Google Drive Folder link here"></textarea>

@@ -53,7 +53,7 @@ const ProjectTaskList = ({ project_tasks }) => {
                         </div>
                         
                         <h3>Priority: {task.priority}</h3>
-                        <button className="task-complete-button" onClick={handleComplete(task)}>Complete</button>
+                        { !task.completed && <button className="task-complete-button" onClick={handleComplete(task)}>Complete</button> }
                         <button className="task-delete-button"onClick={handleDelete(task)}>Delete</button>
                 </div>
             ))}

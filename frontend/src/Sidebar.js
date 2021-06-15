@@ -32,7 +32,7 @@ return (
       <Link to={`/users`}>All Users</Link>
       </div>
       <div className="menu-item" > 
-      <Link to={`/add-user`}>Add User</Link>
+      <Link to={`/projects`}>All Projects</Link>
       </div>
       <div className="menu-item" > 
       <a href={slackLink} target="_blank">Go To Slack</a>

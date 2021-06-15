@@ -48,7 +48,7 @@ const CreateProject = () => {
         <div className="create-project">
             <h2>Add a new project</h2>
             <form onSubmit={handleSubmit}>
-                <label>Project name</label>
+                <label>Project name [required]</label>
                 <input
                     type="text"
                     required
@@ -56,7 +56,7 @@ const CreateProject = () => {
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Input project name"
                 />
-                <label>Description</label>
+                <label>Description [required]</label>
                 <textarea required placeholder="Add some awesome description!" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
                 <label>Status</label>
                 <select value={status} onChange={(e) => setStatus(e.target.value)}>
@@ -71,8 +71,8 @@ const CreateProject = () => {
                     onChange={(e) => setLocation(e.target.value)}
                     placeholder="Eg: United Kingdom"
                 />
-                <label>Type of project</label>
-                <select value={tag} onChange={(e) => setTag(e.target.value)}>
+                <label>Type of project [required]</label>
+                <select required value={tag} onChange={(e) => setTag(e.target.value)}>
                     <option value="Social">Social</option>
                     <option value="Education">Education</option>
                     <option value="Wash">Wash</option>
@@ -91,5 +91,6 @@ const CreateProject = () => {
         </div>
     );
 }
+
 
 export default CreateProject;
