@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify, Response
 from backend.database_config.database import DB
 from backend.models.user_model import User
+from backend.models.user_model import User_project
 import bcrypt 
 
 user = Blueprint('user', __name__)
@@ -90,9 +91,14 @@ def update_user(username):
 
 @user.route('/users/<username>', methods=['DELETE'])
 def delete_user(username):
+
   if username == "jaimeaguilera":
     return ''
     
+  entries = User_project.query.filter_by(username=username)
+  for e in entries:
+    DB.delete(e)
+
   entry = User.query.get(username)
   DB.delete(entry)
   return ''

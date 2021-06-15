@@ -27,13 +27,13 @@ def get_users_for_project(project_id):
 @user_project.route('/user_project/username/<username>', methods=['GET'])
 def get_projects_for_user(username):
   entries = User_project.query.filter_by(username=username)
-  project_list = [{"id" : Project.query.get(x.project_id).id,
-                    "name" : Project.query.get(x.project_id).name, 
-                    "status" : Project.query.get(x.project_id).status,
-                    "description" : Project.query.get(x.project_id).description,
-                    "tag" : Project.query.get(x.project_id).tag,
-                    "location" : Project.query.get(x.project_id).location,
-                    "files" : Project.query.get(x.project_id).files} for x in entries]
+  project_list = [{"id" : query.id,
+                    "name" : query.name, 
+                    "status" : query.status,
+                    "description" : query.description,
+                    "tag" : query.tag,
+                    "location" : query.location,
+                    "files" : query.files} for query in (Project.query.get(x.project_id) for x in entries)]
   return jsonify(project_list)
 
 @user_project.route('/user_project', methods=['POST'])
