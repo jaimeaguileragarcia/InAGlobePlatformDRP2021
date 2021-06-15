@@ -90,6 +90,9 @@ def update_user(username):
 
 @user.route('/users/<username>', methods=['DELETE'])
 def delete_user(username):
+  if username == "jaimeaguilera":
+    return ''
+    
   entry = User.query.get(username)
   DB.delete(entry)
   return ''

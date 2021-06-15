@@ -1,11 +1,13 @@
 import ProjectList from './ProjectList'
 import PersonalToDo from './PersonalToDo'
 import useFetch from './useFetch'
+import useToken from './useToken';
 
 const Home = () => {
 
     const {data: projects, errorProjects, isPendingProjects} = useFetch("/projects")
     const {data: todos, errorTodos, isPendingTodos} = useFetch("/todos")
+    const {setToken, token} = useToken();
 
     return (
         <div className="home">
@@ -17,7 +19,7 @@ const Home = () => {
             </div>
             <div className="homeTodos">
                 { isPendingTodos && <h2>Loading...</h2> }
-                { todos && <PersonalToDo todos={todos.filter(todo => todo.username === "john34")} title="Personal ToDo items"/> }
+                { todos && <PersonalToDo todos={todos.filter(todo => todo.username === token)} title="Personal ToDo items"/> }
             </div>
         </div>
         

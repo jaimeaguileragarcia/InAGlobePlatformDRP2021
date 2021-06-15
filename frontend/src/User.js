@@ -47,7 +47,7 @@ const User = () => {
                 <p>{user.interests}</p>
             </div> }
 
-            { user && <button onClick={handleRemove}>Delete user</button> }
+            { user && username != "jaimeaguilera" && <button onClick={handleRemove}>Delete user</button> }
             
             { user && <Link to={`/edit-user/${username}`} className="edit-user-button">Edit details</Link> }
     </div>
