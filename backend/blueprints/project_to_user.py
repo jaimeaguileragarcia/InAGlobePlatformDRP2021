@@ -7,22 +7,21 @@ user_project = Blueprint('user_project', __name__)
 
 @user_project.route('/user_project', methods=['GET'])
 def get_all_assignments():
-  project_query = User_project.query.all()
+  assignments = User_project.query.all()
 
-  projects_list = [{"username" : x.username,
+  assignments_list = [{"username" : x.username,
                     "project_id" : x.project_id, 
-                    "id" : x.id} for x in project_query]
-  return jsonify(projects_list)
+                    "id" : x.id} for x in assignments]
+  return jsonify(assignments_list)
  
 
-@user_project.route('/user_project/<assignment_id>', methods=['GET'])
-def get_single_assignment(assignment_id):
-  entry = User_project.query.get(assignment_id)
-  return jsonify(
-        username=entry.username,
-        project_id=entry.project_id,
-        id=entry.id
-    )
+@user_project.route('/user_project/<project_id>', methods=['GET'])
+def get_relevant_assignment(project_id):
+  entries = User_project.query.filter_by(project_id=project_id)
+  assignments_list = [{"username" : x.username,
+                    "project_id" : x.project_id, 
+                    "id" : x.id} for x in entries]
+  return jsonify(assignments_list)
 
 @user_project.route('/user_project', methods=['POST'])
 def assign_project_to_user():

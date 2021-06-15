@@ -28,7 +28,6 @@ const CreateProject = () => {
         });
 
         const responseJSON = await response.json();
-        console.log(responseJSON.id);
 
         const project_id = responseJSON.id;
 

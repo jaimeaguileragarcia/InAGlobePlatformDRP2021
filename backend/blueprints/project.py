@@ -3,6 +3,7 @@ from flask import Blueprint, request, jsonify
 from backend.database_config.database import DB
 from backend.models.project_model import Project
 from backend.models.task_model import Task
+from backend.models.user_model import User_project
 
 project = Blueprint('project', __name__)
 
@@ -63,6 +64,9 @@ def delete_project(project_id):
   tasks = Task.query.filter_by(project_id=project_id)
   for task in tasks:
     DB.delete(task)
+  assignments = User_project.query.filter_by(project_id=project_id)
+  for assignment in assignments:
+    DB.delete(assignment)
   entry = Project.query.get(project_id)
   DB.delete(entry)
   return ''

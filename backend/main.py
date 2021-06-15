@@ -6,6 +6,7 @@ from backend.blueprints.project import project
 from backend.blueprints.user import user
 from backend.blueprints.todo import todo
 from backend.blueprints.task import task
+from backend.blueprints.project_to_user import user_project
 
 ENV = os.environ.get("ENV")
 
@@ -15,6 +16,7 @@ app.register_blueprint(project)
 app.register_blueprint(user)
 app.register_blueprint(todo)
 app.register_blueprint(task)
+app.register_blueprint(user_project)
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 

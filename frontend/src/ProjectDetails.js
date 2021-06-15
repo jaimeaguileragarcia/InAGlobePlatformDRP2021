@@ -7,9 +7,9 @@ const ProjectDetails = () => {
     const history = useHistory();
 
     const { data: project, error, isPending } = useFetch("/projects/" + id)
-    const { data: user_project_assignments, errorAssignment, isPendingAssignment } = useFetch("/user_project")
+    const { data: assignments, errorAssignment, isPendingAssignment } = useFetch("/user_project/" + id)
 
-    const users = user_project_assignments.filter(user_project => (user_project.id === id))
+    // const relevantAssignments = user_project_assignments.filter(assignment => assignment.project_id === { id })
 
     const handleRemove = e => {
         e.preventDefault()
@@ -46,14 +46,15 @@ const ProjectDetails = () => {
 
             <h3>Volunteers working on this project</h3>
             <div>
-                {users.map((assignment) => (
-                    <div>
-                        <div>
-                            <h4>{assignment.username}</h4>
-                        </div>
+                {assignments.map(a => {
+                    <div className="preview" key={a.id}>
+                        <Link to={`/users/${a.username}`}>
+                            <h2>{a.username}</h2>
+                        </Link>
                     </div>
-                ))}
-
+                }
+                )
+                }
             </div>
 
             <div className="project-tasks">
