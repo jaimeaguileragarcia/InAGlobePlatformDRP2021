@@ -49,9 +49,9 @@ const User = () => {
                 <p>{user.interests}</p>
             </div> }
 
-            { user && (username == "jaimeaguilera" || username == token) && <button onClick={handleRemove}>Delete user</button> }
+            { user && (token == "jaimeaguilera" || username == token) && <button onClick={handleRemove}>Delete user</button> }
             
-            { user && (username == "jaimeaguilera" || username == token) && <Link to={`/edit-user/${username}`} className="edit-user-button">Edit details</Link> }
+            { user && (token == "jaimeaguilera" || username == token) && <Link to={`/edit-user/${username}`} className="edit-user-button">Edit details</Link> }
     </div>
     );
 }
