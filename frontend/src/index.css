@@ -170,7 +170,7 @@
 
 .create-project button, .project-details button, .edit-project-button, .add-user button, .edit-user-button, .user button, .add-task-button,
 .view-tasks-button, .add-todo-form button, .add-project-task button,
-.change-password .button, .login a, .login button, .edit-project button, .add-user-button {
+.change-password .button, .edit-project button, .add-user-button {
   background: #f1356d;
   color: #fff;
   border: 0;
@@ -185,7 +185,7 @@
 
 .create-project button:hover, .project-details button:hover, .edit-project-button:hover, .edit-user-button:hover, .user button:hover,
 .add-task-button:hover, .add-user button:hover, .edit-user button:hover, .todo-list button:hover, .add-project-task button:hover
-.view-tasks-button:hover, .change-password .button:hover, .login a:hover, .login button:hover, .edit-project button:hover,
+.view-tasks-button:hover, .change-password .button:hover, .edit-project button:hover,
 .add-user-button:hover {
   background: #8f0830;
 }
@@ -222,21 +222,81 @@
 /* Create new project form and edit project */
 
 
-.create-project .edit-project, .edit-user, .add-project-task, .change-password, .login{
+.create-project .edit-project, .edit-user, .add-project-task, .change-password{
   max-width: 400px;
   margin: 0 auto;
   text-align: center;
 }
 
+.login {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 500px;
+  height: 350px;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  box-shadow: 1px 3px 5px rgb(194, 194, 194);
+  border-radius: 6px;
+  text-align: center;
+}
+
 .create-project label, .edit-project label, .add-user label, .edit-user label, .add-todo-form label, .change-password label, 
-.add-project-task label, .login label{
+.add-project-task label{
   text-align: left;
   display: block;
   font-size: 20px;
+  align-items: center;
 }
 
-.create-project h2, .edit-project h2, .add-user h2, .edit-user h2, .add-todo-form h2, .add-project-task h2, .change-password h2,
-.login h2{
+.login h1 {
+  font-size: 40px;
+  color: #f1356d;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  align-items: center;
+}
+
+.login a {
+  font-size: 20px;
+  color: #35a6f1;
+  text-decoration: underline;
+  padding: 14px 20px;
+  margin: 8px 0;
+  margin-bottom: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.login button {
+  background: #f1356d;
+  color: #fff;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 450px;
+  margin-bottom: 20px;
+  font-size: 25px;
+}
+
+.login input {
+  width: 450px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  margin-bottom: 20px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-size: 15px;
+}
+
+.login .button:hover {
+  background: #8f0830;
+}
+
+.create-project h2, .edit-project h2, .add-user h2, .edit-user h2, .add-todo-form h2, .add-project-task h2, .change-password h2{
   font-size: 35px;
   color: #f1356d;
   margin-bottom: 30px;
@@ -244,7 +304,7 @@
 .create-project input, .create-project textarea, .create-project select,
 .edit-project input, .edit-project textarea, .edit-project select, .add-user input,
 .edit-user input, .add-todo-form input, .add-todo-form textarea, .add-todo-form select,
-.add-project-task input, .add-project-task textarea, .add-project-task select, .change-password input, .login input{
+.add-project-task input, .add-project-task textarea, .add-project-task select, .change-password input{
   width: 100%;
   padding: 6px 10px;
   margin: 10px 0;

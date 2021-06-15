@@ -38,7 +38,7 @@ return (
       <a href={slackLink} target="_blank">Go To Slack</a>
       </div> 
       <div className="menu-item" >
-      <button style={{textDecoration: "underline", cursor: "pointer"}} onClick={handleSignOut}>Log Out</button>
+      <a style={{textDecoration: "underline", cursor: "pointer"}} onClick={handleSignOut}>Log Out</a>
       </div> 
     </Menu>
 
