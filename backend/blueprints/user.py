@@ -17,6 +17,12 @@ def get_all_users():
   "interests" : x.interests, "username" : x.username } for x in user_query]
   return jsonify(users_list)
 
+@user.route('/users/user_project', methods=['GET'])
+def get_all_users_in_value_label_form():
+  user_query = User.query.all()
+
+  users_list = [{"value" : x.username, "label" : x.firstname + " " + x.surname } for x in user_query]
+  return jsonify(users_list)
 
 @user.route('/users/<username>', methods=['GET'])
 def get_id(username):

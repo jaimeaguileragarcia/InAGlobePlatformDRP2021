@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom"
+import Select from 'react-select';
 import useFetch from './useFetch'
 
 const CreateProject = () => {
@@ -14,7 +15,13 @@ const CreateProject = () => {
 
     const history = useHistory();
 
-    const { data: users, error, isPending } = useFetch("/users")
+    const { data: users, error, isPending } = useFetch("/users/user_project");
+
+    const usernames = users.map(user => user.username);
+
+    const handleChange = (e) => {
+        setSelectUsernames(Array.isArray(e) ? e.map(x => x.value) : []); 
+    }
 
     const handleSubmit = async e => {
         e.preventDefault()
@@ -41,6 +48,9 @@ const CreateProject = () => {
             });
         });
 
+        console.log(users);
+        console.log(usernames);
+        console.log(selectUsernames);
         history.push("/");
     }
 
@@ -81,9 +91,18 @@ const CreateProject = () => {
                     <option value="Other">Other</option>
                 </select>
                 <label>Volunteers assigned to this project</label>
-                <select multiple={true} onChange={(e) => setSelectUsernames(selectUsernames.concat(e.target.value))} value={selectUsernames} >
+                <Select
+                    className="dropdown"
+                    placeholder="Select Users"
+                    value={users.filter(user => selectUsernames.includes(user.value))}
+                    options={users} // set list of the usernames
+                    onChange={handleChange} // assign onChange function
+                    isMulti
+                    isClearable
+                />
+                {/* <select multiple={true} onChange={(e) => setSelectUsernames(selectUsernames.concat(e.target.value))} value={selectUsernames} >
                     {users.map(user => <option value={user.username}>{user.firstname} {user.surname}</option>)}
-                </select>
+                </select> */}
                 <label>Google Drive folder</label>
                 <textarea placeholder="Copy the link to the Google Drive folder for this project" value={files} onChange={(e) => setFiles(e.target.value)}></textarea>
                 <button>Add project</button>
