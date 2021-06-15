@@ -7,7 +7,7 @@ const ProjectDetails = () => {
     const history = useHistory();
 
     const { data: project, error, isPending } = useFetch("/projects/" + id)
-    const { data: assignments, errorAssignment, isPendingAssignment } = useFetch("/user_project/" + id)
+    const { data: assignments, errorAssignment, isPendingAssignment } = useFetch("/user_project/project/" + id)
 
     const handleRemove = e => {
         e.preventDefault()
