@@ -219,46 +219,30 @@
 
 /* Create new project form and edit project */
 
-<<<<<<< HEAD
+
 .create-project .edit-project, .edit-user, .add-project-task, .change-password, .login{
-=======
-.create-project .edit-project, .edit-user, .add-project-task {
->>>>>>> project_user_assignment
   max-width: 400px;
   margin: 0 auto;
   text-align: center;
 }
-<<<<<<< HEAD
+
 .create-project label, .edit-project label, .add-user label, .edit-user label, .add-todo-form label, .change-password label, 
 .add-project-task label, .login label{
-=======
-
-.create-project label, .edit-project label, .add-user label, .edit-user label, .add-todo-form label, .add-project-task label {
->>>>>>> project_user_assignment
   text-align: left;
   display: block;
   font-size: 20px;
 }
 
-<<<<<<< HEAD
 .create-project h2, .edit-project h2, .add-user h2, .edit-user h2, .add-todo-form h2, .add-project-task h2, .change-password h2,
 .login h2{
-=======
-.create-project h2, .edit-project h2, .add-user h2, .edit-user h2, .add-todo-form h2, .add-project-task h2 {
->>>>>>> project_user_assignment
   font-size: 35px;
   color: #f1356d;
   margin-bottom: 30px;
 }
-<<<<<<< HEAD
 .create-project input, .create-project textarea, .create-project select,
 .edit-project input, .edit-project textarea, .edit-project select, .add-user input,
 .edit-user input, .add-todo-form input, .add-todo-form textarea, .add-todo-form select,
 .add-project-task input, .add-project-task textarea, .add-project-task select, .change-password input, .login input{
-=======
-
-.create-project input, .create-project textarea, .create-project select, .edit-project input, .edit-project textarea, .edit-project select, .add-user input, .edit-user input, .add-todo-form input, .add-todo-form textarea, .add-todo-form select, .add-project-task input, .add-project-task textarea, .add-project-task select {
->>>>>>> project_user_assignment
   width: 100%;
   padding: 6px 10px;
   margin: 10px 0;
@@ -266,22 +250,6 @@
   box-sizing: border-box;
   display: block;
 }
-<<<<<<< HEAD
-=======
-
-.create-project button, .edit-project button, .add-user button, .edit-user button, .add-todo-form button, .add-project-task button {
-  background: #f1356d;
-  color: #fff;
-  border: 0;
-  padding: 8px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 25px;
-  text-decoration: none;
-  margin-bottom: 30px;
-  margin-right: 10px;
-}
->>>>>>> project_user_assignment
 
 .create-project button:hover, .edit-project button:hover, .add-user button:hover, .edit-user button:hover, .todo-list button:hover, .add-project-task button:hover {
   background: #8f0830;
@@ -579,8 +547,4 @@ Note: Beware of modifying this element as it can break the animations - you shou
   text-decoration: none;
   margin-bottom: 10px;
   margin-right: 10px;
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> project_user_assignment
