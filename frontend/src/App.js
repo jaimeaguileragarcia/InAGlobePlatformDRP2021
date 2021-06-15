@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {HashRouter as Router, Route, Switch} from 'react-router-dom'
-
+import track, { useTracking } from "react-tracking";
+import ReactDOM from "react-dom";
 import Navbar from './Navbar'
 import Home from './Home'
 import CreateProject from './CreateProject'
@@ -79,5 +80,6 @@ function App() {
     </Router>
   );
 }
+
 
 export default App;

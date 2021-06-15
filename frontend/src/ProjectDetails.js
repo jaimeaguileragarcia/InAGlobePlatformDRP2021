@@ -1,6 +1,7 @@
 import { useHistory, useParams } from 'react-router';
 import useFetch from './useFetch'
 import { Link } from "react-router-dom"
+import track, { useTracking } from 'react-tracking'
 
 const ProjectDetails = () => {
     const { id } = useParams();
@@ -9,10 +10,26 @@ const ProjectDetails = () => {
     const { data: project, error, isPending } = useFetch("/projects/" + id)
     const { data: assignments, errorAssignment, isPendingAssignment } = useFetch("/user_project/" + id)
 
+        const { trackEvent } = useTracking({}, { dispatch: data => console.log(data) })
+
+
+
     const handleRemove = e => {
+
         e.preventDefault()
         fetch("/projects/" + id, { method: 'DELETE' })
             .then(() => { history.push('/'); })
+
+    };
+
+    const handleTrack = e => {
+
+        e.preventDefault()
+
+        trackEvent({
+            event: "track-project"
+        })
+
     };
 
     return (
@@ -62,6 +79,8 @@ const ProjectDetails = () => {
 
             <div>
                 {project && <button onClick={handleRemove}>Delete project</button>}
+
+                {project && <button onClick={handleTrack}>Track project</button>}
 
                 {project && <Link to={`/edit-project/${project.id}`} className="edit-project-button">Edit project</Link>}
             </div>
