@@ -1,4 +1,4 @@
-import { useHistory, useParams } from "react-router-dom"
+import { Link, useHistory, useParams } from "react-router-dom"
 import { useForm } from "react-hook-form"
 import useFetch from './useFetch'
 
@@ -40,6 +40,7 @@ const EditUser = () => {
         <div className="edit-user">
             <h2>Edit user</h2>
             { isPending && <h2>Loading...</h2> }
+            <Link to={`/users/change-password`}>Change Password</Link>
             { firstname && <form onSubmit={handleSubmit(onSubmit)}>
                 <label htmlFor="firstname">Firstname</label>
                 <input {...register("firstname")}

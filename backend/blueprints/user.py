@@ -106,3 +106,23 @@ def user_login():
     return jsonify(token = username)
   else:
     return jsonify(token = "")
+
+
+@user.route('/users/update-password', methods = ['POST'])
+def change_user_password():
+  username, oldPassword, newPassword = (request.json['username'], request.json['oldPassword'],
+                                        request.json['newPassword'])
+  user = User.query.get(username)                                        
+  if user == None:
+    return jsonify(status = "False")
+    
+  if bcrypt.checkpw(oldPassword.encode('utf-8'), user.password.encode('utf-8')):
+    salt = bcrypt.gensalt()
+    hash_pswd = bcrypt.hashpw(newPassword.encode('utf-8'), salt)
+    user.password = hash_pswd
+
+    return jsonify(status = "True")
+
+  else:
+    return jsonify(status = "False")                                      
+

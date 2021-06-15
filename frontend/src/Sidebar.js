@@ -1,12 +1,15 @@
 import React from 'react';
 import { slide as Menu } from 'react-burger-menu';
 import { Link, useHistory } from 'react-router-dom'
+import useToken from './useToken';
 
 const Sidebar = () => {
 
 const slackLink = "https://slack.com/intl/en-gb/"
 
 const history = useHistory();
+
+const {setToken, token} = useToken();
 
 const handleSignOut = e => {
   e.preventDefault()
@@ -23,7 +26,7 @@ return (
       <Link to={`/`}>Home</Link>
       </div>
       <div className="menu-item" > 
-      <Link to={`/users/john34`}>Profile</Link>
+      <Link to={`/users/` + token}>Profile</Link>
       </div>
       <div className="menu-item" > 
       <Link to={`/users`}>All Users</Link>
