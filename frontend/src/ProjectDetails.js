@@ -9,8 +9,6 @@ const ProjectDetails = () => {
     const { data: project, error, isPending } = useFetch("/projects/" + id)
     const { data: assignments, errorAssignment, isPendingAssignment } = useFetch("/user_project/" + id)
 
-    // const relevantAssignments = user_project_assignments.filter(assignment => assignment.project_id === { id })
-
     const handleRemove = e => {
         e.preventDefault()
         fetch("/projects/" + id, { method: 'DELETE' })
@@ -45,14 +43,13 @@ const ProjectDetails = () => {
             {project && <p>{project.description}</p>}
 
             <h3>Volunteers working on this project</h3>
-            <div>
-                {assignments.map(a => {
-                    <div className="preview" key={a.id}>
+            <div className="project_user_assignment_list">
+                {assignments.map(a => (
+                    <div className="assigned_users_preview" style={{float: "left", width: "50%"}} key={a.id}>
                         <Link to={`/users/${a.username}`}>
-                            <h2>{a.username}</h2>
+                            <h4>{a.username}</h4>
                         </Link>
-                    </div>
-                }
+                    </div>)
                 )
                 }
             </div>
