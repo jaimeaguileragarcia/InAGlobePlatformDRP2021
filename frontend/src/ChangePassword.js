@@ -1,9 +1,9 @@
 
 import useToken from './useToken';
-import { useHistory } from 'react-router-dom'
-import useState from 'react'
+import { Link, useHistory } from 'react-router-dom'
+import { useState } from 'react'
 
-const ChangePassword = () =>{
+const ChangePassword = () => {
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const {setToken, token} = useToken()
@@ -15,10 +15,10 @@ async function passwordUpdate() {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(
-        token,
-        oldPassword,
-        newPassword)
+      body: JSON.stringify({
+        username: token,
+        oldPassword: oldPassword,
+        newPassword: newPassword})
     })
     .then(data => data.json())
  }
@@ -31,7 +31,7 @@ async function passwordUpdate() {
          document.getElementsByClassName("incorrect-password")[0].style.display = "block";
       }
       else{
-        history.push('/');
+        document.getElementsByClassName("password-changed-msg")[0].style.display = "block";
       }
     }
   
@@ -53,12 +53,15 @@ return (
       <button onClick={handleSubmit}>Change password</button>
 
       <h2 className="incorrect-password" style={{display: "none"}}>Incorrect password</h2>
+
+      <div className="password-changed-msg" style={{display: "none"}}>
+        <h3>Your password has been changed successfully</h3>
+        <Link to={`/`}>Back to Dashboard</Link>
+      </div>
+
   </div>
   
   )
-
-
-
 
 }
 

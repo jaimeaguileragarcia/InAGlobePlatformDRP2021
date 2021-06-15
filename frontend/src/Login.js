@@ -30,7 +30,7 @@ export default function Login({ setToken }) {
 
     return (
         <div className="login">
-            <h1> InAGlobe Platform </h1>
+            <label> InAGlobe Platform </label>
             <form onSubmit={handleSubmit}>
                 <input type="text" id="login" class="fadeIn second" name="login" placeholder="login"
                     onChange={e => setUserName(e.target.value)}/>

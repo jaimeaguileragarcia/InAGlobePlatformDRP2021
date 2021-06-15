@@ -49,15 +49,15 @@ function App() {
             <Route exact path="/users">
               <Users />  
             </Route>
+            <Route exact path="/users/change-password">
+              <ChangePassword />
+            </Route>   
             <Route exact path="/users/:username">
               <User />
             </Route>
             <Route exact path="/edit-user/:username">
               <EditUser />
-            </Route> 
-            <Route exact path="/users/change-password">
-              <ChangePassword />
-            </Route>            
+            </Route>          
             <Route exact path="/projects/:id/add-task">
               <AddProjectTask />  
             </Route>       

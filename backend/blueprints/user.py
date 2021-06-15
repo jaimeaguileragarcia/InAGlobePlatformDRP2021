@@ -119,7 +119,8 @@ def change_user_password():
   if bcrypt.checkpw(oldPassword.encode('utf-8'), user.password.encode('utf-8')):
     salt = bcrypt.gensalt()
     hash_pswd = bcrypt.hashpw(newPassword.encode('utf-8'), salt)
-    user.password = hash_pswd
+    user.password = hash_pswd.decode('utf-8')
+    DB.add(user)
 
     return jsonify(status = "True")
 
