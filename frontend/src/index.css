@@ -157,7 +157,9 @@
   margin-bottom: 30px;
 }
 
-.project-details button, .edit-project-button, .edit-user-button, .user button, .add-task-button, .view-tasks-button {
+.create-project button, .project-details button, .edit-project-button, .add-user button, .edit-user-button, .user button, .add-task-button,
+.view-tasks-button, .add-todo-form button, .add-project-task button,
+.change-password .button, .login a, .login button {
   background: #f1356d;
   color: #fff;
   border: 0;
@@ -170,25 +172,27 @@
   margin-right: 10px;
 }
 
-.project-details button:hover, .edit-project-button:hover, .edit-user-button:hover, .user button:hover, .add-task-button:hover, .view-tasks-button:hover{
+.project-details button:hover, .edit-project-button:hover, .edit-user-button:hover, .user button:hover, .add-task-button:hover,
+.view-tasks-button:hover, .change-password .button:hover, .login a:hover, .login button:hover{
   background: #8f0830;
 }
 
 /* Create new project form and edit project */
 
-.create-project .edit-project, .edit-user, .add-project-task{
+.create-project .edit-project, .edit-user, .add-project-task, .change-password, .login{
   max-width: 400px;
   margin: 0 auto;
   text-align: center;
 }
-.create-project label, .edit-project label, .add-user label, .edit-user label, .add-todo-form label, 
-.add-project-task label{
+.create-project label, .edit-project label, .add-user label, .edit-user label, .add-todo-form label, .change-password label, 
+.add-project-task label, .login label{
   text-align: left;
   display: block;
   font-size: 20px;
 }
 
-.create-project h2, .edit-project h2, .add-user h2, .edit-user h2, .add-todo-form h2, .add-project-task h2{
+.create-project h2, .edit-project h2, .add-user h2, .edit-user h2, .add-todo-form h2, .add-project-task h2, .change-password h2,
+.login h2{
   font-size: 35px;
   color: #f1356d;
   margin-bottom: 30px;
@@ -196,26 +200,13 @@
 .create-project input, .create-project textarea, .create-project select,
 .edit-project input, .edit-project textarea, .edit-project select, .add-user input,
 .edit-user input, .add-todo-form input, .add-todo-form textarea, .add-todo-form select,
-.add-project-task input, .add-project-task textarea, .add-project-task select{
+.add-project-task input, .add-project-task textarea, .add-project-task select, .change-password input, .login input{
   width: 100%;
   padding: 6px 10px;
   margin: 10px 0;
   border: 1px solid #ddd;
   box-sizing: border-box;
   display: block;
-}
-.create-project button, .edit-project button, .add-user button, .edit-user button, .add-todo-form button, 
-.add-project-task button{
-  background: #f1356d;
-  color: #fff;
-  border: 0;
-  padding: 8px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 25px;
-  text-decoration: none;
-  margin-bottom: 30px;
-  margin-right: 10px;
 }
 
 .create-project button:hover, .edit-project button:hover, .add-user button:hover, .edit-user button:hover, .todo-list button:hover,
@@ -306,7 +297,6 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 /* General sidebar styles */
 .bm-menu {
-  background: #373a47;
   padding: 2.5em 1.5em 0;
   font-size: 1.15em;
 }
@@ -511,7 +501,3 @@ Note: Beware of modifying this element as it can break the animations - you shou
   margin-bottom: 10px;
   margin-right: 10px;
 }
-
-
-
-
