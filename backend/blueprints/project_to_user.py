@@ -3,6 +3,7 @@ from flask import Blueprint, request, jsonify
 from backend.database_config.database import DB
 from backend.models.user_model import User_project
 from backend.models.project_model import Project
+from backend.models.user_model import User
 
 user_project = Blueprint('user_project', __name__)
 
@@ -23,6 +24,14 @@ def get_users_for_project(project_id):
                     "project_id" : x.project_id, 
                     "id" : x.id} for x in entries]
   return jsonify(assignments_list)
+
+@user_project.route('/user_project/project_task/<project_id>', methods=['GET'])
+def get_users_for_project_for_tasks(project_id):
+  entries = User_project.query.filter_by(project_id=project_id)
+  assigned_users = [{"value" : query.username,
+                     "label" : query.firstname + " " + query.surname}
+                     for query in (User.query.get(x.username) for x in entries)]
+  return jsonify(assigned_users)
 
 @user_project.route('/user_project/username/<username>', methods=['GET'])
 def get_projects_for_user(username):

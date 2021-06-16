@@ -14,19 +14,7 @@ const AddProjectTask = () => {
     const [assignedUsers, setAssignedUsers] = useState([]);
 
     const { data: project, error, isPending } = useFetch("/projects/" + id)
-    const participants = [
-        {
-            "value": "john34",
-            "label": "John Smith"
-        },
-        {
-            "value": "rs0408",
-            "label": "JRahil Shah"
-        },{
-            "value": "ew1234",
-            "label": "Ethan Weitzman"
-        }
-    ]
+    const { data: participants, errorParticipants, isPendingParticipants } = useFetch("/user_project/project_task/" + id) 
 
     const history = useHistory();
 
