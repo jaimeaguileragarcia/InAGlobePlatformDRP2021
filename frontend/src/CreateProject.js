@@ -48,9 +48,6 @@ const CreateProject = () => {
             });
         });
 
-        console.log(users);
-        console.log(usernames);
-        console.log(selectUsernames);
         history.push("/");
     }
 
@@ -100,9 +97,6 @@ const CreateProject = () => {
                     isMulti
                     isClearable
                 />
-                {/* <select multiple={true} onChange={(e) => setSelectUsernames(selectUsernames.concat(e.target.value))} value={selectUsernames} >
-                    {users.map(user => <option value={user.username}>{user.firstname} {user.surname}</option>)}
-                </select> */}
                 <label>Google Drive folder</label>
                 <textarea placeholder="Copy the link to the Google Drive folder for this project" value={files} onChange={(e) => setFiles(e.target.value)}></textarea>
                 <button>Add project</button>
