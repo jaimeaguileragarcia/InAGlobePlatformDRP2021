@@ -6,7 +6,7 @@ from flask import jsonify
 db = DB.the_database
 
 class Todo(db.Model):
-    priority = db.Column(db.Integer)
+    priority = db.Column(db.String)
     todo_desc = db.Column(db.String)
     due_date = db.Column(db.Date)
     username = db.Column(db.String, ForeignKey('user.username'))

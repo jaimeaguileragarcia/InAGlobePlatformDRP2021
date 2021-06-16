@@ -7,7 +7,7 @@ db = DB.the_database
 
 class Task(db.Model):
     description = db.Column(db.String)
-    priority = db.Column(db.Integer)
+    priority = db.Column(db.String)
     completed = db.Column(db.Boolean)
     due_date = db.Column(db.Date)
     project_id = db.Column(db.Integer, ForeignKey('project.id'))
@@ -35,8 +35,8 @@ class Task(db.Model):
             )
 
 class AssignedTasks(db.Model):
-    task_id = db.Column(db.Integer)
-    username = db.Column(db.String)
+    task_id = db.Column(db.Integer, ForeignKey('task.id'), nullable=False)
+    username = db.Column(db.String, ForeignKey('user.username'), nullable=False)
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)  
 
     def save(self):

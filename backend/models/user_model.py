@@ -12,7 +12,7 @@ class User(db.Model):
     title = db.Column(db.String)
     email = db.Column(db.String)
     bio = db.Column(db.String)
-    joined = db.Column(db.String)
+    joined = db.Column(db.Date)
     location = db.Column(db.String)
     availability = db.Column(db.String)
     partnership_opportunities = db.Column(db.String)
