@@ -1,9 +1,9 @@
 from re import T
 from flask import Blueprint, request, jsonify
 from backend.database_config.database import DB
-from backend.models.user_model import User_project
+from backend.models.user_model import User_project, User
 from backend.models.project_model import Project
-from backend.models.user_model import User
+
 
 user_project = Blueprint('user_project', __name__)
 

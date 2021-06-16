@@ -11,6 +11,7 @@ class User(db.Model):
     password = db.Column(db.String)
     title = db.Column(db.String)
     email = db.Column(db.String)
+    phone_no = db.Column(db.String)
     bio = db.Column(db.String)
     joined = db.Column(db.Date)
     location = db.Column(db.String)

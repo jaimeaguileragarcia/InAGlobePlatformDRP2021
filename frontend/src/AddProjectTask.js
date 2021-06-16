@@ -46,7 +46,7 @@ const AddProjectTask = () => {
             });
         });
 
-        history.push("/");
+        history.push("/projects/" + id);
     }
 
     return (

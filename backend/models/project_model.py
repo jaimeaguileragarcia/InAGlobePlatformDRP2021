@@ -12,7 +12,6 @@ class Project(db.Model):
     tag = db.Column(db.String)
     location = db.Column(db.String)
     files = db.Column(db.String)
-    # list of ngos and academics and users need to be separate tables
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 
     def save(self):
