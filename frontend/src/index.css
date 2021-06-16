@@ -170,7 +170,7 @@
 
 .create-project button, .project-details button, .edit-project-button, .add-user button, .edit-user-button, .user button, .add-task-button,
 .view-tasks-button, .add-todo-form button, .add-project-task button,
-.change-password .button, .edit-project button, .add-user-button {
+.change-password button, .edit-project button, .add-user-button, .edit-user button {
   background: #f1356d;
   color: #fff;
   border: 0;
@@ -185,7 +185,7 @@
 
 .create-project button:hover, .project-details button:hover, .edit-project-button:hover, .edit-user-button:hover, .user button:hover,
 .add-task-button:hover, .add-user button:hover, .edit-user button:hover, .todo-list button:hover, .add-project-task button:hover
-.view-tasks-button:hover, .change-password .button:hover, .edit-project button:hover,
+.view-tasks-button:hover, .change-password button:hover, .edit-project button:hover,
 .add-user-button:hover {
   background: #8f0830;
 }

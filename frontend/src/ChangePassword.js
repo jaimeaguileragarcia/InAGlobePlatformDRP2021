@@ -40,14 +40,14 @@ return (
       <h2>Change Password</h2>
       <label >Current Password</label>
       <input  
-      onChange={(e) => setOldPassword(e.target.value)}
-      placeholder="Current Password"
+        onChange={(e) => setOldPassword(e.target.value)}
+        placeholder="Current Password"
       />
 
       <label >New Password</label>
       <input  
-      onChange={(e) => setNewPassword(e.target.value)}
-      placeholder="New Password"
+        onChange={(e) => setNewPassword(e.target.value)}
+        placeholder="New Password"
       />
 
       <button onClick={handleSubmit}>Change password</button>
