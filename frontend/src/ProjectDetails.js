@@ -25,7 +25,8 @@ const ProjectDetails = () => {
                 marginBottom: '30px',
                 marginright: '10px',
                 borderRadius: '8px',
-                backgroundColor: '#f1b535'
+                backgroundColor: '#f1b535',
+                cursor: 'default'
             }}>Status: {project.status}</button>}
             {project && <button style={{
                 fontSize: '20px',
@@ -33,7 +34,8 @@ const ProjectDetails = () => {
                 marginBottom: '30px',
                 marginRight: '10px',
                 borderRadius: '8px',
-                backgroundColor: '#595bc0'
+                backgroundColor: '#595bc0',
+                cursor: 'default'
             }}>{project.tag}</button>}
             {project && <h4>Location: {project.location}</h4>}
             {project && <button onClick={(e) => {

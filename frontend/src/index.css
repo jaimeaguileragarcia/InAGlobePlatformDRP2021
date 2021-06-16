@@ -170,7 +170,7 @@
 
 .create-project button, .project-details button, .edit-project-button, .add-user button, .edit-user-button, .user button, .add-task-button,
 .view-tasks-button, .add-todo-form button, .add-project-task button,
-.change-password .button, .edit-project button, .add-user-button {
+.change-password button, .edit-project button, .add-user-button, .edit-user button {
   background: #f1356d;
   color: #fff;
   border: 0;
@@ -185,7 +185,7 @@
 
 .create-project button:hover, .project-details button:hover, .edit-project-button:hover, .edit-user-button:hover, .user button:hover,
 .add-task-button:hover, .add-user button:hover, .edit-user button:hover, .todo-list button:hover, .add-project-task button:hover
-.view-tasks-button:hover, .change-password .button:hover, .edit-project button:hover,
+.view-tasks-button:hover, .change-password button:hover, .edit-project button:hover,
 .add-user-button:hover {
   background: #8f0830;
 }
@@ -228,13 +228,13 @@
   text-align: center;
 }
 
-.login {
+.login, .forgot-password {
   margin: 0;
   position: absolute;
   top: 50%;
   left: 50%;
   width: 500px;
-  height: 350px;
+  height: 430px;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   box-shadow: 1px 3px 5px rgb(194, 194, 194);
@@ -250,7 +250,7 @@
   align-items: center;
 }
 
-.login h1 {
+.login h1, .forgot-password h1{
   font-size: 40px;
   color: #f1356d;
   margin-bottom: 20px;
@@ -258,7 +258,15 @@
   align-items: center;
 }
 
-.login a {
+.login h2, .forgot-password h2{
+  font-size: 20px;
+  color: #271a1e;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  align-items: center;
+}
+
+.login .links {
   font-size: 20px;
   color: #35a6f1;
   text-decoration: underline;
@@ -269,7 +277,7 @@
   cursor: pointer;
 }
 
-.login button {
+.login button, .forgot-password button {
   background: #f1356d;
   color: #fff;
   padding: 14px 20px;
@@ -281,7 +289,7 @@
   font-size: 25px;
 }
 
-.login input {
+.login input, .forgot-password input {
   width: 450px;
   padding: 12px 20px;
   margin: 8px 0;
@@ -292,7 +300,7 @@
   font-size: 15px;
 }
 
-.login .button:hover {
+.login .button:hover, .forgot-password button:hover {
   background: #8f0830;
 }
 

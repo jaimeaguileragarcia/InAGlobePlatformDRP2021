@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom'
 
 async function loginUser(credentials) {
     return fetch('/users/login', {
@@ -24,8 +25,11 @@ export default function Login({ setToken }) {
         });
         if(token.token != "") {
             setToken(token);
+        } else {
+            document.getElementsByClassName("incorrect-password")[0].style.display = "block";
+
         }
-      }
+    }
     
 
     return (
@@ -39,7 +43,9 @@ export default function Login({ setToken }) {
                 <div className="incorrect-password" style={{display: 'none'}}>
                     <h2>Incorrect password!</h2>
                 </div>
-                <a>Forgot Password?</a>
+                <div className="links">
+                    <Link to={`/forgot-password`}>Forgot Password</Link>
+                </div>
                 <button type="submit">Log In</button>
             </form>
         </div>
