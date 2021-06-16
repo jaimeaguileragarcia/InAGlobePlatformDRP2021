@@ -22,23 +22,31 @@ const AddProjectTask = () => {
         setAssignedUsers(Array.isArray(e) ? e.map(x => x.value) : []); 
     }
 
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
         e.preventDefault()
 
-        const newProjectTask = {
-            description,
-            due_date,
-            priority,
-            completed
-        }
+        const newProjectTask = { description, due_date, priority, completed };
 
-        fetch("/projects/" + project.id + "/tasks", {
+        const response = await fetch("/projects/" + project.id + "/tasks", {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(newProjectTask)
-        }).then(() => {
-            history.push('/projects/' + id + '/tasks');
-        })
+        });
+
+        const responseJSON = await response.json();
+        const task_id = responseJSON.id;
+
+        assignedUsers.map(username => {
+            const assigned_task = { username, task_id };
+
+            fetch("/assigned_task", {
+                method: 'POST',
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(assigned_task)
+            });
+        });
+
+        history.push("/");
     }
 
     return (

@@ -31,7 +31,7 @@ def add_project_task(project_id):
     is_completed = False
   entry = Task(due_date=due_date, priority=priority, description=description, completed=is_completed, project_id=project_id)
   DB.add(entry)
-  return ''              
+  return jsonify(id=entry.id)              
 
 
 @task.route('/projects/<project_id>/tasks/<task_id>', methods=['POST'])
