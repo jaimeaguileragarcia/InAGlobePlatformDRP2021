@@ -43,7 +43,7 @@ const AddUser = () => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(newUser)
         }).then(() => {
-            history.push('/');
+            history.push('/users');
         })
     }
 
@@ -51,7 +51,7 @@ const AddUser = () => {
         <div className="add-user">
             <h2>Add a new user</h2>
             <form onSubmit={handleSubmit}>
-                <label>Username</label>
+                <label>Username [required]</label>
                 <input
                     type="text"
                     required
@@ -61,7 +61,7 @@ const AddUser = () => {
                 />
 
 
-                <label>Firstname</label>
+                <label>Firstname [required]</label>
                 <input
                     type="text"
                     required
@@ -70,7 +70,7 @@ const AddUser = () => {
                     placeholder="Input your first name here"
                 />
 
-                <label>Surname</label>
+                <label>Surname [required]</label>
                 <input
                     type="text"
                     required
@@ -79,7 +79,7 @@ const AddUser = () => {
                     placeholder="Input surname here"
                 />
 
-                <label>Title</label>
+                <label>Title [required]</label>
                 <input
                     type="text"
                     required
@@ -88,7 +88,7 @@ const AddUser = () => {
                     placeholder="State your role at InAGlobe (eg: volunteer)"
                 />
 
-                <label>Password</label>
+                <label>Password [required]</label>
                 <input
                     type="text"
                     required
@@ -97,7 +97,7 @@ const AddUser = () => {
                     placeholder="Input the default password (to be changed by the user)"
                 />
 
-                <label>Email</label>
+                <label>Email [required]</label>
                 <input
                     type="text"
                     required

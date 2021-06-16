@@ -30,21 +30,18 @@ export default function Login({ setToken }) {
 
     return (
         <div className="login">
-            <label> InAGlobe Platform </label>
+            <h1> InAGlobe Platform </h1>
             <form onSubmit={handleSubmit}>
                 <input type="text" id="login" class="fadeIn second" name="login" placeholder="login"
                     onChange={e => setUserName(e.target.value)}/>
-                <input type="text" id="password" class="fadeIn third" name="login" placeholder="password"
+                <input type="password" id="password" class="fadeIn third" name="login" placeholder="password"
                     onChange={e => setPassword(e.target.value)}/> 
                 <div className="incorrect-password" style={{display: 'none'}}>
-                    <h2 >Incorrect password!</h2>
+                    <h2>Incorrect password!</h2>
                 </div>
+                <a>Forgot Password?</a>
                 <button type="submit">Log In</button>
             </form>
-
-            <div id="formFooter">
-                <a class="underlineHover" href="#">Forgot Password?</a>
-            </div>
         </div>
     );
 }

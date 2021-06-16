@@ -64,7 +64,7 @@ const AddProjectTask = () => {
                 />
 
 
-                <label>Due Date</label>
+                <label>Due Date [required]</label>
                 <input
                     type="date"
                     required
@@ -73,14 +73,13 @@ const AddProjectTask = () => {
                     placeholder="Input your first name here"
                 />
 
-                <label>Priority</label>
-                <input
-                    type="text"
-                    required
-                    value={priority}
-                    onChange={(e) => setPriority(e.target.value)}
-                    placeholder="Input priority here"
-                />
+                <label>Priority level (1: lowest, 4: highest) [required]</label>
+                <select required value={priority} onChange={(e) => setPriority(e.target.value)} >
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
 
                 <label>Volunteers assigned to this task</label>
                 <Select

@@ -18,6 +18,7 @@ import AddProjectTask from './AddProjectTask'
 import Login from './Login'
 import useToken from './useToken';
 import ChangePassword from './ChangePassword';
+import ProjectsRegistry from './ProjectsRegistry'
 
 function App() {
 
@@ -57,7 +58,10 @@ function App() {
             </Route>
             <Route exact path="/edit-user/:username">
               <EditUser />
-            </Route>          
+            </Route>   
+            <Route exact path="/projects">
+              <ProjectsRegistry />  
+            </Route>        
             <Route exact path="/projects/:id/add-task">
               <AddProjectTask />  
             </Route>       
