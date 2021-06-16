@@ -1,22 +1,20 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom"
 
-
-
 const AddUser = () => {
     const [firstname, setFirstname] = useState("");
     const [surname, setSurname] = useState("");
     const [password, setPassword] = useState("");
     const [title, setTitle] = useState("")
     const [email, setEmail] = useState("");
+    const [phone_no, setPhoneNo] = useState("");
     const [bio, setBio] = useState("");
-    const [joined, setJoined] = useState("");
+    const [joined, setJoined] = useState(Date.now());
     const [location, setLocation] = useState("");
     const [availability, setAvailability] = useState("");
     const [partnership_opportunities, setPartnership_opportunities] = useState("");
     const [interests, setInterests] = useState("");
     const [username, setUsername] = useState("");
-
 
     const history = useHistory();
 
@@ -29,6 +27,7 @@ const AddUser = () => {
             password,
             title,
             email,
+            phone_no,
             bio,
             joined,
             location,
@@ -106,6 +105,14 @@ const AddUser = () => {
                     placeholder="Input InAGlobe email here"
                 />
 
+                <label>Phone Number</label>
+                <input
+                    type="text"
+                    value={phone_no}
+                    onChange={(e) => setPhoneNo(e.target.value)}
+                    placeholder="Input your phone number"
+                />
+
 
                 <label>Bio</label>
                 <input
@@ -116,9 +123,10 @@ const AddUser = () => {
                 />
 
                 {/* Think about changing type to force date */}
-                <label>Joined</label>
+                <label>Joined [required]</label>
                 <input
-                    type="text"
+                    type="date"
+                    required
                     value={joined}
                     onChange={(e) => setJoined(e.target.value)}
                     placeholder="Eg: 20th April 2020"

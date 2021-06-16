@@ -11,7 +11,7 @@ const Users = () => {
     return (
         <div className="users">
             <h1>Users</h1>
-            { <Link to={`/add-user`} className="add-user-button">Add User</Link> }
+            { token == "jaimeaguilera" && <Link to={`/add-user`} className="add-user-button">Add User</Link> }
             <br />
             <br />
             { isPending && <h2>Loading...</h2> }

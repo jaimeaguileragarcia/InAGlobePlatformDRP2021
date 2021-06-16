@@ -4,8 +4,8 @@ import useFetch from './useFetch'
 
 const EditUser = () => {
     const { username } = useParams();
-    const { data: {firstname, surname, password, title, email, bio, joined, 
-        location, availability, partnership_opportunities, interests}, error, isPending } = useFetch("/users/" + username)
+    const { data: { firstname, surname, password, title, email, phone_no, bio, joined,
+        location, availability, partnership_opportunities, interests }, error, isPending } = useFetch("/users/" + username)
 
     const history = useHistory();
     const oldUserDetails = {
@@ -14,6 +14,7 @@ const EditUser = () => {
         password: password,
         title: title,
         email: email,
+        phone_no: phone_no,
         bio: bio,
         joined: joined,
         location: location,
@@ -21,7 +22,7 @@ const EditUser = () => {
         partnership_opportunities: partnership_opportunities,
         interests: interests,
     }
-    
+
     const { register, handleSubmit } = useForm({
         defaultValues: oldUserDetails
     });
@@ -39,9 +40,9 @@ const EditUser = () => {
     return (
         <div className="edit-user">
             <h2>Edit user</h2>
-            { isPending && <h2>Loading...</h2> }
+            {isPending && <h2>Loading...</h2>}
             <Link to={`/users/change-password`}>Change Password</Link>
-            { firstname && <form onSubmit={handleSubmit(onSubmit)}>
+            {firstname && <form onSubmit={handleSubmit(onSubmit)}>
                 <label htmlFor="firstname">Firstname</label>
                 <input {...register("firstname")}
                     placeholder="Input your first name here"
@@ -65,6 +66,11 @@ const EditUser = () => {
                 <label htmlFor="email">Email</label>
                 <input {...register("email")}
                     placeholder="Input InAGlobe email here"
+                />
+
+                <label htmlFor="phone_no">Phone number</label>
+                <input {...register("phone_no")}
+                    placeholder="Input phone number here"
                 />
 
 
@@ -100,7 +106,7 @@ const EditUser = () => {
                     placeholder="What are your hobbies?"
                 />
                 <button type="submit">Save user details</button>
-            </form> }
+            </form>}
         </div>
     );
 }

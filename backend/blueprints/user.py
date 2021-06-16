@@ -13,7 +13,7 @@ def get_all_users():
   user_query = User.query.all()
 
   users_list = [{"firstname" : x.firstname, "surname" : x.surname, 
-  "title" : x.title, "email" : x.email, "bio" : x.bio, "joined" : x.joined, 
+  "title" : x.title, "email" : x.email, "phone_no" : x.phone_no, "bio" : x.bio, "joined" : x.joined, 
   "location" : x.location, "availability" : x.availability, 
   "partnership_opportunities" : x.partnership_opportunities,
   "interests" : x.interests, "username" : x.username } for x in user_query]
@@ -36,6 +36,7 @@ def get_id(username):
       password = user.password,
       title = user.title, 
       email = user.email,
+      phone_no = user.phone_no,
       bio = user.bio, 
       joined = user.joined, 
       location = user.location,
@@ -47,19 +48,19 @@ def get_id(username):
 
 @user.route('/users', methods=['POST'])
 def add_user():
-  username, firstname, surname, password, title, email, bio, joined, location, availability, partnership_opportunities, interests = (
+  username, firstname, surname, password, title, email, phone_no, bio, joined, location, availability, partnership_opportunities, interests = (
    request.json['username'], request.json['firstname'], 
    request.json['surname'],
    request.json['password'],
    request.json['title'], 
-   request.json['email'], request.json['bio'], request.json['joined'], 
+   request.json['email'], request.json['phone_no'], request.json['bio'], request.json['joined'], 
    request.json['location'],request.json['availability'], 
    request.json['partnership_opportunities'], request.json['interests'])
  
   salt = bcrypt.gensalt()
   hash_pswd = bcrypt.hashpw(password.encode('utf-8'), salt).decode('utf-8')
   entry = User(username = username, firstname = firstname, surname = surname, password = hash_pswd,
-              title = title, email = email, bio = bio, joined = joined, location = location, 
+              title = title, email = email, phone_no = phone_no, bio = bio, joined = joined, location = location, 
               availability = availability, partnership_opportunities = partnership_opportunities, 
               interests = interests)
   DB.add(entry)
@@ -69,12 +70,12 @@ def add_user():
 @user.route('/users/<username>', methods=['POST'])
 def update_user(username):
   entry = User.query.get(username)
-  firstname, surname, password, title, email, bio, joined, location, availability, partnership_opportunities, interests = (
+  firstname, surname, password, title, email, phone_no, bio, joined, location, availability, partnership_opportunities, interests = (
    request.json['firstname'], 
    request.json['surname'],
    request.json['password'],
    request.json['title'], 
-   request.json['email'], request.json['bio'], request.json['joined'], 
+   request.json['email'], request.json['phone_no'], request.json['bio'], request.json['joined'], 
    request.json['location'],request.json['availability'], 
    request.json['partnership_opportunities'], request.json['interests'])
   entry.firstname = firstname
@@ -87,6 +88,7 @@ def update_user(username):
 
   entry.title = title
   entry.email = email
+  entry.phone_no = phone_no
   entry.bio = bio
   entry.joined = joined
   entry.location = location

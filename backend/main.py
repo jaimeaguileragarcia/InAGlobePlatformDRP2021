@@ -26,7 +26,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 if ENV == 'dev':
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://g205001034_u:CierkbZMND@db.doc.ic.ac.uk:5432/g205001034_u'
 else:
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://icbwsbzlctcxyx:a0d7f73e5b743a35f33d95640b517b6e7e9e5b59cd2ff10673e90372b4b34d44@ec2-34-193-112-164.compute-1.amazonaws.com:5432/deje5qriuvrh39'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://ozufqkgtnoptrc:42b722a2bf88caa314bc0558abb0098d0971a9d588728a64413576cd62255003@ec2-54-224-120-186.compute-1.amazonaws.com:5432/dfbpe6718mqdmh'
 
 # Mail settings for "forgot password" mail sending
 mail_settings = {
