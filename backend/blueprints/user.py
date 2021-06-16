@@ -2,6 +2,8 @@ from flask import Blueprint, request, jsonify, Response
 from backend.database_config.database import DB
 from backend.models.user_model import User
 from backend.models.user_model import User_project
+from backend.main import Message
+import backend.main
 import bcrypt 
 
 user = Blueprint('user', __name__)
@@ -142,3 +144,22 @@ def change_user_password():
   else:
     return jsonify(status = "False")                                      
 
+@user.route('/users/forgot-password', methods=['POST'])
+def send_auth_email():
+  username, newPassword = (request.json['username'], request.json['newPassword'])
+  user = User.query.get(username)
+  if user == None:
+    return jsonify(status = "False")
+
+  msg = Message(subject="Password reset",
+                      sender=backend.main.app.config.get("MAIL_USERNAME"),
+                      recipients=[user.email],
+                      body="Your new password is: " + newPassword)
+
+  salt = bcrypt.gensalt()
+  hash_pswd = bcrypt.hashpw(newPassword.encode('utf-8'), salt)
+  user.password = hash_pswd.decode('utf-8')
+  DB.add(user)
+
+  backend.main.mail.send(msg)
+  return jsonify(status = "True")

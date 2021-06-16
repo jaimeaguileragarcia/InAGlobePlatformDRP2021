@@ -16,16 +16,28 @@ import EditUser from './EditUser'
 import ProjectTasks from './ProjectTasks'
 import AddProjectTask from './AddProjectTask'
 import Login from './Login'
-import useToken from './useToken';
-import ChangePassword from './ChangePassword';
+import useToken from './useToken'
+import ChangePassword from './ChangePassword'
 import ProjectsRegistry from './ProjectsRegistry'
+import ForgotPassword from './ForgotPassword'
 
 function App() {
 
   const { token, setToken } = useToken();
 
   if(!token) {
-    return <Login setToken={setToken} />
+    return (
+      <Router>
+        <Switch>
+          <Route exact path="/forgot-password">
+            <ForgotPassword />
+          </Route>
+          <Route path="*">
+            <Login setToken={setToken} />
+          </Route>
+        </Switch>
+      </Router>
+    )
   }
 
   return (
