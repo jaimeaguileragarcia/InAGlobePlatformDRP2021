@@ -2,12 +2,14 @@ import { useState } from "react";
 import { useHistory, useParams } from "react-router-dom"
 import { useForm } from "react-hook-form"
 import useFetch from './useFetch'
+import Select from 'react-select'
 
 const EditProject = () => {
     const { id } = useParams();
     const { data: {name, description, status, location, tag, files}, error, isPending } = useFetch("/projects/" + id)
-    const { data: users, errorUsers, isPendingUsers } = useFetch("/users")
     const [selectUsernames, setSelectUsernames] = useState([]);
+    const { data: users, errorUsers, isPendingUsers } = useFetch("/users/user_project");
+    const usernames = users.map(user => user.username);
 
     const history = useHistory();
     const oldProjectDetails = {
@@ -22,6 +24,10 @@ const EditProject = () => {
     const { register, handleSubmit } = useForm({
         defaultValues: oldProjectDetails
     });
+
+    const handleChange = (e) => {
+        setSelectUsernames(Array.isArray(e) ? e.map(x => x.value) : []); 
+    }
 
     const onSubmit = e => {
         fetch("/projects/" + id, {
@@ -78,9 +84,15 @@ const EditProject = () => {
                     <option value="Other">Other</option>
                 </select>
                 <label>Volunteers assigned to this project</label>
-                <select multiple={true} onChange={(e) => setSelectUsernames(selectUsernames.concat(e.target.value))} value={selectUsernames} >
-                    {users.map(user => <option value={user.username}>{user.firstname} {user.surname}</option>)}
-                </select>
+                <Select
+                    className="dropdown"
+                    placeholder="Select Users"
+                    value={users.filter(user => selectUsernames.includes(user.value))}
+                    options={users} // set list of the usernames
+                    onChange={handleChange} // assign onChange function
+                    isMulti
+                    isClearable
+                />
                 <label>Google Drive folder</label>
                 <textarea {...register("files")} name="files" placeholder="Insert Google Drive Folder link here"></textarea>
                 <button type="submit">Save project details</button>
