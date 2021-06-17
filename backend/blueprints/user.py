@@ -45,6 +45,13 @@ def get_id(username):
       interests = user.interests
       )
   
+@user.route('/users/name/<username>', methods=['GET'])
+def get_name(username):
+  user = User.query.get(username)
+  return jsonify(
+      firstname = user.firstname,
+      surname = user.surname
+      )
 
 @user.route('/users', methods=['POST'])
 def add_user():

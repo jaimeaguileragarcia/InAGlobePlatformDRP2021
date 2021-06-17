@@ -28,6 +28,16 @@ def get_tasks_for_user(username):
     return jsonify(task_list)
 
 
+@assigned_task.route('/assigned_task/pending/username/<username>', methods=['GET'])
+def get_pending_tasks_for_user(username):
+    entries = AssignedTask.query.filter_by(username=username)
+    task_list = [{"description": task.description,
+                  "priority": task.priority,
+                 "due_date": task.due_date} for task in (Task.query.get(x.task_id) for x in entries) if not task.completed]
+    return jsonify(task_list)
+
+
+
 @assigned_task.route('/assigned_task', methods=['POST'])
 def assign_task_to_user():
     username, task_id = (request.json['username'], request.json['task_id'])
