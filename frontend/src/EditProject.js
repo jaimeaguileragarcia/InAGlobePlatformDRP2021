@@ -6,27 +6,26 @@ import Select from 'react-select'
 
 const EditProject = () => {
     const { id } = useParams();
-    const { data: {name, description, status, location, tag, files}, error, isPending } = useFetch("/projects/" + id)
+    const { data: { name, description, status, location, tag, files }, error, isPending } = useFetch("/projects/" + id)
     const [selectUsernames, setSelectUsernames] = useState([]);
     const { data: users, errorUsers, isPendingUsers } = useFetch("/users/user_project");
     const usernames = users.map(user => user.username);
 
     const history = useHistory();
+    // Trying to pre fill some data
     const oldProjectDetails = {
-        name: name,
-        description: description,
-        status: status,
-        location: location,
-        tag: tag,
-        files: files
+        name: "Example project",
+        description: "This is an example description",
+        status: "Available",
+        location: "United Kingdom",
+        tag: "Social",
+        files: "https://www.google.com"
     }
-    
-    const { register, handleSubmit } = useForm({
-        defaultValues: oldProjectDetails
-    });
+
+    const { register, handleSubmit } = useForm();
 
     const handleChange = (e) => {
-        setSelectUsernames(Array.isArray(e) ? e.map(x => x.value) : []); 
+        setSelectUsernames(Array.isArray(e) ? e.map(x => x.value) : []);
     }
 
     const onSubmit = e => {
@@ -43,26 +42,28 @@ const EditProject = () => {
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(assign_project)
                 });
-            });}).then(() => {
-                history.push('/');
+            });
+        }).then(() => {
+            history.push('/');
         })
     }
 
     return (
         <div className="edit-project">
             <h2>Edit project</h2>
-            { isPending && <h2>Loading...</h2> }
-            { name && <form onSubmit={handleSubmit(onSubmit)}>
-                <label htmlFor="name">Project name</label>
-                <input {...register("name")}
-                    // type="text"
+            {isPending && <h2>Loading...</h2>}
+            {name && <form onSubmit={handleSubmit(onSubmit)}>
+                <label>Project name</label>
+                <input
+                    {...register("name")}
                     placeholder="Insert project name here"
-                    // name="name"
+                    type="text"
+                    defaultValue={name}
                 />
                 <label>Description</label>
-                <textarea {...register("description")} name="description" placeholder="Insert description of the project here"></textarea>
+                <textarea {...register("description")} placeholder="Insert description of the project here" defaultValue={description}></textarea>
                 <label>Status</label>
-                <select {...register("status")} name="status">
+                <select {...register("status")} defaultValue={status}>
                     <option value="Progress">Progress</option>
                     <option value="Available">Available</option>
                     <option value="Completed">Completed</option>
@@ -72,10 +73,10 @@ const EditProject = () => {
                     {...register("location")}
                     type="text"
                     placeholder="Insert location of project here"
-                    name="location"
+                    defaultValue={location}
                 />
                 <label>Type of project</label>
-                <select {...register("tag")} name="tag">
+                <select {...register("tag")} defaultValue={tag}>
                     <option value="Social">Social</option>
                     <option value="Education">Education</option>
                     <option value="Wash">Wash</option>
@@ -88,15 +89,15 @@ const EditProject = () => {
                     className="dropdown"
                     placeholder="Select Users"
                     value={users.filter(user => selectUsernames.includes(user.value))}
-                    options={users} // set list of the usernames
-                    onChange={handleChange} // assign onChange function
+                    options={users}
+                    onChange={handleChange}
                     isMulti
                     isClearable
                 />
                 <label>Google Drive folder</label>
-                <textarea {...register("files")} name="files" placeholder="Insert Google Drive Folder link here"></textarea>
+                <textarea {...register("files")} placeholder="Insert Google Drive Folder link here" defaultValue={files}></textarea>
                 <button type="submit">Save project details</button>
-            </form> }
+            </form>}
         </div>
     );
 }
