@@ -21,14 +21,14 @@ def get_all_assignments():
 
 
 @assigned_task.route('/assigned_task/username/<username>', methods=['GET'])
-def get_tasks_for_user(username):
+def get_pending_tasks_for_user(username):
     entries = AssignedTask.query.filter_by(username=username)
     task_list = [{"description": task.description,
                   "project_id": task.project_id,
                   "project_name": Project.query.get(task.project_id).name,
                   "priority": task.priority,
                   "due_date": task.due_date,
-                  "id": task.id} for task in (Task.query.get(x.task_id) for x in entries)]
+                  "id": task.id} for task in (Task.query.get(x.task_id) for x in entries) if not task.completed]
     return jsonify(task_list)
 
 
@@ -39,6 +39,8 @@ def get_users_for_task(task_id):
                    "surname": user.surname,
                    "username": user.username} for user in (User.query.get(x.username) for x in entries)]
     return jsonify(users_list)
+
+
 
 
 @assigned_task.route('/assigned_task', methods=['POST'])
