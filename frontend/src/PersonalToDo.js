@@ -81,7 +81,7 @@ const PersonalToDo = ({ todos, title }) => {
                     <div className="todo-preview" key={todo.id}>
                         <h2>{todo.todo_desc}</h2>
                         <h3>Priority level: {todo.priority}</h3>
-                        <h3>To be done by:{todo.due_date}</h3>
+                        <h3>To be done by: {todo.due_date}</h3>
                         <button onClick={handleRemove(todo.id)}>Complete</button>
                     </div>
                 ))}
