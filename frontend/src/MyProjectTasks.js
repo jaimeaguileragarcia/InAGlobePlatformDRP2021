@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import useFetch from './useFetch';
+import UsersAssignedToTask from './UsersAssignedToTask';
 
 const MyProjectTasks = ({ tasks, title }) => {
     const FindingUsers = task_id => {
@@ -24,7 +25,7 @@ const MyProjectTasks = ({ tasks, title }) => {
                         <h3><strong>Priority level:</strong> {task.priority}</h3>
                         <h3><strong>To be done by:</strong> {task.due_date}</h3>
                         <h3>All volunteers assigned to this task: </h3>
-                        {FindingUsers(task.id)}
+                        <UsersAssignedToTask task_id={task.id} />
                         <Link to={`/projects/${task.project_id}`}>
                             <h4>Click to see the project details</h4>
                         </Link>

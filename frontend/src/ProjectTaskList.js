@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { useHistory } from 'react-router';
+import UsersAssignedToTask from "./UsersAssignedToTask";
+
 const ProjectTaskList = ({ project_tasks }) => {
     /* pass in filtered dataset containing tasks for a specific project*/
-    const history = useHistory();
     const [description, setDescription] = useState("");
     const [priority, setPriority] = useState(1);
     const [due_date, setDueDate] = useState(Date.now);
@@ -11,7 +11,6 @@ const ProjectTaskList = ({ project_tasks }) => {
 
     const handleComplete = task => e => {
         e.preventDefault();
-        console.log(task.id)
 
         setDescription(task.description)
         setPriority(task.priority)
@@ -40,7 +39,6 @@ const ProjectTaskList = ({ project_tasks }) => {
         }).then(() => {
             window.location.reload();
         })
-    
     };
 
     return (
@@ -53,6 +51,8 @@ const ProjectTaskList = ({ project_tasks }) => {
                         </div>
                         
                         <h3>Priority: {task.priority}</h3>
+                        <h3>All volunteers assigned to this task</h3>
+                        <UsersAssignedToTask task_id={task.id} />
                         { !task.completed && <button className="task-complete-button" onClick={handleComplete(task)}>Complete</button> }
                         <button className="task-delete-button"onClick={handleDelete(task)}>Delete</button>
                 </div>

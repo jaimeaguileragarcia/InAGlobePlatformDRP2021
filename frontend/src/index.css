@@ -586,6 +586,16 @@ Note: Beware of modifying this element as it can break the animations - you shou
   padding-left: 4px;
 }
 
+.project-task-preview h4 {
+  padding-left: 15px;
+  padding-bottom: 7px;
+}
+
+.project-task-preview h4:hover {
+  font-weight: bolder;
+  color: red;
+}
+
 .project-task-preview a {
   text-decoration: none;
 }
@@ -677,14 +687,16 @@ Note: Beware of modifying this element as it can break the animations - you shou
   padding-top: 0px;
 }
 
-.assigned_user_list {
-  padding-left: 10px;
-}
-
 .assigned_user_list a {
   text-decoration: none;
 }
 
-.assigned_user_list h4:hover {
-  color:red;
+.assigned_users_list h5 {
+  padding-left: 15px;
+  padding-bottom: 7px;
+}
+
+.assigned_users_list h5:hover {
+  font-weight: bolder;
+  color: red;
 }
