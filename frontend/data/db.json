@@ -1,22 +1,14 @@
 {
-  "projects": [
+  "track": [
     {
-      "name": "Eco Warriors",
-      "status": "In Progress",
-      "desc": "To be or not to be that is the question",
+      "project_id": "112",
+      "date": 1623853746081,
+      "id": 1
+    },
+    {
+      "project_id": "78",
+      "date": 1623853765672,
       "id": 2
-    },
-    {
-      "name": "Braille Machine",
-      "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-      "status": "Available",
-      "id": 6
-    },
-    {
-      "name": "My new project",
-      "desc": "Add some awesome description!",
-      "status": "Completed",
-      "id": 7
     }
   ]
 }

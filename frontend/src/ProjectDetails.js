@@ -10,9 +10,28 @@ const ProjectDetails = () => {
     const { data: project, error, isPending } = useFetch("/projects/" + id)
     const { data: assignments, errorAssignment, isPendingAssignment } = useFetch("/user_project/" + id)
 
-    const { trackEvent } = useTracking({}, { dispatch: data => console.log(data) })
+    const { trackEvent } = useTracking({}, { dispatch: data => writeToLink(data) })
 
 
+    function writeToLink (dataToWrite){
+        fetch('https://drp-inaglobe-platform.herokuapp.com/track' ,{
+            method: 'POST',
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(dataToWrite)
+        })
+    }
+        
+    const handleTrack = e => {
+
+        trackEvent(
+            {project_id: id,
+            date: Date.now()
+        }
+        )
+
+        e.preventDefault()
+
+    };
 
     const handleRemove = e => {
 
