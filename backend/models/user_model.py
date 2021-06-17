@@ -11,8 +11,9 @@ class User(db.Model):
     password = db.Column(db.String)
     title = db.Column(db.String)
     email = db.Column(db.String)
+    phone_no = db.Column(db.String)
     bio = db.Column(db.String)
-    joined = db.Column(db.String)
+    joined = db.Column(db.Date)
     location = db.Column(db.String)
     availability = db.Column(db.String)
     partnership_opportunities = db.Column(db.String)
@@ -64,7 +65,7 @@ class User_project(db.Model):
 
     def serialize(self):
         return jsonify(
-            surname = self.surname,
+            username = self.username,
             project_id = self.project_id,
             id = self.id
             )

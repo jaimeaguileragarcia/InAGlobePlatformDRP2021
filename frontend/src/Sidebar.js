@@ -1,27 +1,49 @@
 import React from 'react';
 import { slide as Menu } from 'react-burger-menu';
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
+import useToken from './useToken';
+
+const Sidebar = () => {
 
 const slackLink = "https://slack.com/intl/en-gb/"
 
-export default props => {
-  return (
+const history = useHistory();
+
+const {setToken, token} = useToken();
+
+const handleSignOut = e => {
+  e.preventDefault()
+
+  localStorage.clear();
+
+  window.location.reload();
+  history.push("/");
+}
+
+return (
     <Menu>
       <div className="menu-item" > 
       <Link to={`/`}>Home</Link>
       </div>
       <div className="menu-item" > 
-      <Link to={`/users/john34`}>Profile</Link>
+      <Link to={`/users/` + token}>Profile</Link>
       </div>
       <div className="menu-item" > 
       <Link to={`/users`}>All Users</Link>
       </div>
       <div className="menu-item" > 
-      <Link to={`/add-user`}>Add User</Link>
+      <Link to={`/projects`}>All Projects</Link>
       </div>
       <div className="menu-item" > 
       <a href={slackLink} target="_blank">Go To Slack</a>
-      </div>
+      </div> 
+      <div className="menu-item" >
+      <a style={{textDecoration: "underline", cursor: "pointer"}} onClick={handleSignOut}>Log Out</a>
+      </div> 
     </Menu>
-  );
-};
+
+);
+
+}
+
+export default Sidebar;

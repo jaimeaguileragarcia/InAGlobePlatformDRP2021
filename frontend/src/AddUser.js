@@ -1,22 +1,20 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom"
 
-
-
 const AddUser = () => {
     const [firstname, setFirstname] = useState("");
     const [surname, setSurname] = useState("");
     const [password, setPassword] = useState("");
     const [title, setTitle] = useState("")
     const [email, setEmail] = useState("");
+    const [phone_no, setPhoneNo] = useState("");
     const [bio, setBio] = useState("");
-    const [joined, setJoined] = useState("");
+    const [joined, setJoined] = useState(Date.now());
     const [location, setLocation] = useState("");
     const [availability, setAvailability] = useState("");
     const [partnership_opportunities, setPartnership_opportunities] = useState("");
     const [interests, setInterests] = useState("");
     const [username, setUsername] = useState("");
-
 
     const history = useHistory();
 
@@ -29,6 +27,7 @@ const AddUser = () => {
             password,
             title,
             email,
+            phone_no,
             bio,
             joined,
             location,
@@ -43,23 +42,23 @@ const AddUser = () => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(newUser)
         }).then(() => {
-            history.push('/');
+            history.push('/users');
         })
     }
 
     const handleReturn = e => {
-        history.push('/');
+        history.push('/users');
     }
 
     return (
         <div className="add-user">
             <div className="ret-prev-page">
-                <button onClick={handleReturn}>Back to Dashboard</button>
+                <button onClick={handleReturn}>To All Users</button>
             </div>
             <br />
             <h2>Add a new user</h2>
             <form onSubmit={handleSubmit}>
-                <label>Username</label>
+                <label>Username [required]</label>
                 <input
                     type="text"
                     required
@@ -69,7 +68,7 @@ const AddUser = () => {
                 />
 
 
-                <label>Firstname</label>
+                <label>Firstname [required]</label>
                 <input
                     type="text"
                     required
@@ -78,7 +77,7 @@ const AddUser = () => {
                     placeholder="Input your first name here"
                 />
 
-                <label>Surname</label>
+                <label>Surname [required]</label>
                 <input
                     type="text"
                     required
@@ -87,7 +86,7 @@ const AddUser = () => {
                     placeholder="Input surname here"
                 />
 
-                <label>Title</label>
+                <label>Title [required]</label>
                 <input
                     type="text"
                     required
@@ -96,7 +95,7 @@ const AddUser = () => {
                     placeholder="State your role at InAGlobe (eg: volunteer)"
                 />
 
-                <label>Password</label>
+                <label>Password [required]</label>
                 <input
                     type="text"
                     required
@@ -105,13 +104,21 @@ const AddUser = () => {
                     placeholder="Input the default password (to be changed by the user)"
                 />
 
-                <label>Email</label>
+                <label>Email [required]</label>
                 <input
                     type="text"
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Input InAGlobe email here"
+                />
+
+                <label>Phone Number</label>
+                <input
+                    type="text"
+                    value={phone_no}
+                    onChange={(e) => setPhoneNo(e.target.value)}
+                    placeholder="Input your phone number"
                 />
 
 
@@ -124,9 +131,10 @@ const AddUser = () => {
                 />
 
                 {/* Think about changing type to force date */}
-                <label>Joined</label>
+                <label>Joined [required]</label>
                 <input
-                    type="text"
+                    type="date"
+                    required
                     value={joined}
                     onChange={(e) => setJoined(e.target.value)}
                     placeholder="Eg: 20th April 2020"

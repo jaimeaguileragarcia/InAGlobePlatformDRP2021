@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom"
+import Select from 'react-select';
+import useFetch from './useFetch'
 
 const CreateProject = () => {
     const [name, setName] = useState("");
@@ -9,35 +11,52 @@ const CreateProject = () => {
     const [location, setLocation] = useState("");
     const [files, setFiles] = useState("");
 
+    const [selectUsernames, setSelectUsernames] = useState([]);
+
     const history = useHistory();
 
-    const handleSubmit = e => {
+    const { data: users, error, isPending } = useFetch("/users/user_project");
+
+    const usernames = users.map(user => user.username);
+
+    const handleChange = (e) => {
+        setSelectUsernames(Array.isArray(e) ? e.map(x => x.value) : []); 
+    }
+
+    const handleSubmit = async e => {
         e.preventDefault()
 
         const newProject = { name, description, status, tag, location, files };
 
-        fetch("/projects", {
+        const response = await fetch("/projects", {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(newProject)
-        }).then(() => {
-            history.push('/');
-        })
-    }
+        });
 
-    const handleReturn = e => {
-        history.push('/');
+        const responseJSON = await response.json();
+
+        const project_id = responseJSON.id;
+
+        selectUsernames.map(username => {
+            const assign_project = { username, project_id };
+
+            fetch("/user_project", {
+                method: 'POST',
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(assign_project)
+            });
+        });
+
+        history.push("/");
     }
 
     return (
         <div className="create-project">
-            <div className="ret-prev-page">
-                <button onClick={handleReturn}>Back to Dashboard</button>
-            </div>
             <br />
             <h2>Add a new project</h2>
             <form onSubmit={handleSubmit}>
-                <label>Project name</label>
+                <label>Project name [required]</label>
                 <input
                     type="text"
                     required
@@ -45,7 +64,7 @@ const CreateProject = () => {
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Input project name"
                 />
-                <label>Description</label>
+                <label>Description [required]</label>
                 <textarea required placeholder="Add some awesome description!" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
                 <label>Status</label>
                 <select value={status} onChange={(e) => setStatus(e.target.value)}>
@@ -60,8 +79,8 @@ const CreateProject = () => {
                     onChange={(e) => setLocation(e.target.value)}
                     placeholder="Eg: United Kingdom"
                 />
-                <label>Type of project</label>
-                <select value={tag} onChange={(e) => setTag(e.target.value)}>
+                <label>Type of project [required]</label>
+                <select required value={tag} onChange={(e) => setTag(e.target.value)}>
                     <option value="Social">Social</option>
                     <option value="Education">Education</option>
                     <option value="Wash">Wash</option>
@@ -69,6 +88,16 @@ const CreateProject = () => {
                     <option value="Health">Health</option>
                     <option value="Other">Other</option>
                 </select>
+                <label>Volunteers assigned to this project</label>
+                <Select
+                    className="dropdown"
+                    placeholder="Select Users"
+                    value={users.filter(user => selectUsernames.includes(user.value))}
+                    options={users} // set list of the usernames
+                    onChange={handleChange} // assign onChange function
+                    isMulti
+                    isClearable
+                />
                 <label>Google Drive folder</label>
                 <textarea placeholder="Copy the link to the Google Drive folder for this project" value={files} onChange={(e) => setFiles(e.target.value)}></textarea>
                 <button>Add project</button>
@@ -76,5 +105,6 @@ const CreateProject = () => {
         </div>
     );
 }
+
 
 export default CreateProject;

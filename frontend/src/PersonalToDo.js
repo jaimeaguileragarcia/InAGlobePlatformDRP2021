@@ -1,18 +1,21 @@
 import useFetch from './useFetch'
 import { useState } from "react";
+import useToken from './useToken'
 
 const PersonalToDo = ({ todos, title }) => {
 
     const openTaskForm = () => {
         document.getElementsByClassName("add-todo-form")[0].style.display = "block";
     }
+    const {setToken, token} = useToken();
+
 
     const { data: users, error, isPending } = useFetch("/users")
 
     const [todo_desc, setTodoDesc] = useState("");
     const [priority, setPriority] = useState(1);
     const [due_date, setDueDate] = useState(Date.now());
-    const [username, setUsername] = useState("none");
+    const [username, setUsername] = useState(token);
 
     const handleSubmit = e => {
         document.getElementsByClassName("add-todo-form")[0].style.display = "none";
@@ -45,28 +48,30 @@ const PersonalToDo = ({ todos, title }) => {
                 <button onClick={openTaskForm}>Add a personal task</button>
             </div>
 
+            { todos && (Object.keys(todos).length === 0) && <h3 style={{float: "right"}}>Well done you have no ToDo items!</h3>}
+
             { isPending && <h2>Loading...</h2> }
 
             <div className="add-todo-form">
                 { users && <form onSubmit={handleSubmit}>
-                    <label>Task description</label>
+                    <label>Task description [required]</label>
                     <textarea value={todo_desc} onChange={(e) => setTodoDesc(e.target.value)} required placeholder="Add some awesome description!" ></textarea>
-                    <label>Priority level</label>
+                    <label>Priority level (1: lowest, 4: highest)</label>
                     <select value={priority} onChange={(e) => setPriority(e.target.value)} >
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
                         <option value="4">4</option>
                     </select>
-                    <label>When should this task be done by?</label>
+                    <label>When should this task be done by? [required]</label>
                     <input
+                        required
                         type="date"
                         value={due_date}
                         onChange={(e) => setDueDate(e.target.value)}
                     />
                     <label>Assigned user</label>
                     <select value={username} onChange={(e) => setUsername(e.target.value)} >
-                        <option value="none">None</option>
                         {users.map(user => <option value={user.username}>{user.username}</option>)}
                     </select>
                     <button>Save task</button>
@@ -77,8 +82,8 @@ const PersonalToDo = ({ todos, title }) => {
                 {todos.map((todo) => (
                     <div className="todo-preview" key={todo.id}>
                         <h2>{todo.todo_desc}</h2>
-                        <h3><strong>Priority level:</strong> {todo.priority}</h3>
-                        <h3><strong>To be done by:</strong> {todo.due_date}</h3>
+                        <h3>Priority level: {todo.priority}</h3>
+                        <h3>To be done by: {todo.due_date}</h3>
                         <button onClick={handleRemove(todo.id)}>Complete</button>
                     </div>
                 ))}

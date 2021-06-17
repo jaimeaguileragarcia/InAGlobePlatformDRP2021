@@ -19,7 +19,7 @@ const ProjectTasks = () => {
     return (
         <div className="project-tasks">
             <div className="ret-prev-page">
-                <button onClick={handleReturn}>Back to Project Details</button>
+                <button onClick={handleReturn}>To Project Details</button>
             </div>
             <br />
             { isPendingTasks && <h2>Loading...</h2> }

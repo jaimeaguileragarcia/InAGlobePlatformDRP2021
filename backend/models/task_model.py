@@ -34,9 +34,9 @@ class Task(db.Model):
             id = self.id
             )
 
-class AssignedTasks(db.Model):
-    task_id = db.Column(db.Integer)
-    username = db.Column(db.String)
+class AssignedTask(db.Model):
+    task_id = db.Column(db.Integer, ForeignKey('task.id'), nullable=False)
+    username = db.Column(db.String, ForeignKey('user.username'), nullable=False)
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)  
 
     def save(self):

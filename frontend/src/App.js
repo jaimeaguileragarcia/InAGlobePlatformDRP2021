@@ -1,7 +1,9 @@
+import React, { useState } from 'react';
+import {HashRouter as Router, Route, Switch} from 'react-router-dom'
+
 import Navbar from './Navbar'
 import Home from './Home'
 import CreateProject from './CreateProject'
-import {HashRouter as Router, Route, Switch} from 'react-router-dom'
 import ProjectDetails from './ProjectDetails'
 import PageNotFound from './PageNotFound'
 import MyProfile from './MyProfile'
@@ -13,15 +15,37 @@ import Sidebar from './Sidebar'
 import EditUser from './EditUser'
 import ProjectTasks from './ProjectTasks'
 import AddProjectTask from './AddProjectTask'
+import Login from './Login'
+import useToken from './useToken'
+import ChangePassword from './ChangePassword'
+import ProjectsRegistry from './ProjectsRegistry'
+import ForgotPassword from './ForgotPassword'
 
 function App() {
-  const title =  "Dashboard"
+
+  const { token, setToken } = useToken();
+
+  if(!token) {
+    return (
+      <Router>
+        <Switch>
+          <Route exact path="/forgot-password">
+            <ForgotPassword />
+          </Route>
+          <Route path="*">
+            <Login setToken={setToken} />
+          </Route>
+        </Switch>
+      </Router>
+    )
+  }
+
   return (
     <Router>
-      <div className="App">  
+      <div className="App">    
       <Sidebar />
         <Navbar />
-        <div className="content">
+        <div className="content">   
           <Switch>
             <Route exact path="/">
               <Home />
@@ -38,12 +62,18 @@ function App() {
             <Route exact path="/users">
               <Users />  
             </Route>
+            <Route exact path="/users/change-password">
+              <ChangePassword />
+            </Route>   
             <Route exact path="/users/:username">
               <User />
             </Route>
             <Route exact path="/edit-user/:username">
               <EditUser />
-            </Route>            
+            </Route>   
+            <Route exact path="/projects">
+              <ProjectsRegistry />  
+            </Route>        
             <Route exact path="/projects/:id/add-task">
               <AddProjectTask />  
             </Route>       
