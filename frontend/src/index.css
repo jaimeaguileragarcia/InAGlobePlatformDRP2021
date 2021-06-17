@@ -662,7 +662,29 @@ Note: Beware of modifying this element as it can break the animations - you shou
   color: blue;
 }
 
+.task-preview h5 {
+  padding-left: 15px;
+  padding-bottom: 7px;
+}
+
+.task-preview h5:hover {
+  font-weight: bolder;
+  color: red;
+}
+
 .task-preview a {
   text-decoration: none;
   padding-top: 0px;
+}
+
+.assigned_user_list {
+  padding-left: 10px;
+}
+
+.assigned_user_list a {
+  text-decoration: none;
+}
+
+.assigned_user_list h4:hover {
+  color:red;
 }
