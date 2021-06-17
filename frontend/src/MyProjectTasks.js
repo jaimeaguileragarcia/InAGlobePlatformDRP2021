@@ -12,7 +12,7 @@ const MyProjectTasks = ({ tasks, title }) => {
                         <h3><strong>Priority level:</strong> {task.priority}</h3>
                         <h3><strong>To be done by:</strong> {task.due_date}</h3>
                         <Link to={`/projects/${task.project_id}`}>
-                            <h4>Go to project landing page</h4>
+                            <h4>Click to see the project details</h4>
                         </Link>
                     </div>
                 ))}
