@@ -9,19 +9,9 @@ const EditProject = () => {
     const { data: { name, description, status, location, tag, files }, error, isPending } = useFetch("/projects/" + id)
     const [selectUsernames, setSelectUsernames] = useState([]);
     const { data: users, errorUsers, isPendingUsers } = useFetch("/users/user_project");
-    const usernames = users.map(user => user.username);
 
     const history = useHistory();
-    // Trying to pre fill some data
-    const oldProjectDetails = {
-        name: "Example project",
-        description: "This is an example description",
-        status: "Available",
-        location: "United Kingdom",
-        tag: "Social",
-        files: "https://www.google.com"
-    }
-
+    
     const { register, handleSubmit } = useForm();
 
     const handleChange = (e) => {
