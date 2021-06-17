@@ -4,23 +4,23 @@ import useFetch from './useFetch'
 
 const EditUser = () => {
     const { username } = useParams();
-    const { data: { firstname, surname, password, title, email, phone_no, bio, joined,
-        location, availability, partnership_opportunities, interests }, error, isPending } = useFetch("/users/" + username)
+    const { data: user, error, isPending} = useFetch("/users/" + username);
+    // const { data: { firstname, surname, password, title, email, phone_no, bio, joined,
+    //     location, availability, partnership_opportunities, interests }, error, isPending } = useFetch("/users/" + username)
 
     const history = useHistory();
     const oldUserDetails = {
-        firstname: firstname,
-        surname: surname,
-        password: password,
-        title: title,
-        email: email,
-        phone_no: phone_no,
-        bio: bio,
-        joined: joined,
-        location: location,
-        availability: availability,
-        partnership_opportunities: partnership_opportunities,
-        interests: interests,
+        firstname: user.firstname,
+        surname: user.surname,
+        title: user.title,
+        email: user.email,
+        phone_no: user.phone_no,
+        bio: user.bio,
+        joined: user.joined,
+        location: user.location,
+        availability: user.availability,
+        partnership_opportunities: user.partnership_opportunities,
+        interests: user.interests,
     }
 
     const { register, handleSubmit } = useForm({
@@ -42,81 +42,80 @@ const EditUser = () => {
             <h2>Edit user</h2>
             {isPending && <h2>Loading...</h2>}
             <Link to={`/users/change-password`}>Change Password</Link>
-            {firstname && <form onSubmit={handleSubmit(onSubmit)}>
+            {user.firstname && <form onSubmit={handleSubmit(onSubmit)}>
                 <label htmlFor="firstname">Firstname</label>
                 <input {...register("firstname")}
                     placeholder="Input your first name here"
-                    defaultValue={firstname}
+                    defaultValue={user.firstname}
                 />
 
                 <label htmlFor="surname">Surname</label>
                 <input {...register("surname")}
                     placeholder="Input surname here"
-                    defaultValue={surname}
+                    defaultValue={user.surname}
                 />
 
                 <label htmlFor="title">Title</label>
                 <input {...register("title")}
                     placeholder="State your role at InAGlobe (eg: volunteer)"
-                    defaultValue={title}
+                    defaultValue={user.title}
                 />
 
-                <label htmlFor="password">Password (click link above to change password)</label>
+                {/* <label htmlFor="password">Password (click link above to change password)</label>
                 <input {...register("password")}
                     disabled
                     placeholder="Input the password"
                     defaultValue={password}
-                />
+                /> */}
 
 
                 <label htmlFor="email">Email</label>
                 <input {...register("email")}
                     placeholder="Input InAGlobe email here"
-                    defaultValue={email}
+                    defaultValue={user.email}
                 />
 
                 <label htmlFor="phone_no">Phone number</label>
                 <input {...register("phone_no")}
                     placeholder="Input phone number here"
-                    defaultValue={phone_no}
+                    defaultValue={user.phone_no}
                 />
-
 
                 <label htmlFor="bio">Bio</label>
                 <input {...register("bio")}
                     placeholder="Tell your colleagues a bit about yourself"
-                    defaultValue={bio}
+                    defaultValue={user.bio}
                 />
 
                 <label htmlFor="joined">Joined</label>
                 <input {...register("joined")}
-                    placeholder="Eg: 20th April 2020"
+                    value={user.joined}
                     type="date"
-                    defaultValue={joined}
+                    // defaultValue={user.joined}
                 />
 
                 <label htmlFor="location">Location</label>
                 <input {...register("location")}
                     placeholder="Where are you currently based?"
-                    defaultValue={location}
+                    defaultValue={user.location}
                 />
 
                 <label htmlFor="availability">Availibility (hours per week)</label>
                 <input {...register("availability")}
                     placeholder="How available are you approximately per week?"
-                    defaultValue={availability}
+                    defaultValue={user.availability}
                 />
 
                 <label htmlFor="interests">Interests</label>
                 <input {...register("interests")}
                     placeholder="What are your hobbies?"
-                    defaultValue={interests}
+                    defaultValue={user.interests}
                 />
 
                 <label htmlFor="partnership_opportunities">Partnership Opportunities</label>
                 <input {...register("partnership_opportunities")}
                     placeholder="Eg: Department of Computing at Imperial College London"
-                    defaultValue={partnership_opportunities}
+                    defaultValue={user.partnership_opportunities}
                 />
                 <button type="submit">Save user details</button>
             </form>}

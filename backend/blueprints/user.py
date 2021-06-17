@@ -70,21 +70,15 @@ def add_user():
 @user.route('/users/<username>', methods=['POST'])
 def update_user(username):
   entry = User.query.get(username)
-  firstname, surname, password, title, email, phone_no, bio, joined, location, availability, partnership_opportunities, interests = (
+  firstname, surname, title, email, phone_no, bio, joined, location, availability, partnership_opportunities, interests = (
    request.json['firstname'], 
    request.json['surname'],
-   request.json['password'],
    request.json['title'], 
    request.json['email'], request.json['phone_no'], request.json['bio'], request.json['joined'], 
    request.json['location'],request.json['availability'], 
    request.json['partnership_opportunities'], request.json['interests'])
   entry.firstname = firstname
   entry.surname = surname
-  
-
-  salt = bcrypt.gensalt()
-  hash_pswd = bcrypt.hashpw(password.encode('utf-8'), salt)
-  entry.password = hash_pswd
 
   entry.title = title
   entry.email = email
