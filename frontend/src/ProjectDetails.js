@@ -15,15 +15,8 @@ const ProjectDetails = () => {
             .then(() => { history.push('/'); })
     };
 
-    const handleReturn = e => {
-        history.push('/');
-    }
-
     return (
         <div className="project-details">
-            <div className="ret-prev-page">
-                <button onClick={handleReturn}>To Dashboard</button>
-            </div>
             <br />
             { isPending && <h2>Loading...</h2> }
             { project && <h2>{project.name}</h2> }
