@@ -2,6 +2,8 @@ from flask import Blueprint, request, jsonify, Response
 from backend.database_config.database import DB
 from backend.models.user_model import User
 from backend.models.user_model import User_project
+from backend.models.todo_model import Todo
+from backend.models.task_model import AssignedTask
 from backend.main import Message
 import backend.main
 import bcrypt 
@@ -30,7 +32,6 @@ def get_all_users_in_value_label_form():
 def get_id(username):
   user = User.query.get(username)
   return jsonify(
-      username = user.username,
       firstname = user.firstname,
       surname = user.surname,
       password = user.password,
@@ -77,27 +78,19 @@ def add_user():
 @user.route('/users/<username>', methods=['POST'])
 def update_user(username):
   entry = User.query.get(username)
-  firstname, surname, password, title, email, phone_no, bio, joined, location, availability, partnership_opportunities, interests = (
+  firstname, surname, title, email, phone_no, bio, location, availability, partnership_opportunities, interests = (
    request.json['firstname'], 
    request.json['surname'],
-   request.json['password'],
    request.json['title'], 
-   request.json['email'], request.json['phone_no'], request.json['bio'], request.json['joined'], 
+   request.json['email'], request.json['phone_no'], request.json['bio'],
    request.json['location'],request.json['availability'], 
    request.json['partnership_opportunities'], request.json['interests'])
   entry.firstname = firstname
   entry.surname = surname
-  
-
-  salt = bcrypt.gensalt()
-  hash_pswd = bcrypt.hashpw(password.encode('utf-8'), salt)
-  entry.password = hash_pswd
-
   entry.title = title
   entry.email = email
   entry.phone_no = phone_no
   entry.bio = bio
-  entry.joined = joined
   entry.location = location
   entry.availability = availability
   entry.partnership_opportunities = partnership_opportunities
@@ -113,6 +106,14 @@ def delete_user(username):
     return ''
     
   entries = User_project.query.filter_by(username=username)
+  for e in entries:
+    DB.delete(e)
+
+  entries = Todo.query.filter_by(username=username)
+  for e in entries:
+    DB.delete(e)
+
+  entries = AssignedTask.query.filter_by(username=username)
   for e in entries:
     DB.delete(e)
 

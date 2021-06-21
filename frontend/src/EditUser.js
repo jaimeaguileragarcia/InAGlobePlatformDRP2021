@@ -33,7 +33,7 @@ const EditUser = () => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(e)
         }).then(() => {
-            history.push('/');
+            history.push('/users');
         })
     }
 
@@ -49,8 +49,9 @@ const EditUser = () => {
             <br />
             <h2>Edit user</h2>
             {isPending && <h2>Loading...</h2>}
-            <Link to={`/users/change-password`}>Change Password</Link>
+            <Link to={`/users/change-password`} style={{fontSize: "20px"}}>Change Password</Link>
             {firstname && <form onSubmit={handleSubmit(onSubmit)}>
+                <br />
                 <label htmlFor="firstname">Firstname</label>
                 <input {...register("firstname")}
                     placeholder="Input your first name here"
@@ -67,13 +68,6 @@ const EditUser = () => {
                 <input {...register("title")}
                     placeholder="State your role at InAGlobe (eg: volunteer)"
                     defaultValue={title}
-                />
-
-                <label htmlFor="password">Password (click link above to change password)</label>
-                <input {...register("password")}
-                    disabled
-                    placeholder="Input the password"
-                    defaultValue={password}
                 />
 
 
@@ -94,13 +88,6 @@ const EditUser = () => {
                 <input {...register("bio")}
                     placeholder="Tell your colleagues a bit about yourself"
                     defaultValue={bio}
-                />
-
-                <label htmlFor="joined">Joined</label>
-                <input {...register("joined")}
-                    placeholder="Eg: 20th April 2020"
-                    type="date"
-                    defaultValue={joined}
                 />
 
                 <label htmlFor="location">Location</label>

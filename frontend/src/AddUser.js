@@ -130,7 +130,6 @@ const AddUser = () => {
                     placeholder="Tell your colleagues a bit about yourself"
                 />
 
-                {/* Think about changing type to force date */}
                 <label>Joined [required]</label>
                 <input
                     type="date"

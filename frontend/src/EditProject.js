@@ -34,7 +34,7 @@ const EditProject = () => {
                 });
             });
         }).then(() => {
-            history.push('/');
+            history.push('/projects');
         })
     }
 
