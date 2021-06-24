@@ -4,6 +4,7 @@ from backend.database_config.database import DB
 from backend.models.project_model import Project
 from backend.models.task_model import Task
 from backend.models.user_model import User_project
+from backend.models.task_model import AssignedTask
 
 project = Blueprint('project', __name__)
 
@@ -61,12 +62,19 @@ def update_project(project_id):
 
 @project.route('/projects/<project_id>', methods=['DELETE'])
 def delete_project(project_id):
-  tasks = Task.query.filter_by(project_id=project_id)
-  for task in tasks:
-    DB.delete(task)
+  
   assignments = User_project.query.filter_by(project_id=project_id)
   for assignment in assignments:
     DB.delete(assignment)
+  
+  
+  tasks = Task.query.filter_by(project_id=project_id)
+  for task in tasks:
+    assigned_tasks = AssignedTask.query.filter_by(task_id=task.id)
+    for assignment in assigned_tasks:
+      DB.delete(assignment)
+    DB.delete(task)
+
   entry = Project.query.get(project_id)
   DB.delete(entry)
   return ''

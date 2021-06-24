@@ -21,15 +21,13 @@ const MyProjectTasks = ({ tasks, title }) => {
             <div className="my-project-tasks">
                 {tasks.map((task) => (
                     <div className="task-preview" key={task.id}>
-                        <h2>{task.project_name}: {task.description}</h2>
-                        <h3><strong>Priority level:</strong> {task.priority}</h3>
-                        <h3><strong></strong> {task.priority}</h3>
-                        <h3><strong>To be done by:</strong> {task.due_date}</h3>
-                        <h3>All volunteers assigned to this task: </h3>
-                        <UsersAssignedToTask task_id={task.id} />
+                        <h2>{task.description} [Priority: {task.priority}]</h2>
                         <Link to={`/projects/${task.project_id}`}>
-                            <h4>Click to see the project details</h4>
+                            <h3 style={{color: "#f1356d"}}>{task.project_name}</h3>
                         </Link>
+                        <h3><strong>To be done by:</strong> {task.due_date}</h3>
+                        <h3>Assigned volunteers: </h3>
+                        <UsersAssignedToTask task_id={task.id} />
                     </div>
                 ))}
             </div>
