@@ -24,6 +24,6 @@ heroku-deploy:
    - python3 -m flask db upgrade
    - cd ..
    - gem install dpl
-   - dpl --provider=heroku --app=drp-inaglobe-platform --api-key=$HEROKU_API
+   - dpl --provider=heroku --app=inaglobe-platform --api-key=$HEROKU_API
   only:
    - master
